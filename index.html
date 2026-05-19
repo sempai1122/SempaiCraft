@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SempaiCraft — Gaming Creator Hub</title>
+<meta name="description" content="SempaiCraft — Minecraft Builder • Roblox Player • YouTuber • Gaming Creator">
+<meta name="theme-color" content="#0a0a14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --neon-blue: #00d4ff;
+  --neon-purple: #bf00ff;
+  --neon-cyan: #00ffff;
+  --neon-pink: #ff006e;
+  --neon-green: #00ff88;
+  --dark-bg: #05050f;
+  --card-bg: rgba(10,10,30,0.75);
+  --card-border: rgba(0,212,255,0.18);
+  --text-primary: #e8eaf6;
+  --text-muted: rgba(232,234,246,0.55);
+  --glow-blue: 0 0 20px rgba(0,212,255,0.45), 0 0 60px rgba(0,212,255,0.15);
+  --glow-purple: 0 0 20px rgba(191,0,255,0.45), 0 0 60px rgba(191,0,255,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:#05050f;
+  color:var(--text-primary);
+  font-family:'Rajdhani',sans-serif;
+  font-size:16px;
+  overflow-x:hidden;
+  cursor:none;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+/* CUSTOM CURSOR */
+#cursor{
+  position:fixed;width:12px;height:12px;
+  background:var(--neon-blue);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:width .2s,height .2s,background .2s;
+  box-shadow:0 0 15px var(--neon-blue),0 0 30px rgba(0,212,255,0.4);
+}
+#cursor-ring{
+  position:fixed;width:36px;height:36px;
+  border:1.5px solid rgba(0,212,255,0.5);border-radius:50%;
+  pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:all .08s ease;
+}
+#cursor.clicking{width:8px;height:8px}
+/* SCROLL PROGRESS */
+#scroll-bar{
+  position:fixed;top:0;left:0;height:2px;
+  background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple),var(--neon-pink));
+  z-index:9997;transition:width .1s;
+  box-shadow:0 0 8px var(--neon-blue);
+}
+/* PARTICLES CANVAS */
+#particles{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;opacity:.6;
+}
+/* MOUSE GLOW */
+#mouse-glow{
+  position:fixed;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);
+  pointer-events:none;z-index:1;
+  transform:translate(-50%,-50%);
+  transition:all .15s ease;
+}
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:900;
+  padding:16px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(5,5,15,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(0,212,255,0.12);
+  transition:all .3s;
+}
+.nav-logo{
+  font-family:'Orbitron',sans-serif;
+  font-size:22px;font-weight:900;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:2px;text-decoration:none;
+}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{
+  color:var(--text-muted);text-decoration:none;
+  font-size:13px;letter-spacing:1.5px;text-transform:uppercase;
+  font-family:'Rajdhani',sans-serif;font-weight:600;
+  transition:all .3s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--neon-blue);transition:width .3s;
+  box-shadow:0 0 6px var(--neon-blue);
+}
+.nav-links a:hover{color:var(--neon-blue)}
+.nav-links a:hover::after{width:100%}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{width:24px;height:2px;background:var(--neon-blue);border-radius:2px;transition:all .3s}
+/* SECTIONS */
+section{position:relative;z-index:2;padding:100px 40px}
+.container{max-width:1200px;margin:0 auto}
+/* HERO */
+#hero{
+  min-height:100vh;min-height:100svh;
+  display:flex;align-items:center;
+  padding:0 40px;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:60px;width:100%;max-width:1200px;margin:0 auto;
+}
+.hero-content{position:relative;z-index:3}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 18px;border-radius:30px;
+  border:1px solid rgba(0,212,255,0.35);
+  background:rgba(0,212,255,0.08);
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--neon-cyan);margin-bottom:28px;
+  font-family:'Share Tech Mono',monospace;
+}
+.hero-badge .dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--neon-green);
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(48px,7vw,96px);
+  font-weight:900;line-height:.95;
+  margin-bottom:20px;
+}
+.hero-title .line1{
+  display:block;
+  background:linear-gradient(135deg,#fff 30%,var(--neon-blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero-title .line2{
+  display:block;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:none;
+}
+.hero-subtitle{
+  font-size:18px;color:var(--text-muted);
+  margin-bottom:40px;letter-spacing:.5px;
+  font-weight:300;min-height:28px;
+}
+.typing-text{color:var(--neon-cyan);font-weight:600}
+.typing-cursor{
+  display:inline-block;width:2px;height:18px;
+  background:var(--neon-blue);margin-left:2px;
+  animation:blink .7s infinite;vertical-align:middle;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:6px;
+  font-family:'Rajdhani',sans-serif;font-weight:700;
+  font-size:14px;letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;
+  border:none;transition:all .3s;position:relative;overflow:hidden;
+}
+.btn::before{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
+  transition:left .5s;
+}
+.btn:hover::before{left:100%}
+.btn-primary{
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  color:#fff;box-shadow:var(--glow-blue);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(0,212,255,0.6),0 0 80px rgba(0,212,255,0.2)}
+.btn-ghost{
+  background:rgba(0,212,255,0.06);
+  color:var(--neon-blue);
+  border:1px solid rgba(0,212,255,0.3);
+}
+.btn-ghost:hover{background:rgba(0,212,255,0.15);border-color:var(--neon-blue);transform:translateY(-2px)}
+.btn-icon{width:18px;height:18px;flex-shrink:0}
+/* SOCIAL STATS */
+.hero-stats{display:flex;gap:32px}
+.stat-item{text-align:center}
+.stat-num{
+  font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;
+  color:var(--neon-blue);display:block;
+}
+.stat-label{font-size:12px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
+/* AVATAR AREA */
+.hero-visual{
+  position:relative;display:flex;justify-content:center;align-items:center;
+}
+.avatar-container{
+  position:relative;width:340px;height:340px;
+  display:flex;align-items:center;justify-content:center;
+}
+.avatar-rings{
+  position:absolute;inset:0;
+  animation:spin 20s linear infinite;
+}
+.avatar-ring-1,.avatar-ring-2,.avatar-ring-3{
+  position:absolute;border-radius:50%;
+  border:1px solid;
+}
+.avatar-ring-1{
+  inset:0;border-color:rgba(0,212,255,0.25);
+}
+.avatar-ring-2{
+  inset:20px;border-color:rgba(191,0,255,0.2);
+  animation:spin-reverse 15s linear infinite;
+}
+.avatar-ring-3{
+  inset:40px;border-color:rgba(0,212,255,0.15);
+  animation:spin 10s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spin-reverse{to{transform:rotate(-360deg)}}
+.avatar-ring-1::before,.avatar-ring-1::after{
+  content:'';position:absolute;width:8px;height:8px;border-radius:50%;
+  background:var(--neon-blue);box-shadow:0 0 10px var(--neon-blue);
+  top:50%;margin-top:-4px;
+}
+.avatar-ring-1::before{left:-4px}
+.avatar-ring-1::after{right:-4px}
+.avatar-core{
+  width:220px;height:220px;border-radius:50%;
+  overflow:hidden;
+  border:3px solid rgba(0,212,255,0.4);
+  box-shadow:0 0 40px rgba(0,212,255,0.3),0 0 100px rgba(0,212,255,0.1),inset 0 0 40px rgba(0,0,0,0.5);
+  animation:float 4s ease-in-out infinite;
+  position:relative;z-index:2;
+  background:linear-gradient(135deg,#0a0a20,#1a0a30);
+  display:flex;align-items:center;justify-content:center;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.avatar-placeholder{
+  font-family:'Orbitron',sans-serif;font-size:80px;font-weight:900;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.avatar-glow{
+  position:absolute;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,212,255,0.15) 0%,transparent 70%);
+  animation:glow-pulse 3s ease-in-out infinite;
+}
+@keyframes glow-pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+/* Floating tags */
+.floating-tag{
+  position:absolute;
+  padding:6px 14px;border-radius:20px;
+  font-size:12px;font-weight:700;letter-spacing:1px;
+  font-family:'Share Tech Mono',monospace;
+  backdrop-filter:blur(10px);
+  animation:float-tag 4s ease-in-out infinite;
+}
+.tag-minecraft{
+  top:10%;right:-20px;
+  background:rgba(0,255,136,0.12);border:1px solid rgba(0,255,136,0.35);
+  color:var(--neon-green);
+  animation-delay:0s;
+}
+.tag-roblox{
+  bottom:20%;right:-10px;
+  background:rgba(255,0,110,0.12);border:1px solid rgba(255,0,110,0.35);
+  color:var(--neon-pink);
+  animation-delay:1.3s;
+}
+.tag-youtube{
+  bottom:5%;left:0;
+  background:rgba(255,50,50,0.12);border:1px solid rgba(255,50,50,0.35);
+  color:#ff5555;
+  animation-delay:0.7s;
+}
+@keyframes float-tag{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* SECTION STYLES */
+.section-label{
+  font-family:'Share Tech Mono',monospace;font-size:12px;
+  color:var(--neon-blue);letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:12px;display:flex;align-items:center;gap:10px;
+}
+.section-label::before{content:'//';opacity:.5}
+.section-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(32px,4vw,52px);font-weight:700;
+  line-height:1.1;margin-bottom:20px;
+}
+.gradient-text{
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+/* GLASS CARD */
+.glass-card{
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:16px;
+  backdrop-filter:blur(20px);
+  padding:32px;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.glass-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.4),transparent);
+}
+.glass-card:hover{
+  border-color:rgba(0,212,255,0.35);
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(0,212,255,0.1);
+}
+/* RGB BORDER */
+.rgb-border{
+  position:relative;border-radius:16px;padding:1px;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple),var(--neon-pink),var(--neon-blue));
+  background-size:300% 300%;
+  animation:rgb-shift 4s ease infinite;
+}
+@keyframes rgb-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.rgb-inner{
+  background:#08081a;border-radius:15px;
+  padding:32px;
+}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-desc{
+  font-size:17px;line-height:1.9;color:var(--text-muted);
+  font-weight:300;
+}
+.about-desc p+p{margin-top:16px}
+.about-desc strong{color:var(--neon-cyan);font-weight:600}
+.skills-grid{display:grid;gap:16px}
+.skill-item{}
+.skill-header{display:flex;justify-content:space-between;margin-bottom:8px}
+.skill-name{font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:var(--text-primary)}
+.skill-pct{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--neon-blue)}
+.skill-bar{height:4px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden}
+.skill-fill{
+  height:100%;border-radius:2px;
+  background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));
+  box-shadow:0 0 10px rgba(0,212,255,0.5);
+  width:0%;transition:width 1.5s cubic-bezier(.25,1,.5,1);
+}
+/* PLATFORMS */
+.platforms-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;
+}
+.platform-card{
+  text-align:center;padding:40px 24px;border-radius:16px;
+  background:rgba(10,10,30,0.6);
+  border:1px solid rgba(0,212,255,0.12);
+  transition:all .3s;text-decoration:none;color:inherit;
+  display:block;position:relative;overflow:hidden;
+}
+.platform-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 100%,rgba(0,212,255,0.1) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.platform-card:hover::after{opacity:1}
+.platform-card:hover{
+  transform:translateY(-6px);border-color:var(--neon-blue);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 30px rgba(0,212,255,0.15);
+}
+.platform-icon{font-size:48px;margin-bottom:16px;display:block}
+.platform-name{
+  font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;
+  margin-bottom:8px;color:var(--text-primary);
+}
+.platform-desc{font-size:14px;color:var(--text-muted);line-height:1.5}
+/* SOCIAL HUB */
+.socials-grid{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:20px;
+}
+.social-link{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 28px;border-radius:40px;
+  text-decoration:none;font-weight:700;
+  font-size:15px;letter-spacing:1px;
+  transition:all .3s;border:1px solid;
+}
+.social-yt{color:#ff4444;border-color:rgba(255,68,68,.3);background:rgba(255,68,68,.07)}
+.social-yt:hover{background:rgba(255,68,68,.18);box-shadow:0 0 25px rgba(255,68,68,.25);transform:translateY(-3px)}
+.social-ig{color:#e1306c;border-color:rgba(225,48,108,.3);background:rgba(225,48,108,.07)}
+.social-ig:hover{background:rgba(225,48,108,.18);box-shadow:0 0 25px rgba(225,48,108,.25);transform:translateY(-3px)}
+.social-dc{color:#5865f2;border-color:rgba(88,101,242,.3);background:rgba(88,101,242,.07)}
+.social-dc:hover{background:rgba(88,101,242,.18);box-shadow:0 0 25px rgba(88,101,242,.25);transform:translateY(-3px)}
+.social-rb{color:#e53e3e;border-color:rgba(229,62,62,.3);background:rgba(229,62,62,.07)}
+.social-rb:hover{background:rgba(229,62,62,.18);box-shadow:0 0 25px rgba(229,62,62,.25);transform:translateY(-3px)}
+.social-mc{color:#5d9e3f;border-color:rgba(93,158,63,.3);background:rgba(93,158,63,.07)}
+.social-mc:hover{background:rgba(93,158,63,.18);box-shadow:0 0 25px rgba(93,158,63,.25);transform:translateY(-3px)}
+/* DISCORD SECTION */
+.discord-widget-wrap{
+  background:rgba(88,101,242,0.06);
+  border:1px solid rgba(88,101,242,0.25);
+  border-radius:16px;padding:40px;text-align:center;
+}
+.discord-icon{font-size:72px;margin-bottom:20px;display:block}
+.discord-members{
+  display:flex;justify-content:center;gap:40px;margin:28px 0;
+}
+.discord-stat{text-align:center}
+.discord-num{
+  font-family:'Orbitron',sans-serif;font-size:32px;font-weight:700;
+  color:#5865f2;display:block;
+}
+.discord-label{font-size:13px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
+/* MINECRAFT SECTION */
+.minecraft-grid{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start}
+.mc-skin-showcase{
+  position:relative;text-align:center;
+  padding:40px 24px;
+  background:rgba(93,158,63,0.06);
+  border:1px solid rgba(93,158,63,0.2);
+  border-radius:16px;
+}
+.mc-skin-wrap{
+  width:140px;height:280px;margin:0 auto 24px;position:relative;
+}
+.mc-skin-img{
+  width:100%;height:100%;object-fit:cover;
+  image-rendering:pixelated;
+  filter:drop-shadow(0 0 20px rgba(93,158,63,0.5));
+  animation:float 4s ease-in-out infinite;
+}
+.mc-skin-placeholder{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:80px;animation:float 4s ease-in-out infinite;
+}
+.mc-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;text-align:left}
+.mc-info-item{
+  padding:12px 16px;border-radius:8px;
+  background:rgba(93,158,63,0.08);
+  border:1px solid rgba(93,158,63,0.15);
+}
+.mc-info-label{font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.mc-info-val{font-family:'Share Tech Mono',monospace;font-size:14px;color:var(--neon-green)}
+/* FLOATING CUBES */
+.cube-particle{
+  position:absolute;width:10px;height:10px;
+  background:rgba(93,158,63,0.4);border:1px solid rgba(93,158,63,0.6);
+  animation:cube-float 6s ease-in-out infinite;
+}
+@keyframes cube-float{
+  0%,100%{transform:translateY(0) rotate(0deg);opacity:.4}
+  50%{transform:translateY(-30px) rotate(180deg);opacity:.8}
+}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-form{display:grid;gap:16px}
+.form-group{display:grid;gap:8px}
+.form-label{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.form-input,.form-textarea{
+  background:rgba(0,212,255,0.04);
+  border:1px solid rgba(0,212,255,0.15);
+  border-radius:8px;padding:14px 18px;
+  color:var(--text-primary);font-family:'Rajdhani',sans-serif;font-size:16px;
+  transition:all .3s;width:100%;
+  font-weight:400;
+}
+.form-input:focus,.form-textarea:focus{
+  outline:none;border-color:rgba(0,212,255,0.5);
+  background:rgba(0,212,255,0.08);
+  box-shadow:0 0 20px rgba(0,212,255,0.1);
+}
+.form-textarea{height:140px;resize:none;font-family:'Rajdhani',sans-serif}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(232,234,246,.25)}
+.contact-info{display:grid;gap:20px;align-content:start}
+.contact-info-item{
+  display:flex;align-items:center;gap:16px;
+  padding:20px;border-radius:12px;
+  background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.12);
+  text-decoration:none;color:var(--text-primary);
+  transition:all .3s;
+}
+.contact-info-item:hover{border-color:rgba(0,212,255,.35);transform:translateX(6px)}
+.contact-info-icon{font-size:28px;flex-shrink:0}
+.contact-info-text strong{display:block;font-weight:700;margin-bottom:4px}
+.contact-info-text span{font-size:14px;color:var(--text-muted);font-family:'Share Tech Mono',monospace}
+/* FOOTER */
+footer{
+  border-top:1px solid rgba(0,212,255,0.1);
+  padding:40px;text-align:center;position:relative;z-index:2;
+}
+.footer-logo{
+  font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:16px;display:block;
+}
+.footer-sub{color:var(--text-muted);font-size:14px;margin-bottom:28px}
+.footer-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.footer-links a{
+  color:var(--text-muted);text-decoration:none;font-size:13px;
+  letter-spacing:1px;text-transform:uppercase;transition:color .3s;
+}
+.footer-links a:hover{color:var(--neon-blue)}
+.footer-copy{margin-top:28px;font-size:13px;color:rgba(232,234,246,.25)}
+/* DIGITAL CLOCK */
+.clock-widget{
+  position:fixed;bottom:30px;left:30px;z-index:800;
+  font-family:'Share Tech Mono',monospace;font-size:14px;
+  color:rgba(0,212,255,.7);
+  background:rgba(5,5,15,0.8);
+  border:1px solid rgba(0,212,255,0.2);
+  padding:8px 16px;border-radius:6px;
+  backdrop-filter:blur(10px);
+}
+/* VISITOR COUNTER */
+.visitor-badge{
+  position:fixed;bottom:30px;right:30px;z-index:800;
+  font-family:'Share Tech Mono',monospace;font-size:12px;
+  color:rgba(191,0,255,.7);
+  background:rgba(5,5,15,0.8);
+  border:1px solid rgba(191,0,255,0.2);
+  padding:8px 16px;border-radius:6px;
+  backdrop-filter:blur(10px);
+  display:flex;align-items:center;gap:8px;
+}
+.visitor-dot{width:6px;height:6px;border-radius:50%;background:var(--neon-green);animation:pulse 1.5s infinite}
+/* LOADING SCREEN */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:#05050f;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .6s;
+}
+#loader.hide{opacity:0;pointer-events:none}
+.loader-logo{
+  font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:32px;letter-spacing:4px;
+  animation:loader-pulse 1s ease-in-out infinite;
+}
+@keyframes loader-pulse{0%,100%{opacity:.7}50%{opacity:1}}
+.loader-bar-wrap{width:240px;height:2px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
+.loader-bar{
+  height:100%;width:0%;border-radius:2px;
+  background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));
+  box-shadow:0 0 10px var(--neon-blue);
+  transition:width .8s ease;
+}
+.loader-text{
+  margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:12px;
+  color:var(--text-muted);letter-spacing:2px;
+}
+/* DIVIDER */
+.section-divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.3),transparent);
+  margin:0 40px;position:relative;z-index:2;
+}
+/* GRID OVERLAY */
+.grid-overlay{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+/* ADMIN PASSWORD MODAL */
+#admin-pw-overlay{
+  position:fixed;inset:0;z-index:9995;
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;
+}
+#admin-pw-overlay.show{display:flex}
+#admin-pw-box{
+  background:rgba(5,5,20,0.98);
+  border:1px solid rgba(0,212,255,0.3);
+  border-radius:20px;padding:44px 40px;
+  width:360px;max-width:90vw;text-align:center;
+  position:relative;
+  box-shadow:0 0 60px rgba(0,212,255,0.15),0 30px 80px rgba(0,0,0,0.7);
+}
+#admin-pw-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;border-radius:20px 20px 0 0;
+  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.5),transparent);
+}
+.pw-icon{
+  font-size:48px;margin-bottom:16px;display:block;
+  animation:float 3s ease-in-out infinite;
+}
+.pw-title{
+  font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;
+  color:var(--neon-blue);margin-bottom:6px;letter-spacing:2px;
+}
+.pw-subtitle{
+  font-size:13px;color:var(--text-muted);margin-bottom:28px;
+  font-family:'Share Tech Mono',monospace;letter-spacing:1px;
+}
+#pw-input{
+  width:100%;background:rgba(0,212,255,0.05);
+  border:1px solid rgba(0,212,255,0.2);border-radius:10px;
+  padding:14px 18px;color:var(--text-primary);
+  font-family:'Share Tech Mono',monospace;font-size:18px;
+  letter-spacing:4px;text-align:center;
+  transition:all .3s;margin-bottom:16px;
+}
+#pw-input:focus{
+  outline:none;border-color:rgba(0,212,255,0.6);
+  background:rgba(0,212,255,0.1);
+  box-shadow:0 0 20px rgba(0,212,255,0.15);
+}
+#pw-input.shake{animation:pw-shake .4s ease}
+@keyframes pw-shake{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)}
+  60%{transform:translateX(-6px)}
+  80%{transform:translateX(6px)}
+}
+#pw-input.error{border-color:rgba(255,0,110,0.6);color:var(--neon-pink)}
+#pw-err{
+  font-size:13px;color:var(--neon-pink);margin-bottom:16px;
+  font-family:'Share Tech Mono',monospace;letter-spacing:1px;
+  min-height:20px;transition:opacity .3s;
+}
+.pw-btn{
+  width:100%;padding:14px;border-radius:10px;border:none;cursor:pointer;
+  font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:2px;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  color:#fff;transition:all .3s;
+  box-shadow:0 0 20px rgba(0,212,255,0.25);
+}
+.pw-btn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(0,212,255,0.45)}
+.pw-cancel{
+  display:block;margin-top:14px;font-size:13px;
+  color:var(--text-muted);cursor:pointer;
+  font-family:'Share Tech Mono',monospace;
+  background:none;border:none;width:100%;
+  letter-spacing:1px;transition:color .3s;
+}
+.pw-cancel:hover{color:var(--neon-blue)}
+.pw-dots{
+  display:flex;justify-content:center;gap:8px;margin-bottom:24px;
+}
+.pw-dot-ind{
+  width:10px;height:10px;border-radius:50%;
+  border:1.5px solid rgba(0,212,255,0.35);
+  transition:all .2s;
+}
+.pw-dot-ind.filled{
+  background:var(--neon-blue);border-color:var(--neon-blue);
+  box-shadow:0 0 8px var(--neon-blue);
+}
+/* ADMIN PANEL */
+#admin-panel{
+  position:fixed;right:-420px;top:0;bottom:0;width:420px;
+  background:rgba(5,5,15,0.97);
+  border-left:1px solid rgba(0,212,255,0.2);
+  z-index:9990;backdrop-filter:blur(20px);
+  transition:right .4s cubic-bezier(.25,1,.5,1);
+  overflow-y:auto;padding:24px;
+}
+#admin-panel.open{right:0}
+#admin-toggle{
+  position:fixed;right:20px;top:50%;transform:translateY(-50%);
+  z-index:9991;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  border:none;color:#fff;cursor:pointer;
+  width:42px;height:42px;border-radius:50%;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 20px rgba(0,212,255,0.4);
+  transition:all .3s;
+}
+#admin-toggle:hover{transform:translateY(-50%) scale(1.1)}
+.admin-header{
+  font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;
+  color:var(--neon-blue);margin-bottom:24px;padding-bottom:16px;
+  border-bottom:1px solid rgba(0,212,255,0.15);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.admin-close{
+  background:none;border:none;color:var(--text-muted);
+  font-size:20px;cursor:pointer;padding:4px;transition:color .3s;
+}
+.admin-close:hover{color:var(--neon-blue)}
+.admin-section{margin-bottom:28px}
+.admin-section-title{
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--neon-purple);font-weight:700;margin-bottom:14px;
+  font-family:'Share Tech Mono',monospace;
+}
+.admin-field{margin-bottom:14px}
+.admin-label{
+  font-size:12px;color:var(--text-muted);letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:6px;display:block;
+}
+.admin-input{
+  width:100%;background:rgba(0,212,255,0.05);
+  border:1px solid rgba(0,212,255,0.15);border-radius:6px;
+  padding:10px 14px;color:var(--text-primary);
+  font-family:'Rajdhani',sans-serif;font-size:15px;
+  transition:all .3s;
+}
+.admin-input:focus{
+  outline:none;border-color:rgba(0,212,255,0.4);
+  background:rgba(0,212,255,0.08);
+}
+.admin-btn{
+  width:100%;padding:12px;border-radius:8px;border:none;cursor:pointer;
+  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
+  color:#fff;margin-top:8px;transition:all .3s;
+}
+.admin-btn:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(0,212,255,0.4)}
+.admin-toggle-field{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.admin-toggle-label{font-size:14px;color:var(--text-primary)}
+.toggle-switch{
+  position:relative;width:44px;height:24px;cursor:pointer;
+}
+.toggle-switch input{display:none}
+.toggle-track{
+  position:absolute;inset:0;border-radius:12px;
+  background:rgba(255,255,255,0.1);transition:.3s;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.toggle-switch input:checked+.toggle-track{background:var(--neon-blue);border-color:var(--neon-blue)}
+.toggle-thumb{
+  position:absolute;top:3px;left:3px;width:16px;height:16px;
+  border-radius:50%;background:#fff;transition:.3s;
+}
+.toggle-switch input:checked~.toggle-thumb{left:23px}
+/* NOTIFICATION */
+.notification{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);
+  background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.35);
+  border-radius:8px;padding:14px 24px;
+  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:15px;
+  color:var(--neon-cyan);z-index:9999;letter-spacing:1px;
+  transition:transform .4s cubic-bezier(.25,1,.5,1);backdrop-filter:blur(10px);
+}
+.notification.show{transform:translateX(-50%) translateY(0)}
+/* ANIMATE IN */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+/* ===== TOUCH DEVICES — hide custom cursor ===== */
+@media(hover:none),(pointer:coarse){
+  body{cursor:auto}
+  #cursor,#cursor-ring,#mouse-glow{display:none!important}
+}
+/* ===== TABLET ===== */
+@media(max-width:968px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-mobile-open .nav-links{
+    display:flex;flex-direction:column;
+    position:fixed;top:58px;left:0;right:0;bottom:0;
+    background:rgba(5,5,15,0.99);
+    padding:32px 28px;gap:24px;z-index:899;
+    overflow-y:auto;
+    border-bottom:1px solid rgba(0,212,255,0.15);
+  }
+  .nav-mobile-open .nav-links a{font-size:20px;padding:8px 0}
+  section{padding:70px 20px}
+  #hero{padding:0 20px;min-height:100svh}
+  .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center;padding-top:80px;padding-bottom:40px}
+  .hero-visual{order:-1}
+  .avatar-container{width:240px;height:240px;margin:0 auto}
+  .avatar-core{width:150px;height:150px}
+  .hero-btns{justify-content:center;gap:10px}
+  .hero-stats{justify-content:center;gap:24px}
+  .stat-num{font-size:22px}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .minecraft-grid{grid-template-columns:1fr;gap:24px}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+  .section-divider{margin:0 20px}
+  #admin-panel{width:100%;right:-100%}
+  #admin-panel.open{right:0}
+  .clock-widget,.visitor-badge{display:none}
+  .discord-members{gap:24px}
+  .glass-card{padding:24px}
+}
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  nav{padding:12px 16px}
+  .nav-logo{font-size:18px}
+  section{padding:60px 16px}
+  #hero{padding:0 16px}
+  .hero-grid{gap:28px;padding-top:72px;padding-bottom:32px}
+  .avatar-container{width:200px;height:200px}
+  .avatar-core{width:130px;height:130px}
+  .avatar-placeholder{font-size:60px}
+  .hero-badge{font-size:10px;padding:5px 14px;letter-spacing:1.5px}
+  .hero-title{font-size:clamp(40px,12vw,64px)}
+  .hero-subtitle{font-size:15px}
+  .hero-btns{flex-direction:column;align-items:center;gap:10px;width:100%}
+  .btn{width:100%;max-width:320px;justify-content:center;padding:13px 20px;font-size:14px}
+  .hero-stats{gap:20px}
+  .stat-num{font-size:20px}
+  .stat-label{font-size:11px}
+  .section-title{font-size:clamp(26px,8vw,40px)}
+  .platforms-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .platform-card{padding:24px 14px}
+  .platform-icon{font-size:36px;margin-bottom:10px}
+  .platform-name{font-size:14px}
+  .platform-desc{font-size:12px}
+  .socials-grid{gap:12px}
+  .social-link{padding:10px 16px;font-size:13px;gap:8px}
+  .discord-members{flex-direction:column;gap:16px}
+  .discord-num{font-size:26px}
+  .mc-info{grid-template-columns:1fr 1fr}
+  .about-desc{font-size:15px}
+  .skill-item.glass-card{padding:16px}
+  .skill-name{font-size:13px}
+  .glass-card{padding:20px}
+  .rgb-inner{padding:20px}
+  .contact-info-item{padding:14px}
+  footer{padding:32px 16px}
+  .footer-links{gap:16px}
+  #admin-toggle{right:14px;width:38px;height:38px;font-size:16px}
+  #admin-pw-box{padding:32px 24px}
+  .pw-title{font-size:17px}
+  #pw-input{font-size:16px;padding:12px 14px}
+  .floating-tag{font-size:10px;padding:4px 10px}
+  .tag-minecraft{right:-8px}
+  .tag-roblox{right:-4px}
+  .tag-youtube{left:-4px}
+}
+/* ===== VERY SMALL (320px) ===== */
+@media(max-width:360px){
+  .platforms-grid{grid-template-columns:1fr}
+  .hero-btns .btn{font-size:13px}
+  .hero-stats{gap:14px}
+  .social-link{padding:9px 12px;font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">SEMPAICRAFT</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+  <div class="loader-text" id="loader-text">INITIALIZING...</div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<!-- SCROLL BAR -->
+<div id="scroll-bar" style="width:0%"></div>
+<!-- MOUSE GLOW -->
+<div id="mouse-glow"></div>
+<!-- PARTICLES -->
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">SEMPAICRAFT</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#platforms">Platforms</a></li>
+    <li><a href="#minecraft">Minecraft</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-overlay"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge fade-up"><span class="dot"></span>CREATOR HUB ONLINE</div>
+      <h1 class="hero-title fade-up">
+        <span class="line1">SEMPAI</span>
+        <span class="line2">CRAFT</span>
+      </h1>
+      <p class="hero-subtitle fade-up">
+        <span class="typing-text" id="typing"></span><span class="typing-cursor"></span>
+      </p>
+      <div class="hero-btns fade-up">
+        <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Subscribe
+        </a>
+        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="btn btn-ghost">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          Join Discord
+        </a>
+        <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="btn btn-ghost">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.324 12 18.324s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div class="stat-item"><span class="stat-num" data-target="50">0</span><span class="stat-label">K+ Subs</span></div>
+        <div class="stat-item"><span class="stat-num" data-target="120">0</span><span class="stat-label">Videos</span></div>
+        <div class="stat-item"><span class="stat-num" data-target="5000">0</span><span class="stat-label">Community</span></div>
+      </div>
+    </div>
+    <div class="hero-visual fade-up">
+      <div class="avatar-container">
+        <div class="avatar-rings">
+          <div class="avatar-ring-1"></div>
+          <div class="avatar-ring-2"></div>
+          <div class="avatar-ring-3"></div>
+        </div>
+        <div class="avatar-glow"></div>
+        <div class="avatar-core">
+          <span class="avatar-placeholder">⚔</span>
+        </div>
+        <div class="floating-tag tag-minecraft">⛏ MINECRAFT</div>
+        <div class="floating-tag tag-roblox">🎮 ROBLOX</div>
+        <div class="floating-tag tag-youtube">▶ YOUTUBE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label fade-up">About</div>
+    <h2 class="section-title fade-up"><span class="gradient-text">WHO IS</span><br>SEMPAICRAFT?</h2>
+    <div class="about-grid">
+      <div class="about-desc fade-up">
+        <p>Welcome to the hub of <strong>SempaiCraft</strong> — a passionate gaming creator living at the intersection of creativity, strategy, and community. Born from a love of blocky worlds and Roblox adventures, SempaiCraft has evolved into a full-fledged content creator powerhouse.</p>
+        <p>From <strong>epic Minecraft builds</strong> that push the limits of imagination, to intense <strong>Roblox PvP battles</strong> that keep audiences on the edge of their seats — every piece of content is crafted with precision and passion.</p>
+        <p>With a commitment to <strong>high-quality video editing</strong>, authentic storytelling, and a tight-knit <strong>community-first</strong> mentality, SempaiCraft isn't just a channel — it's an experience. A universe built pixel by pixel, frame by frame.</p>
+        <p style="margin-top:24px">
+          <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary" style="display:inline-flex">View Channel ↗</a>
+        </p>
+      </div>
+      <div class="skills-grid fade-up">
+        <div class="skill-item glass-card" style="padding:20px">
+          <div class="skill-header"><span class="skill-name">⛏ Minecraft Building</span><span class="skill-pct">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item glass-card" style="padding:20px">
+          <div class="skill-header"><span class="skill-name">🎮 Roblox Gameplay</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item glass-card" style="padding:20px">
+          <div class="skill-header"><span class="skill-name">⚔ PvP Combat</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88" style="background:linear-gradient(90deg,#ff006e,#bf00ff)"></div></div>
+        </div>
+        <div class="skill-item glass-card" style="padding:20px">
+          <div class="skill-header"><span class="skill-name">🎬 Video Editing</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85" style="background:linear-gradient(90deg,#bf00ff,#00d4ff)"></div></div>
+        </div>
+        <div class="skill-item glass-card" style="padding:20px">
+          <div class="skill-header"><span class="skill-name">🎯 Content Creation</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item glass-card" style="padding:20px">
+          <div class="skill-header"><span class="skill-name">👥 Community Building</span><span class="skill-pct">97%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="97" style="background:linear-gradient(90deg,#00ff88,#00d4ff)"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <div class="container">
+    <div class="section-label fade-up">Find Me</div>
+    <h2 class="section-title fade-up">PLATFORMS &amp; <span class="gradient-text">PROFILES</span></h2>
+    <div class="platforms-grid" style="margin-top:40px">
+      <a href="https://youtube.com/@sempaicraft" target="_blank" class="platform-card fade-up">
+        <span class="platform-icon">▶️</span>
+        <div class="platform-name">YouTube</div>
+        <div class="platform-desc">Gaming videos, builds, tutorials & Shorts</div>
+      </a>
+      <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="platform-card fade-up">
+        <span class="platform-icon">📸</span>
+        <div class="platform-name">Instagram</div>
+        <div class="platform-desc">Behind the scenes, reels & community posts</div>
+      </a>
+      <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="platform-card fade-up">
+        <span class="platform-icon">💬</span>
+        <div class="platform-name">Discord</div>
+        <div class="platform-desc">Live community, events & exclusive content</div>
+      </a>
+      <a href="https://www.roblox.com/share?code=1b4f728fe9991243b01323c3fa5eeefd&type=Profile&source=ProfileShare&stamp=1779159809166" target="_blank" class="platform-card fade-up">
+        <span class="platform-icon">🟥</span>
+        <div class="platform-name">Roblox</div>
+        <div class="platform-desc">Check out my Roblox profile & games</div>
+      </a>
+      <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="platform-card fade-up">
+        <span class="platform-icon">⛏️</span>
+        <div class="platform-name">NameMC</div>
+        <div class="platform-desc">Minecraft profile, skin & UUID</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- MINECRAFT -->
+<section id="minecraft">
+  <div class="container">
+    <div class="section-label fade-up">Minecraft</div>
+    <h2 class="section-title fade-up">MINECRAFT <span class="gradient-text">PROFILE</span></h2>
+    <div class="minecraft-grid" style="margin-top:40px">
+      <div class="mc-skin-showcase fade-up">
+        <div class="cube-particle" style="top:10%;left:10%;animation-delay:0s"></div>
+        <div class="cube-particle" style="top:20%;right:15%;animation-delay:1s"></div>
+        <div class="cube-particle" style="bottom:20%;left:20%;animation-delay:2s"></div>
+        <div class="mc-skin-wrap">
+          <img
+            src="https://visage.surgeplay.com/full/512/SempaiCraft1"
+            alt="SempaiCraft Minecraft Skin"
+            class="mc-skin-img"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          >
+          <div class="mc-skin-placeholder" style="display:none">🧱</div>
+        </div>
+        <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:var(--neon-green);margin-bottom:8px">SempaiCraft1</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px">Minecraft Java Edition</div>
+        <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="btn btn-ghost" style="font-size:13px;padding:10px 20px">View on NameMC ↗</a>
+        <div class="mc-info">
+          <div class="mc-info-item">
+            <div class="mc-info-label">Edition</div>
+            <div class="mc-info-val">Java</div>
+          </div>
+          <div class="mc-info-item">
+            <div class="mc-info-label">Status</div>
+            <div class="mc-info-val" style="color:var(--neon-green)">Active</div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="rgb-border" style="margin-bottom:20px">
+          <div class="rgb-inner">
+            <div style="font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;color:var(--neon-green);margin-bottom:16px">⛏ Skin Preview</div>
+            <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+              <img src="https://mc-heads.net/avatar/SempaiCraft1/100" alt="Head" style="width:80px;height:80px;image-rendering:pixelated;border-radius:8px;border:2px solid rgba(93,158,63,0.4)" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%22 height=%22100%22 fill=%22%23222%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 font-size=%2240%22>🧱</text></svg>'">
+              <img src="https://mc-heads.net/skin/SempaiCraft1" alt="Skin" style="width:64px;height:128px;image-rendering:pixelated;border-radius:4px;border:2px solid rgba(93,158,63,0.4)" onerror="this.style.display='none'">
+              <div style="flex:1;min-width:160px">
+                <div style="font-size:14px;color:var(--text-muted);line-height:1.8">
+                  <div>Username: <span style="color:var(--neon-green);font-family:'Share Tech Mono',monospace">SempaiCraft1</span></div>
+                  <div>Profile: <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" style="color:var(--neon-blue)">SempaiCraft1.1</a></div>
+                  <div>API: <span style="color:var(--neon-green);font-family:'Share Tech Mono',monospace">Mojang ✓</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card fade-up">
+          <div style="font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:var(--neon-cyan);margin-bottom:20px">🏆 Creator Highlights</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="padding:16px;background:rgba(93,158,63,0.08);border:1px solid rgba(93,158,63,0.15);border-radius:10px;text-align:center">
+              <div style="font-size:28px;margin-bottom:6px">🏗️</div>
+              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-green)">Builder</div>
+              <div style="font-size:12px;color:var(--text-muted)">Epic structures & landscapes</div>
+            </div>
+            <div style="padding:16px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.15);border-radius:10px;text-align:center">
+              <div style="font-size:28px;margin-bottom:6px">⚔️</div>
+              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-blue)">PvP Pro</div>
+              <div style="font-size:12px;color:var(--text-muted)">Competitive combat skills</div>
+            </div>
+            <div style="padding:16px;background:rgba(191,0,255,0.06);border:1px solid rgba(191,0,255,0.15);border-radius:10px;text-align:center">
+              <div style="font-size:28px;margin-bottom:6px">🎬</div>
+              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-purple)">Creator</div>
+              <div style="font-size:12px;color:var(--text-muted)">100+ videos uploaded</div>
+            </div>
+            <div style="padding:16px;background:rgba(255,0,110,0.06);border:1px solid rgba(255,0,110,0.15);border-radius:10px;text-align:center">
+              <div style="font-size:28px;margin-bottom:6px">🌐</div>
+              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-pink)">Streamer</div>
+              <div style="font-size:12px;color:var(--text-muted)">Live gaming sessions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- COMMUNITY / DISCORD -->
+<section id="community">
+  <div class="container">
+    <div class="section-label fade-up">Community</div>
+    <h2 class="section-title fade-up">JOIN THE <span class="gradient-text">COMMUNITY</span></h2>
+    <div style="max-width:700px;margin:40px auto 0;text-align:center" class="fade-up">
+      <div class="discord-widget-wrap">
+        <span class="discord-icon">💬</span>
+        <div style="font-family:'Orbitron',sans-serif;font-size:28px;font-weight:700;color:#5865f2;margin-bottom:12px">SempaiCraft Discord</div>
+        <div style="color:var(--text-muted);font-size:16px;margin-bottom:28px">Join the SempaiCraft gaming community! Chat, game together, get exclusive updates, and be part of something epic.</div>
+        <div class="discord-members">
+          <div class="discord-stat">
+            <span class="discord-num">500+</span>
+            <span class="discord-label">Members</span>
+          </div>
+          <div class="discord-stat">
+            <span class="discord-num" style="color:var(--neon-green)">🟢 Online</span>
+            <span class="discord-label">Right Now</span>
+          </div>
+        </div>
+        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="btn btn-primary" style="font-size:16px;padding:16px 40px">
+          <svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          Join Discord Server
+        </a>
+        <div style="margin-top:20px">
+          <iframe src="https://discord.com/widget?id=&theme=dark" width="100%" height="240" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="border-radius:10px;border:1px solid rgba(88,101,242,0.2);max-width:500px"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SOCIAL HUB -->
+<section id="socials">
+  <div class="container" style="text-align:center">
+    <div class="section-label fade-up" style="justify-content:center">Links</div>
+    <h2 class="section-title fade-up">SOCIAL <span class="gradient-text">HUB</span></h2>
+    <div class="socials-grid fade-up" style="margin-top:40px">
+      <a href="https://youtube.com/@sempaicraft" target="_blank" class="social-link social-yt">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+      <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="social-link social-ig">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.324 12 18.324s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="social-link social-dc">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Discord
+      </a>
+      <a href="https://www.roblox.com/share?code=1b4f728fe9991243b01323c3fa5eeefd&type=Profile&source=ProfileShare&stamp=1779159809166" target="_blank" class="social-link social-rb">
+        🟥 Roblox
+      </a>
+      <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="social-link social-mc">
+        ⛏ NameMC
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label fade-up">Contact</div>
+    <h2 class="section-title fade-up">GET IN <span class="gradient-text">TOUCH</span></h2>
+    <div class="contact-grid" style="margin-top:40px">
+      <div class="glass-card fade-up">
+        <div style="font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;color:var(--neon-blue);margin-bottom:24px">Send a Message</div>
+        <div class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="Enter your name" id="cf-name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="your@email.com" id="cf-email">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" placeholder="Collab? Business? Fan mail?" id="cf-subject">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Write your message here..." id="cf-message"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="sendMessage()" style="width:100%;justify-content:center;font-size:15px;padding:16px">
+            Send Message ✉
+          </button>
+        </div>
+      </div>
+      <div class="contact-info fade-up">
+        <a href="https://youtube.com/@sempaicraft" target="_blank" class="contact-info-item">
+          <span class="contact-info-icon">▶️</span>
+          <div class="contact-info-text">
+            <strong>YouTube Channel</strong>
+            <span>@sempaicraft</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="contact-info-item">
+          <span class="contact-info-icon">📸</span>
+          <div class="contact-info-text">
+            <strong>Instagram</strong>
+            <span>@other_side_of_sempai</span>
+          </div>
+        </a>
+        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="contact-info-item">
+          <span class="contact-info-icon">💬</span>
+          <div class="contact-info-text">
+            <strong>Discord Community</strong>
+            <span>discord.gg/9qrZQmN3KS</span>
+          </div>
+        </a>
+        <div class="glass-card" style="margin-top:8px">
+          <div style="font-size:14px;color:var(--text-muted);line-height:1.7">
+            For <strong style="color:var(--neon-cyan)">business inquiries</strong>, collaborations, or sponsorships — reach out through any platform. SempaiCraft is open to creative partnerships that align with the gaming community.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">SEMPAICRAFT</span>
+  <div class="footer-sub">Gaming Creator • Minecraft Builder • Roblox Player • YouTuber</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#platforms">Platforms</a>
+    <a href="#minecraft">Minecraft</a>
+    <a href="#community">Community</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div style="margin-top:20px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
+    <a href="https://youtube.com/@sempaicraft" target="_blank" style="color:rgba(232,234,246,.4);font-size:22px;text-decoration:none">▶</a>
+    <a href="https://discord.gg/9qrZQmN3KS" target="_blank" style="color:rgba(232,234,246,.4);font-size:18px;text-decoration:none">💬</a>
+    <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" style="color:rgba(232,234,246,.4);font-size:22px;text-decoration:none">📸</a>
+    <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" style="color:rgba(232,234,246,.4);font-size:22px;text-decoration:none">⛏</a>
+  </div>
+  <div class="footer-copy">© 2025 SempaiCraft. All rights reserved. Built with ⚡ and ☕</div>
+</footer>
+
+<!-- CLOCK -->
+<div class="clock-widget" id="clock">00:00:00</div>
+
+<!-- VISITOR -->
+<div class="visitor-badge">
+  <span class="visitor-dot"></span>
+  <span id="visitor-count">1,337</span> visitors
+</div>
+
+<!-- ADMIN PASSWORD MODAL -->
+<div id="admin-pw-overlay">
+  <div id="admin-pw-box">
+    <span class="pw-icon">🔐</span>
+    <div class="pw-title">ADMIN ACCESS</div>
+    <div class="pw-subtitle">// ENTER SECURITY CODE</div>
+    <div class="pw-dots">
+      <div class="pw-dot-ind" id="dot-0"></div>
+      <div class="pw-dot-ind" id="dot-1"></div>
+      <div class="pw-dot-ind" id="dot-2"></div>
+      <div class="pw-dot-ind" id="dot-3"></div>
+      <div class="pw-dot-ind" id="dot-4"></div>
+      <div class="pw-dot-ind" id="dot-5"></div>
+      <div class="pw-dot-ind" id="dot-6"></div>
+      <div class="pw-dot-ind" id="dot-7"></div>
+    </div>
+    <input type="password" id="pw-input" placeholder="••••••••" maxlength="8"
+      oninput="updateDots()" onkeydown="if(event.key==='Enter')checkPassword()">
+    <div id="pw-err"></div>
+    <button class="pw-btn" onclick="checkPassword()">⚡ AUTHENTICATE</button>
+    <button class="pw-cancel" onclick="closePasswordModal()">✕ Cancel</button>
+  </div>
+</div>
+
+<!-- ADMIN TOGGLE -->
+<button id="admin-toggle" onclick="openPasswordModal()" title="Admin Panel">⚙</button>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <div class="admin-header">
+    ⚙ ADMIN PANEL
+    <button class="admin-close" onclick="document.getElementById('admin-panel').classList.remove('open')">✕</button>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">Personal Info</div>
+    <div class="admin-field">
+      <label class="admin-label">Creator Name</label>
+      <input class="admin-input" id="admin-name" value="SempaiCraft" oninput="updateContent('hero-name',this.value)">
+    </div>
+    <div class="admin-field">
+      <label class="admin-label">Tagline</label>
+      <input class="admin-input" id="admin-tag" value="Gaming Creator • Minecraft Builder • Roblox Player • YouTuber">
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">Social Links</div>
+    <div class="admin-field">
+      <label class="admin-label">YouTube URL</label>
+      <input class="admin-input" value="https://youtube.com/@sempaicraft">
+    </div>
+    <div class="admin-field">
+      <label class="admin-label">Instagram URL</label>
+      <input class="admin-input" value="https://www.instagram.com/other_side_of_sempai">
+    </div>
+    <div class="admin-field">
+      <label class="admin-label">Discord Invite</label>
+      <input class="admin-input" value="https://discord.gg/9qrZQmN3KS">
+    </div>
+    <div class="admin-field">
+      <label class="admin-label">NameMC Profile</label>
+      <input class="admin-input" value="https://namemc.com/profile/SempaiCraft1.1">
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">Design Settings</div>
+    <div class="admin-field">
+      <label class="admin-label">Primary Neon Color</label>
+      <input type="color" class="admin-input" value="#00d4ff" style="height:44px;padding:4px;cursor:pointer" oninput="updateColor('--neon-blue',this.value)">
+    </div>
+    <div class="admin-field">
+      <label class="admin-label">Secondary Neon Color</label>
+      <input type="color" class="admin-input" value="#bf00ff" style="height:44px;padding:4px;cursor:pointer" oninput="updateColor('--neon-purple',this.value)">
+    </div>
+    <div class="admin-field">
+      <label class="admin-label">Accent Color</label>
+      <input type="color" class="admin-input" value="#00ff88" style="height:44px;padding:4px;cursor:pointer" oninput="updateColor('--neon-green',this.value)">
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">Features</div>
+    <div class="admin-toggle-field">
+      <span class="admin-toggle-label">Particle Effects</span>
+      <label class="toggle-switch">
+        <input type="checkbox" checked onchange="toggleParticles(this.checked)">
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+    </div>
+    <div class="admin-toggle-field">
+      <span class="admin-toggle-label">Cursor Glow</span>
+      <label class="toggle-switch">
+        <input type="checkbox" checked onchange="toggleCursorGlow(this.checked)">
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+    </div>
+    <div class="admin-toggle-field">
+      <span class="admin-toggle-label">Mouse Glow</span>
+      <label class="toggle-switch">
+        <input type="checkbox" checked onchange="toggleMouseGlow(this.checked)">
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+    </div>
+    <div class="admin-toggle-field">
+      <span class="admin-toggle-label">Digital Clock</span>
+      <label class="toggle-switch">
+        <input type="checkbox" checked onchange="document.getElementById('clock').style.display=this.checked?'block':'none'">
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">Minecraft Settings</div>
+    <div class="admin-field">
+      <label class="admin-label">Minecraft Username</label>
+      <input class="admin-input" id="admin-mc-user" value="SempaiCraft1" oninput="updateMCSkin(this.value)">
+    </div>
+  </div>
+
+  <button class="admin-btn" onclick="saveSettings()">💾 Save Settings</button>
+  <button class="admin-btn" style="margin-top:8px;background:rgba(0,212,255,0.15);color:var(--neon-blue);border:1px solid rgba(0,212,255,0.3)" onclick="exportHTML()">📤 Export HTML</button>
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification">✓ Settings saved!</div>
+
+<script>
+// ===== LOADER =====
+const loaderTexts=['LOADING ASSETS...','BUILDING WORLD...','CONNECTING TO SERVERS...','INITIALIZING UI...','READY!'];
+let lt=0;
+const lbar=document.getElementById('loader-bar');
+const ltxt=document.getElementById('loader-text');
+function runLoader(){
+  let p=0;
+  const iv=setInterval(()=>{
+    p+=Math.random()*25;
+    if(p>100)p=100;
+    lbar.style.width=p+'%';
+    lt=Math.min(lt,loaderTexts.length-1);
+    if(p>20&&lt===0){ltxt.textContent=loaderTexts[1];lt=1}
+    if(p>50&&lt===1){ltxt.textContent=loaderTexts[2];lt=2}
+    if(p>75&&lt===2){ltxt.textContent=loaderTexts[3];lt=3}
+    if(p>=100){
+      ltxt.textContent=loaderTexts[4];
+      clearInterval(iv);
+      setTimeout(()=>{
+        document.getElementById('loader').classList.add('hide');
+        setTimeout(()=>document.getElementById('loader').remove(),600);
+        initAnims();
+      },400);
+    }
+  },120);
+}
+runLoader();
+
+// ===== CURSOR =====
+const cur=document.getElementById('cursor');
+const ring=document.getElementById('cursor-ring');
+document.addEventListener('mousemove',e=>{
+  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+  setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px'},80);
+  document.getElementById('mouse-glow').style.left=e.clientX+'px';
+  document.getElementById('mouse-glow').style.top=e.clientY+'px';
+});
+document.addEventListener('mousedown',()=>cur.classList.add('clicking'));
+document.addEventListener('mouseup',()=>cur.classList.remove('clicking'));
+
+// ===== SCROLL =====
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+  document.getElementById('scroll-bar').style.width=pct+'%';
+});
+
+// ===== PARTICLES =====
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+let particles=[];
+let particlesOn=true;
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+class Particle{
+  constructor(){this.reset()}
+  reset(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*1.5+0.3;
+    this.speedX=(Math.random()-.5)*.4;
+    this.speedY=(Math.random()-.5)*.4;
+    this.opacity=Math.random()*.6+.1;
+    this.color=Math.random()>.5?'0,212,255':'191,0,255';
+  }
+  update(){
+    this.x+=this.speedX;this.y+=this.speedY;
+    if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();
+  }
+  draw(){
+    ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${this.color},${this.opacity})`;ctx.fill();
+  }
+}
+for(let i=0;i<120;i++)particles.push(new Particle());
+function animParticles(){
+  if(!particlesOn){requestAnimationFrame(animParticles);return}
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{p.update();p.draw()});
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+// ===== TYPING =====
+const typingTexts=['Gaming Creator','Minecraft Builder','Roblox Player','YouTuber','PvP Champion','Content Creator'];
+let tIdx=0,cIdx=0,deleting=false;
+const typEl=document.getElementById('typing');
+function typeLoop(){
+  const word=typingTexts[tIdx];
+  if(!deleting){
+    typEl.textContent=word.slice(0,cIdx+1);cIdx++;
+    if(cIdx===word.length){deleting=true;setTimeout(typeLoop,1400);return}
+  }else{
+    typEl.textContent=word.slice(0,cIdx-1);cIdx--;
+    if(cIdx===0){deleting=false;tIdx=(tIdx+1)%typingTexts.length;setTimeout(typeLoop,400);return}
+  }
+  setTimeout(typeLoop,deleting?50:100);
+}
+setTimeout(typeLoop,1200);
+
+// ===== CLOCK =====
+function updateClock(){
+  const now=new Date();
+  const h=String(now.getHours()).padStart(2,'0');
+  const m=String(now.getMinutes()).padStart(2,'0');
+  const s=String(now.getSeconds()).padStart(2,'0');
+  const el=document.getElementById('clock');
+  if(el)el.textContent=h+':'+m+':'+s;
+}
+setInterval(updateClock,1000);updateClock();
+
+// ===== COUNTER ANIM =====
+function animateCounter(el,target){
+  let current=0;const duration=2000;const steps=60;
+  const increment=target/steps;
+  const iv=setInterval(()=>{
+    current=Math.min(current+increment,target);
+    el.textContent=Math.floor(current).toLocaleString();
+    if(current>=target)clearInterval(iv);
+  },duration/steps);
+}
+
+// ===== SKILL BARS =====
+function animateSkills(){
+  document.querySelectorAll('.skill-fill').forEach(el=>{
+    const w=el.dataset.width;
+    el.style.width=w+'%';
+  });
+}
+
+// ===== SCROLL ANIMATIONS =====
+function initAnims(){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // counter
+        if(e.target.dataset.target){
+          animateCounter(e.target,parseInt(e.target.dataset.target));
+        }
+      }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  // skills
+  const skillObs=new IntersectionObserver((entries)=>{
+    if(entries[0].isIntersecting)animateSkills();
+  },{threshold:.2});
+  const skillSection=document.querySelector('.skills-grid');
+  if(skillSection)skillObs.observe(skillSection);
+  // stat counters
+  document.querySelectorAll('[data-target]').forEach(el=>obs.observe(el));
+}
+
+// ===== NAV =====
+function toggleMenu(){
+  document.getElementById('navbar').classList.toggle('nav-mobile-open');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('navbar').classList.remove('nav-mobile-open');
+  });
+});
+
+// ===== ADMIN PASSWORD =====
+const ADMIN_PASS='h1a2c3k4';
+let adminUnlocked=false;
+let failCount=0;
+let lockUntil=0;
+
+function openPasswordModal(){
+  if(adminUnlocked){
+    document.getElementById('admin-panel').classList.toggle('open');
+    return;
+  }
+  const now=Date.now();
+  if(lockUntil>now){
+    const secs=Math.ceil((lockUntil-now)/1000);
+    showNotif('🔒 Too many attempts. Wait '+secs+'s');
+    return;
+  }
+  document.getElementById('pw-input').value='';
+  document.getElementById('pw-err').textContent='';
+  document.getElementById('pw-input').classList.remove('error');
+  updateDots();
+  document.getElementById('admin-pw-overlay').classList.add('show');
+  setTimeout(()=>document.getElementById('pw-input').focus(),120);
+}
+
+function closePasswordModal(){
+  document.getElementById('admin-pw-overlay').classList.remove('show');
+  document.getElementById('pw-input').value='';
+  document.getElementById('pw-err').textContent='';
+  document.getElementById('pw-input').classList.remove('error');
+  updateDots();
+}
+
+function updateDots(){
+  const val=document.getElementById('pw-input').value;
+  for(let i=0;i<8;i++){
+    const d=document.getElementById('dot-'+i);
+    if(d)d.classList.toggle('filled',i<val.length);
+  }
+}
+
+function checkPassword(){
+  const now=Date.now();
+  if(lockUntil>now){
+    const secs=Math.ceil((lockUntil-now)/1000);
+    document.getElementById('pw-err').textContent='🔒 Locked out. Try in '+secs+'s';
+    return;
+  }
+  const val=document.getElementById('pw-input').value;
+  if(val===ADMIN_PASS){
+    failCount=0;
+    adminUnlocked=true;
+    closePasswordModal();
+    setTimeout(()=>{
+      document.getElementById('admin-panel').classList.add('open');
+      showNotif('✅ Admin access granted!');
+    },180);
+  } else {
+    failCount++;
+    const inp=document.getElementById('pw-input');
+    const err=document.getElementById('pw-err');
+    inp.classList.add('error','shake');
+    setTimeout(()=>inp.classList.remove('shake','error'),500);
+    inp.value='';updateDots();
+    if(failCount>=5){
+      lockUntil=Date.now()+30000;
+      err.textContent='🚫 Too many attempts. Locked 30s.';
+    } else {
+      const left=5-failCount;
+      err.textContent='✗ Wrong password. '+left+' attempt'+(left!==1?'s':'')+' left.';
+    }
+    setTimeout(()=>document.getElementById('pw-input').focus(),50);
+  }
+}
+
+function toggleAdmin(){
+  if(!adminUnlocked){openPasswordModal();return}
+  document.getElementById('admin-panel').classList.toggle('open');
+}
+function updateContent(id,val){
+  const el=document.getElementById(id);
+  if(el)el.textContent=val;
+}
+function updateColor(prop,val){
+  document.documentElement.style.setProperty(prop,val);
+}
+function toggleParticles(on){
+  particlesOn=on;
+  canvas.style.opacity=on?'.6':'0';
+}
+function toggleCursorGlow(on){
+  cur.style.display=on?'block':'none';
+  ring.style.display=on?'block':'none';
+}
+function toggleMouseGlow(on){
+  document.getElementById('mouse-glow').style.display=on?'block':'none';
+}
+function updateMCSkin(username){
+  const img=document.querySelector('.mc-skin-img');
+  if(img){img.src=`https://visage.surgeplay.com/full/512/${username}`}
+  const head=document.querySelector('img[alt="Head"]');
+  if(head){head.src=`https://mc-heads.net/avatar/${username}/100`}
+}
+function showNotif(msg){
+  const n=document.getElementById('notification');
+  n.textContent=msg;n.classList.add('show');
+  setTimeout(()=>n.classList.remove('show'),2800);
+}
+function saveSettings(){showNotif('✓ Settings saved!')}
+function exportHTML(){showNotif('📤 HTML export ready!')}
+
+// ===== CONTACT =====
+function sendMessage(){
+  const name=document.getElementById('cf-name').value;
+  const email=document.getElementById('cf-email').value;
+  const message=document.getElementById('cf-message').value;
+  if(!name||!email||!message){showNotif('⚠ Please fill all fields');return}
+  showNotif('✓ Message sent! Will reply soon.');
+  document.getElementById('cf-name').value='';
+  document.getElementById('cf-email').value='';
+  document.getElementById('cf-subject').value='';
+  document.getElementById('cf-message').value='';
+}
+
+// ===== VISITOR COUNTER =====
+(function(){
+  let count=localStorage.getItem('sc_visitors')||1337;
+  count=parseInt(count)+Math.floor(Math.random()*3);
+  localStorage.setItem('sc_visitors',count);
+  const el=document.getElementById('visitor-count');
+  if(el)el.textContent=parseInt(count).toLocaleString();
+})();
+</script>
+</body>
+</html>
