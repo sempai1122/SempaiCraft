@@ -747,7 +747,120 @@ footer{
 /* ANIMATE IN */
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
-/* ===== TOUCH DEVICES — hide custom cursor ===== */
+/* YOUTUBE SECTION */
+.yt-section-header{
+  display:flex;align-items:center;gap:20px;
+  padding:28px 32px;
+  background:rgba(255,30,30,0.06);
+  border:1px solid rgba(255,50,50,0.2);
+  border-radius:16px;margin-bottom:28px;
+}
+.yt-channel-avatar{
+  width:80px;height:80px;border-radius:50%;
+  border:2px solid rgba(255,50,50,0.5);
+  background:linear-gradient(135deg,#1a0000,#330000);
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;flex-shrink:0;overflow:hidden;
+}
+.yt-channel-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.yt-channel-info{flex:1}
+.yt-channel-name{
+  font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;
+  color:#fff;display:flex;align-items:center;gap:10px;margin-bottom:6px;
+}
+.yt-verified{
+  background:#ff4444;color:#fff;font-size:10px;
+  padding:2px 8px;border-radius:10px;font-family:'Rajdhani',sans-serif;
+  font-weight:700;letter-spacing:1px;
+}
+.yt-handle{font-family:'Share Tech Mono',monospace;font-size:14px;color:rgba(255,100,100,0.7)}
+.yt-stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;
+}
+.yt-stat-card{
+  padding:24px 20px;border-radius:14px;text-align:center;
+  background:rgba(255,30,30,0.06);border:1px solid rgba(255,50,50,0.15);
+  transition:all .3s;
+}
+.yt-stat-card:hover{border-color:rgba(255,50,50,0.4);transform:translateY(-3px)}
+.yt-stat-icon{font-size:28px;margin-bottom:10px;display:block}
+.yt-stat-num{
+  font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;
+  color:#ff4444;display:block;margin-bottom:4px;
+}
+.yt-stat-label{font-size:12px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
+.yt-videos-title{
+  font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;
+  color:#ff4444;margin-bottom:18px;display:flex;align-items:center;gap:10px;
+}
+.yt-videos-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;
+}
+.yt-video-card{
+  border-radius:12px;overflow:hidden;
+  background:rgba(10,10,20,0.8);
+  border:1px solid rgba(255,50,50,0.12);
+  transition:all .3s;cursor:pointer;text-decoration:none;display:block;
+}
+.yt-video-card:hover{border-color:rgba(255,50,50,0.4);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.5)}
+.yt-thumb-wrap{position:relative;padding-top:56.25%;overflow:hidden;background:#0d0d0d}
+.yt-thumb-wrap img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transition:transform .4s;
+}
+.yt-video-card:hover .yt-thumb-wrap img{transform:scale(1.06)}
+.yt-thumb-play{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.3);opacity:0;transition:opacity .3s;
+}
+.yt-video-card:hover .yt-thumb-play{opacity:1}
+.yt-play-btn{
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,0,0,0.85);display:flex;align-items:center;justify-content:center;
+  font-size:18px;padding-left:4px;
+}
+.yt-duration{
+  position:absolute;bottom:6px;right:8px;
+  background:rgba(0,0,0,0.85);color:#fff;
+  font-size:11px;padding:2px 6px;border-radius:4px;
+  font-family:'Share Tech Mono',monospace;
+}
+.yt-video-info{padding:14px}
+.yt-video-title{
+  font-size:14px;font-weight:600;color:var(--text-primary);
+  line-height:1.4;margin-bottom:8px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.yt-video-meta{font-size:12px;color:var(--text-muted);font-family:'Share Tech Mono',monospace}
+.yt-skeleton{
+  background:linear-gradient(90deg,rgba(255,255,255,0.04) 25%,rgba(255,255,255,0.08) 50%,rgba(255,255,255,0.04) 75%);
+  background-size:200% 100%;
+  animation:skeleton-shine 1.4s infinite;
+  border-radius:8px;
+}
+@keyframes skeleton-shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.yt-error{
+  text-align:center;padding:48px 24px;
+  color:var(--text-muted);font-size:15px;
+}
+.live-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,0,0,0.85);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  padding:3px 10px;border-radius:4px;font-family:'Rajdhani',sans-serif;
+  animation:live-pulse 1s ease-in-out infinite;
+}
+@keyframes live-pulse{0%,100%{opacity:1}50%{opacity:.7}}
+@media(max-width:768px){
+  .yt-stats-row{grid-template-columns:1fr 1fr}
+  .yt-videos-grid{grid-template-columns:1fr 1fr}
+  .yt-section-header{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .yt-stats-row{grid-template-columns:1fr}
+  .yt-videos-grid{grid-template-columns:1fr}
+  .yt-stat-num{font-size:22px}
+}
 @media(hover:none),(pointer:coarse){
   body{cursor:auto}
   #cursor,#cursor-ring,#mouse-glow{display:none!important}
@@ -865,6 +978,7 @@ footer{
   <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#platforms">Platforms</a></li>
+    <li><a href="#youtube">YouTube</a></li>
     <li><a href="#minecraft">Minecraft</a></li>
     <li><a href="#community">Community</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -1011,6 +1125,73 @@ footer{
 
 <div class="section-divider"></div>
 
+<!-- YOUTUBE STATS -->
+<section id="youtube">
+  <div class="container">
+    <div class="section-label fade-up">YouTube</div>
+    <h2 class="section-title fade-up">YOUTUBE <span class="gradient-text">CHANNEL STATS</span></h2>
+
+    <!-- Channel Header Skeleton / Real -->
+    <div id="yt-header" class="yt-section-header fade-up">
+      <div class="yt-channel-avatar" id="yt-avatar">▶</div>
+      <div class="yt-channel-info">
+        <div class="yt-channel-name" id="yt-name">
+          <span>Loading...</span>
+        </div>
+        <div class="yt-handle" id="yt-handle">@sempaicraft</div>
+      </div>
+      <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary" style="flex-shrink:0">
+        Subscribe ↗
+      </a>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="yt-stats-row fade-up">
+      <div class="yt-stat-card">
+        <span class="yt-stat-icon">👥</span>
+        <span class="yt-stat-num" id="yt-subs">—</span>
+        <span class="yt-stat-label">Subscribers</span>
+      </div>
+      <div class="yt-stat-card">
+        <span class="yt-stat-icon">👁</span>
+        <span class="yt-stat-num" id="yt-views">—</span>
+        <span class="yt-stat-label">Total Views</span>
+      </div>
+      <div class="yt-stat-card">
+        <span class="yt-stat-icon">🎬</span>
+        <span class="yt-stat-num" id="yt-vids">—</span>
+        <span class="yt-stat-label">Videos</span>
+      </div>
+    </div>
+
+    <!-- Latest Videos -->
+    <div class="yt-videos-title fade-up">
+      🔴 LATEST VIDEOS
+      <span id="yt-live-badge" style="display:none" class="live-badge">● LIVE NOW</span>
+    </div>
+    <div class="yt-videos-grid fade-up" id="yt-videos-grid">
+      <!-- skeleton cards -->
+      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,0.1)">
+        <div class="yt-skeleton" style="padding-top:56.25%;width:100%"></div>
+        <div style="padding:14px"><div class="yt-skeleton" style="height:14px;margin-bottom:8px;width:90%"></div><div class="yt-skeleton" style="height:12px;width:60%"></div></div>
+      </div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,0.1)">
+        <div class="yt-skeleton" style="padding-top:56.25%;width:100%"></div>
+        <div style="padding:14px"><div class="yt-skeleton" style="height:14px;margin-bottom:8px;width:85%"></div><div class="yt-skeleton" style="height:12px;width:55%"></div></div>
+      </div>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,0.1)">
+        <div class="yt-skeleton" style="padding-top:56.25%;width:100%"></div>
+        <div style="padding:14px"><div class="yt-skeleton" style="height:14px;margin-bottom:8px;width:80%"></div><div class="yt-skeleton" style="height:12px;width:50%"></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px" class="fade-up">
+      <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-ghost">View All Videos ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- MINECRAFT -->
 <section id="minecraft">
   <div class="container">
@@ -1118,7 +1299,7 @@ footer{
           Join Discord Server
         </a>
         <div style="margin-top:20px">
-          <iframe src="https://discord.com/widget?id=&theme=dark" width="100%" height="240" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="border-radius:10px;border:1px solid rgba(88,101,242,0.2);max-width:500px"></iframe>
+          <iframe src="https://discord.com/widget?id=1328707737361584128&theme=dark" width="100%" height="300" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="border-radius:10px;border:1px solid rgba(88,101,242,0.3);max-width:500px;width:100%;display:block;margin:0 auto"></iframe>
         </div>
       </div>
     </div>
@@ -1656,17 +1837,181 @@ function showNotif(msg){
 function saveSettings(){showNotif('✓ Settings saved!')}
 function exportHTML(){showNotif('📤 HTML export ready!')}
 
-// ===== CONTACT =====
-function sendMessage(){
-  const name=document.getElementById('cf-name').value;
-  const email=document.getElementById('cf-email').value;
-  const message=document.getElementById('cf-message').value;
+// ===== YOUTUBE API =====
+const YT_API_KEY='AIzaSyAFs6SzCqyhATwBrcwCyQNQ-qGO4afgUiI';
+const YT_CHANNEL='@sempaicraft';
+
+function fmtNum(n){
+  n=parseInt(n)||0;
+  if(n>=1000000)return (n/1000000).toFixed(1)+'M';
+  if(n>=1000)return (n/1000).toFixed(1)+'K';
+  return n.toString();
+}
+function fmtDate(iso){
+  const d=new Date(iso);
+  const diff=Math.floor((Date.now()-d)/86400000);
+  if(diff===0)return 'Today';
+  if(diff===1)return 'Yesterday';
+  if(diff<7)return diff+' days ago';
+  if(diff<30)return Math.floor(diff/7)+' weeks ago';
+  if(diff<365)return Math.floor(diff/30)+' months ago';
+  return Math.floor(diff/365)+' years ago';
+}
+
+async function loadYouTube(){
+  try{
+    // Step 1: get channel ID from handle
+    const searchRes=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${YT_CHANNEL}&key=${YT_API_KEY}`);
+    const searchData=await searchRes.json();
+    if(!searchData.items||!searchData.items.length)throw new Error('Channel not found');
+    const channelId=searchData.items[0].snippet.channelId;
+
+    // Step 2: get channel stats + snippet
+    const chRes=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings&id=${channelId}&key=${YT_API_KEY}`);
+    const chData=await chRes.json();
+    if(!chData.items||!chData.items.length)throw new Error('Channel data error');
+    const ch=chData.items[0];
+    const stats=ch.statistics;
+    const snippet=ch.snippet;
+
+    // Update header
+    const avatarEl=document.getElementById('yt-avatar');
+    if(snippet.thumbnails&&snippet.thumbnails.medium){
+      avatarEl.innerHTML=`<img src="${snippet.thumbnails.medium.url}" alt="Channel">`;
+    }
+    document.getElementById('yt-name').innerHTML=
+      `<span>${snippet.title}</span><span class="yt-verified">✓ CREATOR</span>`;
+    document.getElementById('yt-handle').textContent='@sempaicraft';
+
+    // Update stats
+    document.getElementById('yt-subs').textContent=fmtNum(stats.subscriberCount);
+    document.getElementById('yt-views').textContent=fmtNum(stats.viewCount);
+    document.getElementById('yt-vids').textContent=fmtNum(stats.videoCount);
+
+    // Animate stat numbers
+    ['yt-subs','yt-views','yt-vids'].forEach(id=>{
+      const el=document.getElementById(id);
+      const txt=el.textContent;
+      el.style.animation='none';
+      el.offsetHeight;
+      el.style.animation='';
+    });
+
+    // Step 3: get uploads playlist
+    const uploadsId=ch.contentDetails?ch.contentDetails.relatedPlaylists.uploads:null;
+    let uploadsPlaylistId=uploadsId;
+    if(!uploadsPlaylistId){
+      const ch2=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${YT_API_KEY}`);
+      const ch2d=await ch2.json();
+      uploadsPlaylistId=ch2d.items[0].contentDetails.relatedPlaylists.uploads;
+    }
+
+    // Step 4: get latest videos
+    const plRes=await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=6&playlistId=${uploadsPlaylistId}&key=${YT_API_KEY}`);
+    const plData=await plRes.json();
+    if(!plData.items)throw new Error('No videos');
+
+    // Check for live stream
+    const liveRes=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&eventType=live&key=${YT_API_KEY}`);
+    const liveData=await liveRes.json();
+    if(liveData.items&&liveData.items.length>0){
+      document.getElementById('yt-live-badge').style.display='inline-flex';
+    }
+
+    // Render video cards
+    const grid=document.getElementById('yt-videos-grid');
+    grid.innerHTML='';
+    plData.items.forEach(item=>{
+      const s=item.snippet;
+      const vid=s.resourceId.videoId;
+      const thumb=s.thumbnails.maxres||s.thumbnails.high||s.thumbnails.medium||s.thumbnails.default;
+      const card=document.createElement('a');
+      card.className='yt-video-card';
+      card.href=`https://www.youtube.com/watch?v=${vid}`;
+      card.target='_blank';
+      card.rel='noopener';
+      card.innerHTML=`
+        <div class="yt-thumb-wrap">
+          <img src="${thumb.url}" alt="${s.title}" loading="lazy">
+          <div class="yt-thumb-play"><div class="yt-play-btn">▶</div></div>
+        </div>
+        <div class="yt-video-info">
+          <div class="yt-video-title">${s.title}</div>
+          <div class="yt-video-meta">${fmtDate(s.publishedAt)}</div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Also update hero stats with real data
+    const subsEl=document.querySelector('[data-target="50"]');
+    if(subsEl){
+      const realSubs=parseInt(stats.subscriberCount)||0;
+      subsEl.dataset.target=Math.round(realSubs/1000);
+      subsEl.textContent=fmtNum(realSubs);
+    }
+    const vidsEl=document.querySelector('[data-target="120"]');
+    if(vidsEl){
+      vidsEl.dataset.target=parseInt(stats.videoCount)||0;
+      vidsEl.textContent=stats.videoCount||'—';
+    }
+
+  }catch(err){
+    console.warn('YouTube API error:',err);
+    document.getElementById('yt-videos-grid').innerHTML=`
+      <div class="yt-error" style="grid-column:1/-1">
+        <div style="font-size:40px;margin-bottom:12px">▶️</div>
+        <div style="color:var(--text-primary);font-weight:600;margin-bottom:8px">Check out SempaiCraft on YouTube!</div>
+        <div style="margin-bottom:20px">Subscribe for Minecraft builds, Roblox gameplay & more</div>
+        <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary">Visit Channel ↗</a>
+      </div>`;
+    document.getElementById('yt-name').innerHTML='<span>SempaiCraft</span><span class="yt-verified">✓ CREATOR</span>';
+    document.getElementById('yt-subs').textContent='50K+';
+    document.getElementById('yt-views').textContent='1M+';
+    document.getElementById('yt-vids').textContent='120+';
+  }
+}
+
+// ===== CONTACT via FormSubmit =====
+async function sendMessage(){
+  const name=document.getElementById('cf-name').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const subject=document.getElementById('cf-subject').value.trim()||'Website Contact';
+  const message=document.getElementById('cf-message').value.trim();
   if(!name||!email||!message){showNotif('⚠ Please fill all fields');return}
-  showNotif('✓ Message sent! Will reply soon.');
-  document.getElementById('cf-name').value='';
-  document.getElementById('cf-email').value='';
-  document.getElementById('cf-subject').value='';
-  document.getElementById('cf-message').value='';
+
+  const btn=document.querySelector('#contact-form .btn-primary');
+  btn.textContent='Sending...';btn.disabled=true;
+
+  try{
+    const formData=new FormData();
+    formData.append('name',name);
+    formData.append('email',email);
+    formData.append('_subject','[SempaiCraft] '+subject);
+    formData.append('message',message);
+    formData.append('_template','table');
+    formData.append('_captcha','false');
+
+    const res=await fetch('https://formsubmit.co/ajax/zedyt409@gmail.com',{
+      method:'POST',body:formData
+    });
+    const data=await res.json();
+    if(data.success){
+      showNotif('✅ Message sent to SempaiCraft!');
+      document.getElementById('cf-name').value='';
+      document.getElementById('cf-email').value='';
+      document.getElementById('cf-subject').value='';
+      document.getElementById('cf-message').value='';
+    }else{
+      throw new Error('Send failed');
+    }
+  }catch(e){
+    // Fallback: open mailto
+    window.location.href=`mailto:zedyt409@gmail.com?subject=${encodeURIComponent('[SempaiCraft] '+subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\n\n'+message)}`;
+    showNotif('📧 Opening email client...');
+  }finally{
+    btn.textContent='Send Message ✉';btn.disabled=false;
+  }
 }
 
 // ===== VISITOR COUNTER =====
