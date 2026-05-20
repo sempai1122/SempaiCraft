@@ -781,17 +781,12 @@ footer{border-top:1px solid rgba(0,212,255,.09);padding:40px;text-align:center;p
         <div class="adm-f"><label class="adm-l">Minecraft Username</label><input class="adm-in" id="ai-mcuser" value="SempaiCraft1" oninput="updateMC(this.value)"></div>
         <div class="adm-f"><label class="adm-l">Typing Texts (comma separated)</label><input class="adm-in" id="ai-typing" value="Gaming Creator,Minecraft Builder,Roblox Player,YouTuber,PvP Champion"></div>
       </div>
-      <div id="cloud-status" style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--tm);margin-bottom:10px;padding:8px 10px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.1);border-radius:6px;letter-spacing:.5px;">⏳ Loading cloud data...</div>
-<button class="adm-btn" onclick="applyAll()" style="background:linear-gradient(135deg,#00d4ff,#bf00ff)">☁️ Save & Publish (All Viewers)</button>
-<div style="margin-top:10px;padding:10px 12px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.12);border-radius:8px;font-size:11px;color:var(--tm);line-height:1.7;">
-  <strong style="color:#00ff88;font-size:10px;letter-spacing:1px;">HOW IT WORKS:</strong><br>
-  ✅ Changes cloud mein save hote hain<br>
-  ✅ Sabhi visitors turant naya data dekhte hain<br>
-  ✅ Koi backend ya server chahiye nahi<br>
-  <br><strong style="color:#00d4ff;font-size:10px;letter-spacing:1px;">JSONBIN SETUP (1 time, 5 min):</strong><br>
-  1. <a href="https://jsonbin.io" target="_blank" style="color:#00d4ff">jsonbin.io</a> pe free account banao<br>
-  2. Dashboard mein "+ New Bin" click karo<br>
-  3. Bin ID aur API Key script mein paste karo
+      <div id="cloud-status" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--tm);margin-bottom:10px;padding:9px 12px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.1);border-radius:7px;letter-spacing:.5px;line-height:1.6;">⏳ Cloud se load ho raha hai...</div>
+<button class="adm-btn" onclick="applyAll()" style="font-size:13px;letter-spacing:1px;">☁️ Save &amp; Publish — Sabhi Ko Dikhe</button>
+<div style="margin-top:10px;padding:10px 12px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.1);border-radius:7px;font-size:11px;color:var(--tm);line-height:1.75;">
+  <strong style="color:#00ff88;display:block;margin-bottom:4px;">✅ CLOUD SAVE ACTIVE</strong>
+  Bin ID: <span style="color:#00d4ff;font-family:'Share Tech Mono',monospace">6a0d35606877513b279f529d</span><br>
+  Jab bhi Save karo — sabhi visitors turant naya data dekhenge.
 </div>
     </div>
 
@@ -845,23 +840,20 @@ footer{border-top:1px solid rgba(0,212,255,.09);padding:40px;text-align:center;p
 
     <!-- TAB: APIs -->
     <div class="adm-tab-content" id="tab-api">
-
       <div class="adm-sec">
-        <div class="adm-sec-title">☁️ Cloud Save (JSONBin)</div>
-        <div style="padding:10px 12px;background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.15);border-radius:8px;font-size:11px;color:var(--tm);line-height:1.8;margin-bottom:12px;">
-          <strong style="color:#00ff88">JSONBin = Free Cloud Database</strong><br>
-          Sabhi viewers ek hi data dekhte hain.<br>
-          <a href="https://jsonbin.io" target="_blank" style="color:#00d4ff">jsonbin.io</a> pe account banao → Bin ID & Key yahan paste karo
+        <div class="adm-sec-title">☁️ Cloud Database (JSONBin)</div>
+        <div style="padding:10px 12px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.12);border-radius:8px;font-size:11px;color:var(--tm);line-height:1.8;margin-bottom:12px;">
+          <strong style="color:#00ff88">STATUS: ACTIVE ✅</strong><br>
+          Bin ID: <span style="color:#00d4ff;font-family:'Share Tech Mono',monospace">6a0d35606877513b279f529d</span><br>
+          Sabhi viewers ek hi data dekhte hain.
         </div>
-        <div class="adm-f"><label class="adm-l">Bin ID</label><input class="adm-in" id="api-binid" value="6833f5228a456b796684bb31" oninput="updateJsonbinConfig()"></div>
-        <div class="adm-f"><label class="adm-l">Master/Access Key</label><input class="adm-in" id="api-binkey" value="$2a$10$iLBmPtKm9YcNQ0bOqRrC2elXUyEQijSCDQ9B.9lqNbqQByCJFOIxW" type="password" oninput="updateJsonbinConfig()"></div>
-        <button class="adm-btn adm-btn-sec" onclick="testCloudConnection()" style="font-size:12px;margin-bottom:6px">🔌 Test Cloud Connection</button>
-        <button class="adm-btn adm-btn-sec" onclick="loadSaved()" style="font-size:12px">🔄 Reload from Cloud</button>
-        <div id="api-cloud-test" style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--tm);margin-top:8px;padding:6px;background:rgba(0,0,0,.2);border-radius:4px;display:none;"></div>
+        <div class="adm-f"><label class="adm-l">Bin ID</label><input class="adm-in" id="api-binid" value="6a0d35606877513b279f529d"></div>
+        <div class="adm-f"><label class="adm-l">Master Key</label><input class="adm-in" id="api-binkey" value="$2a$10$Z5sLwWneIiN8cNnJCVGuzu0Wd49Ly1vDtsO6zivXelF6ej1ChF31m" type="password"></div>
+        <button class="adm-btn adm-btn-sec" onclick="testCloud()" style="font-size:12px;margin-bottom:6px">🔌 Test Connection</button>
+        <button class="adm-btn adm-btn-sec" onclick="loadSaved()" style="font-size:12px">🔄 Cloud Se Reload</button>
+        <div id="cloud-test-result" style="display:none;margin-top:8px;padding:8px;background:rgba(0,0,0,.2);border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--tm);"></div>
       </div>
-
       <div class="adm-div"></div>
-
       <div class="adm-sec">
         <div class="adm-sec-title">YouTube API</div>
         <div class="adm-f"><label class="adm-l">API Key</label><input class="adm-in" id="api-ytkey" value="AIzaSyAFs6SzCqyhATwBrcwCyQNQ-qGO4afgUiI" type="password"></div>
@@ -954,10 +946,10 @@ function boot(){
   initTyping(); initClock(); initVisitor();
   renderSkillEditor(); renderSkills();
   loadYT(); loadSaved();
-  // Auto-refresh cloud data every 60 seconds (latest admin changes)
+  // Har 60 sec mein cloud se refresh (naye changes pick up karo)
   setInterval(()=>{
     if(!document.getElementById('admin').classList.contains('open')){
-      loadSaved(); // Refresh only when admin panel is closed
+      loadSaved();
     }
   }, 60000);
 }
@@ -1253,183 +1245,142 @@ function liveUpdate(){
   if(tv)CFG.typingTexts=tv.split(',').map(s=>s.trim()).filter(Boolean);
 }
 
-/* ════════════════════════════════
+/* ═══════════════════════════════════════════
    CLOUD SAVE — JSONBin.io
-   Admin changes save ho jaate hain cloud mein.
-   Sabhi visitors ek hi data dekhte hain.
-════════════════════════════════ */
-
-// ✅ JSONBin Config — Free cloud database, no backend needed
-// HOW TO SETUP (1 time, 5 minutes):
-//   1. jsonbin.io pe free account banao
-//   2. "New Bin" click karo, content: {} rakho, CREATE karo
-//   3. Bin ka "BIN ID" copy karo (URL mein hoga)
-//   4. "API Keys" mein Master Key ya Access Key banao
-//   5. Neeche JSONBIN_BIN_ID aur JSONBIN_API_KEY mein paste karo
-
-const JSONBIN_BIN_ID   = '6833f5228a456b796684bb31'; // ← Apna Bin ID yahan
-const JSONBIN_API_KEY  = '$2a$10$iLBmPtKm9YcNQ0bOqRrC2elXUyEQijSCDQ9B.9lqNbqQByCJFOIxW'; // ← Apni API Key yahan
-const JSONBIN_BASE     = 'https://api.jsonbin.io/v3/b/' + JSONBIN_BIN_ID;
-
-// Cloud se data load karna — sabhi visitors ke liye
-async function loadSaved(){
-  // Pehle JSONBin se try karo (all viewers ko same data milega)
-  try{
-    const res = await fetch(JSONBIN_BASE + '/latest', {
-      headers: { 'X-Master-Key': JSONBIN_API_KEY }
-    });
-    if(!res.ok) throw new Error('jsonbin fetch failed');
-    const json = await res.json();
-    const s = json.record || {};
-    applyStateToPage(s);
-    console.log('✅ Cloud data loaded successfully');
-    updateCloudStatus(true, s.savedAt || new Date().toISOString());
-    const statusEl = document.getElementById('cloud-status');
-    if(statusEl && s.savedAt){
-      const t = new Date(s.savedAt).toLocaleString();
-      statusEl.innerHTML = '☁️ <span style="color:#00ff88">Cloud synced</span> — Last saved: ' + t;
-    }
-    return;
-  } catch(e){
-    console.warn('JSONBin load failed, trying localStorage:', e.message);
-  }
-  // Fallback: localStorage (sirf isi browser mein dikhega)
-  try{
-    const s = JSON.parse(localStorage.getItem('sc_state') || '{}');
-    applyStateToPage(s);
-    const statusEl = document.getElementById('cloud-status');
-    if(statusEl) statusEl.innerHTML = '⚠️ <span style="color:#ffa500">Local only</span> — Setup JSONBin for cloud sync';
-  } catch(e2){
-    const statusEl = document.getElementById('cloud-status');
-    if(statusEl) statusEl.innerHTML = '⚠️ <span style="color:#ff006e">No saved data</span> — Make changes & save';
-  }
-}
+   Admin jo bhi save kare, sabhi viewers ko dikhe
+═══════════════════════════════════════════ */
+const JSONBIN_BIN_ID  = '6a0d35606877513b279f529d';
+const JSONBIN_API_KEY = '$2a$10$Z5sLwWneIiN8cNnJCVGuzu0Wd49Ly1vDtsO6zivXelF6ej1ChF31m';
+const JSONBIN_URL     = 'https://api.jsonbin.io/v3/b/' + JSONBIN_BIN_ID;
 
 // State ko page pe apply karna
 function applyStateToPage(s){
   if(!s || typeof s !== 'object') return;
   try{
-    if(s.name){
-      const ni = document.getElementById('ai-name');
-      if(ni) ni.value = s.name;
-      liveUpdate();
-    }
-    if(s.tag){ const el=document.getElementById('ai-tag'); if(el) el.value=s.tag; }
-    if(s.badge){ const el=document.getElementById('ai-badge'); if(el) el.value=s.badge; }
-    if(s.about){ const el=document.getElementById('ai-about'); if(el) el.value=s.about; }
-    if(s.mcuser){ const el=document.getElementById('ai-mcuser'); if(el) el.value=s.mcuser; updateMC(s.mcuser); }
-    if(s.typing){ const el=document.getElementById('ai-typing'); if(el) el.value=s.typing; }
-    if(s.pfp && s.pfp !== '' && s.pfp.length < 2000000) applyPfp(s.pfp);
+    if(s.name){ const el=document.getElementById('ai-name'); if(el)el.value=s.name; liveUpdate(); }
+    if(s.tag){ const el=document.getElementById('ai-tag'); if(el)el.value=s.tag; }
+    if(s.badge){ const el=document.getElementById('ai-badge'); if(el)el.value=s.badge; }
+    if(s.about){ const el=document.getElementById('ai-about'); if(el)el.value=s.about; }
+    if(s.mcuser){ const el=document.getElementById('ai-mcuser'); if(el)el.value=s.mcuser; updateMC(s.mcuser); }
+    if(s.typing){ const el=document.getElementById('ai-typing'); if(el)el.value=s.typing; }
+    if(s.pfp && s.pfp.length > 10 && s.pfp.length < 2000000) applyPfp(s.pfp);
     if(s.skills && s.skills.length){ CFG.skills=s.skills; renderSkills(); renderSkillEditor(); }
-    if(s.colors && typeof s.colors === 'object'){
-      Object.entries(s.colors).forEach(([k,v]) => {
-        document.documentElement.style.setProperty(k, v);
-        // Update color pickers in admin
-        const colorMap = {'--nb':0,'--np':1,'--nc':2,'--npi':3,'--ng':4};
-        if(colorMap[k] !== undefined){
-          const pickers = document.querySelectorAll('.color-item input[type=color]');
-          if(pickers[colorMap[k]]) pickers[colorMap[k]].value = v;
-        }
-      });
+    if(s.colors && typeof s.colors==='object'){
+      Object.entries(s.colors).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));
     }
-    if(s.links && typeof s.links === 'object'){
-      if(s.links.yt){ const el=document.getElementById('al-yt'); if(el) el.value=s.links.yt; }
-      if(s.links.ig){ const el=document.getElementById('al-ig'); if(el) el.value=s.links.ig; }
-      if(s.links.dc){ const el=document.getElementById('al-dc'); if(el) el.value=s.links.dc; }
+    if(s.links && typeof s.links==='object'){
+      if(s.links.yt){ const el=document.getElementById('al-yt'); if(el)el.value=s.links.yt; }
+      if(s.links.ig){ const el=document.getElementById('al-ig'); if(el)el.value=s.links.ig; }
+      if(s.links.dc){ const el=document.getElementById('al-dc'); if(el)el.value=s.links.dc; }
+      if(s.links.rb){ const el=document.getElementById('al-rb'); if(el)el.value=s.links.rb; }
+      if(s.links.mc){ const el=document.getElementById('al-mc'); if(el)el.value=s.links.mc; }
+      // Apply links to actual page anchors
+      if(s.links.yt) document.querySelectorAll('a[href*="youtube.com"]').forEach(a=>a.href=s.links.yt);
+      if(s.links.ig) document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=s.links.ig);
+      if(s.links.dc) document.querySelectorAll('a[href*="discord.gg"]').forEach(a=>a.href=s.links.dc);
+      if(s.links.rb) document.querySelectorAll('a[href*="roblox.com"]').forEach(a=>a.href=s.links.rb);
+      if(s.links.mc) document.querySelectorAll('a[href*="namemc.com"]').forEach(a=>a.href=s.links.mc);
     }
     if(s.name) liveUpdate();
-  } catch(e){ console.warn('applyStateToPage error:', e); }
+  }catch(e){ console.warn('applyStateToPage error:',e); }
 }
 
-// Cloud mein save karna — Admin press kare toh sabhi ko dikhe
+// Cloud se load — sabhi visitors ke liye same data
+async function loadSaved(){
+  const statusEl = document.getElementById('cloud-status');
+  try{
+    const res = await fetch(JSONBIN_URL + '/latest', {
+      headers: { 'X-Master-Key': JSONBIN_API_KEY }
+    });
+    if(!res.ok) throw new Error('Status ' + res.status);
+    const json = await res.json();
+    const s = json.record || {};
+    applyStateToPage(s);
+    if(statusEl){
+      const t = s.savedAt ? new Date(s.savedAt).toLocaleString() : 'Unknown';
+      statusEl.innerHTML = '☁️ <span style="color:#00ff88">Cloud synced</span> — Last saved: ' + t;
+    }
+    console.log('✅ Cloud data loaded');
+    return;
+  }catch(e){
+    console.warn('Cloud load failed, trying localStorage:', e.message);
+    if(statusEl) statusEl.innerHTML = '⚠️ <span style="color:#ffa500">Cloud offline</span> — Using local backup';
+  }
+  // Fallback localStorage
+  try{
+    const s = JSON.parse(localStorage.getItem('sc_state')||'{}');
+    applyStateToPage(s);
+  }catch(e2){}
+}
+
+// Cloud mein save — Admin press kare to SABHI viewers ko dikhe
 async function applyAll(){
   liveUpdate();
   updateMC(document.getElementById('ai-mcuser').value);
 
-  // Collect current colors
-  const colorMap = {'--nb':'#00d4ff','--np':'#bf00ff','--nc':'#00ffff','--npi':'#ff006e','--ng':'#00ff88'};
-  const currentColors = {};
-  Object.keys(colorMap).forEach(k => {
-    const computed = getComputedStyle(document.documentElement).getPropertyValue(k).trim();
-    currentColors[k] = computed || colorMap[k];
+  // Collect current CSS colors
+  const colorKeys = ['--nb','--np','--nc','--npi','--ng'];
+  const colors = {};
+  colorKeys.forEach(k => {
+    colors[k] = getComputedStyle(document.documentElement).getPropertyValue(k).trim() || '';
   });
 
   const state = {
-    name    : document.getElementById('ai-name').value,
-    tag     : document.getElementById('ai-tag').value,
-    badge   : document.getElementById('ai-badge').value,
-    about   : document.getElementById('ai-about').value,
-    mcuser  : document.getElementById('ai-mcuser').value,
-    typing  : document.getElementById('ai-typing').value,
-    pfp     : CFG.pfpSrc,
-    skills  : CFG.skills,
-    colors  : currentColors,
-    links   : {
-      yt: document.getElementById('al-yt').value,
-      ig: document.getElementById('al-ig').value,
-      dc: document.getElementById('al-dc').value,
-      rb: document.getElementById('al-rb').value,
-      mc: document.getElementById('al-mc').value
+    name   : document.getElementById('ai-name').value,
+    tag    : document.getElementById('ai-tag').value,
+    badge  : document.getElementById('ai-badge').value,
+    about  : document.getElementById('ai-about').value,
+    mcuser : document.getElementById('ai-mcuser').value,
+    typing : document.getElementById('ai-typing').value,
+    pfp    : CFG.pfpSrc,
+    skills : CFG.skills,
+    colors : colors,
+    links  : {
+      yt : document.getElementById('al-yt').value,
+      ig : document.getElementById('al-ig').value,
+      dc : document.getElementById('al-dc').value,
+      rb : document.getElementById('al-rb').value,
+      mc : document.getElementById('al-mc').value
     },
-    savedAt : new Date().toISOString()
+    savedAt: new Date().toISOString()
   };
 
-  // Show saving indicator
-  const btn = document.querySelector('#tab-profile .adm-btn:last-child') ||
-              document.querySelector('[onclick="applyAll()"]');
-  const origText = btn ? btn.textContent : '';
-  if(btn){ btn.textContent = '⏳ Saving to Cloud...'; btn.disabled = true; }
+  // Button loading state
+  const btn = document.querySelector('[onclick="applyAll()"]');
+  const orig = btn ? btn.textContent : '';
+  if(btn){ btn.textContent='⏳ Saving...'; btn.disabled=true; }
 
-  let cloudOk = false;
+  const statusEl = document.getElementById('cloud-status');
+  if(statusEl) statusEl.innerHTML = '⏳ <span style="color:#ffa500">Saving to cloud...</span>';
 
-  // ── Try JSONBin cloud save ──
+  // ── PUT to JSONBin ──
   try{
-    const res = await fetch(JSONBIN_BASE, {
+    const res = await fetch(JSONBIN_URL, {
       method : 'PUT',
       headers: {
-        'Content-Type' : 'application/json',
-        'X-Master-Key' : JSONBIN_API_KEY,
+        'Content-Type'   : 'application/json',
+        'X-Master-Key'   : JSONBIN_API_KEY,
         'X-Bin-Versioning': 'false'
       },
       body: JSON.stringify(state)
     });
     if(!res.ok) throw new Error('PUT failed: ' + res.status);
-    cloudOk = true;
-    showNotif('☁️ Saved! All visitors will see your changes.');
-    updateCloudStatus(true, state.savedAt);
-    console.log('✅ Cloud save successful');
-  } catch(e){
+    if(statusEl){
+      const t = new Date().toLocaleTimeString();
+      statusEl.innerHTML = '☁️ <span style="color:#00ff88">Saved!</span> Sabhi viewers dekh sakte hain — ' + t;
+    }
+    showNotif('☁️ Cloud save ho gaya! Sabhi visitors ko dikhe ga!');
+    console.log('✅ Cloud save OK');
+  }catch(e){
     console.warn('Cloud save failed:', e.message);
-    showNotif('⚠️ Cloud save failed! Saved locally only. Check API key.');
-    updateCloudStatus(false, null);
+    if(statusEl) statusEl.innerHTML = '❌ <span style="color:#ff006e">Cloud save failed!</span> — ' + e.message;
+    showNotif('❌ Cloud save fail! Check API key. Local mein save hua.');
   }
 
-  // Always backup to localStorage too
-  try{ localStorage.setItem('sc_state', JSON.stringify(state)); } catch(e2){}
+  // Backup localStorage
+  try{ localStorage.setItem('sc_state', JSON.stringify(state)); }catch(e2){}
 
-  if(btn){ btn.textContent = origText; btn.disabled = false; }
-}
-
-function updateCloudStatus(success, timestamp){
-  const el = document.getElementById('cloud-status');
-  if(!el) return;
-  if(success){
-    const t = timestamp ? new Date(timestamp).toLocaleTimeString() : 'now';
-    el.innerHTML = '☁️ <span style="color:#00ff88">Cloud synced</span> at ' + t;
-  } else {
-    el.innerHTML = '⚠️ <span style="color:#ff006e">Cloud sync failed</span> — check API key';
-  }
-}
-
-// Color update (live preview) — debounced cloud save
-function setVar(k,v){
-  document.documentElement.style.setProperty(k,v);
-  // Debounce: only save if user stops changing colors for 3 seconds
-  clearTimeout(setVar._t);
-  setVar._t = setTimeout(()=>{
-    const statusEl = document.getElementById('cloud-status');
-    if(statusEl) statusEl.innerHTML = '⏳ <span style="color:#ffa500">Colors changed — click Save to publish</span>';
-  }, 500);
+  if(btn){ btn.textContent=orig; btn.disabled=false; }
 }
 
 /* ════════════════════════════════
@@ -1476,7 +1427,7 @@ function updateMC(u){
 /* ════════════════════════════════
    DESIGN
 ════════════════════════════════ */
-// setVar is defined in cloud save section above
+function setVar(k,v){document.documentElement.style.setProperty(k,v)}
 const THEMES={
   cyber:{nb:'#00d4ff',np:'#bf00ff',nc:'#00ffff',npi:'#ff006e',ng:'#00ff88'},
   purple:{nb:'#bf00ff',np:'#7700ff',nc:'#ff00ff',npi:'#ff006e',ng:'#aa00ff'},
@@ -1502,20 +1453,41 @@ function applyLinks(){
   const dcUrl=document.getElementById('al-dc').value;
   const rbUrl=document.getElementById('al-rb').value;
   const mcUrl=document.getElementById('al-mc').value;
-  // Apply to page
-  document.querySelectorAll('a[href*="youtube.com"]').forEach(a=>{if(a.href.includes('@sempaicraft')||a.href.includes('youtube'))a.href=ytUrl});
+  document.querySelectorAll('a[href*="youtube.com"]').forEach(a=>a.href=ytUrl);
   document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=igUrl);
   document.querySelectorAll('a[href*="discord.gg"]').forEach(a=>a.href=dcUrl);
   document.querySelectorAll('a[href*="roblox.com"]').forEach(a=>a.href=rbUrl);
   document.querySelectorAll('a[href*="namemc.com"]').forEach(a=>a.href=mcUrl);
-  // Cloud save (sabhi viewers ko dikhega)
-  applyAll();
+  applyAll(); // cloud save karo
   showNotif('✅ Links updated & cloud-saved!');
 }
 
 /* ════════════════════════════════
    RELOAD APIs
 ════════════════════════════════ */
+async function testCloud(){
+  const result = document.getElementById('cloud-test-result');
+  if(!result) return;
+  result.style.display = 'block';
+  result.textContent = '⏳ Testing...';
+  const binId  = (document.getElementById('api-binid')  || {value: JSONBIN_BIN_ID }).value;
+  const apiKey = (document.getElementById('api-binkey') || {value: JSONBIN_API_KEY}).value;
+  try{
+    const res = await fetch('https://api.jsonbin.io/v3/b/' + binId + '/latest', {
+      headers: {'X-Master-Key': apiKey}
+    });
+    if(res.ok){
+      result.innerHTML = '✅ <span style="color:#00ff88">Connected! Cloud kaam kar raha hai.</span>';
+      showNotif('✅ Cloud connection OK!');
+    } else {
+      const e = await res.json().catch(()=>({}));
+      result.innerHTML = '❌ <span style="color:#ff006e">Error ' + res.status + ': ' + (e.message||'Check Bin ID & Key') + '</span>';
+    }
+  }catch(e){
+    result.innerHTML = '❌ <span style="color:#ff006e">' + e.message + '</span>';
+  }
+}
+
 function reloadYT(){
   CFG.ytKey=document.getElementById('api-ytkey').value;
   CFG.ytChannel=document.getElementById('api-ytch').value;
@@ -1526,39 +1498,6 @@ function reloadYT(){
   document.getElementById('yt-grid').innerHTML=`<div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,.1)"><div class="yt-skel" style="padding-top:56.25%"></div></div>`.repeat(4);
   loadYT(); showNotif('🔄 Reloading YouTube...');
 }
-/* ════════════════════════════════
-   JSONBIN CONFIG UPDATE
-════════════════════════════════ */
-function updateJsonbinConfig(){
-  const binId = document.getElementById('api-binid').value.trim();
-  const apiKey = document.getElementById('api-binkey').value.trim();
-  if(binId) window.JSONBIN_BIN_ID_LIVE = binId;
-  if(apiKey) window.JSONBIN_API_KEY_LIVE = apiKey;
-}
-
-async function testCloudConnection(){
-  const statusEl = document.getElementById('api-cloud-test');
-  if(!statusEl) return;
-  statusEl.style.display = 'block';
-  statusEl.textContent = '⏳ Testing connection...';
-  const binId = document.getElementById('api-binid').value.trim() || JSONBIN_BIN_ID;
-  const apiKey = document.getElementById('api-binkey').value.trim() || JSONBIN_API_KEY;
-  try{
-    const res = await fetch('https://api.jsonbin.io/v3/b/' + binId + '/latest', {
-      headers: { 'X-Master-Key': apiKey }
-    });
-    if(res.ok){
-      statusEl.innerHTML = '✅ <span style="color:#00ff88">Connected! Cloud save kaam kar raha hai.</span>';
-      showNotif('✅ Cloud connection successful!');
-    } else {
-      const err = await res.json();
-      statusEl.innerHTML = '❌ <span style="color:#ff006e">Error: ' + (err.message || res.status) + '</span><br>Check Bin ID & API Key';
-    }
-  }catch(e){
-    statusEl.innerHTML = '❌ <span style="color:#ff006e">Connection failed: ' + e.message + '</span>';
-  }
-}
-
 function reloadDiscord(){
   const id=document.getElementById('api-dcid').value;
   const iframes=document.querySelectorAll('iframe[src*="discord.com"]');
