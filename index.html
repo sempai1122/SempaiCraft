@@ -781,12 +781,16 @@ footer{border-top:1px solid rgba(0,212,255,.09);padding:40px;text-align:center;p
         <div class="adm-f"><label class="adm-l">Minecraft Username</label><input class="adm-in" id="ai-mcuser" value="SempaiCraft1" oninput="updateMC(this.value)"></div>
         <div class="adm-f"><label class="adm-l">Typing Texts (comma separated)</label><input class="adm-in" id="ai-typing" value="Gaming Creator,Minecraft Builder,Roblox Player,YouTuber,PvP Champion"></div>
       </div>
-      <div id="cloud-status" style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--tm);margin-bottom:10px;padding:9px 12px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.1);border-radius:7px;letter-spacing:.5px;line-height:1.6;">⏳ Cloud se load ho raha hai...</div>
-<button class="adm-btn" onclick="applyAll()" style="font-size:13px;letter-spacing:1px;">☁️ Save &amp; Publish — Sabhi Ko Dikhe</button>
-<div style="margin-top:10px;padding:10px 12px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.1);border-radius:7px;font-size:11px;color:var(--tm);line-height:1.75;">
-  <strong style="color:#00ff88;display:block;margin-bottom:4px;">✅ CLOUD SAVE ACTIVE</strong>
-  Bin ID: <span style="color:#00d4ff;font-family:'Share Tech Mono',monospace">6a0d35606877513b279f529d</span><br>
-  Jab bhi Save karo — sabhi visitors turant naya data dekhenge.
+      <div id="cloud-status" style="padding:9px 12px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.12);border-radius:8px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--tm);margin-bottom:10px;line-height:1.6;">
+  ⏳ Cloud se load ho raha hai...
+</div>
+<button class="adm-btn" onclick="applyAll()" style="background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(191,0,255,.15));border-color:rgba(0,212,255,.5);font-size:13px;width:100%;padding:12px;">
+  ☁️ Save &amp; Publish to Cloud
+</button>
+<div style="margin-top:8px;padding:9px 12px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.1);border-radius:8px;font-size:11px;color:var(--tm);line-height:1.75;">
+  <strong style="color:#00ff88;display:block;margin-bottom:3px;">✅ Cloud Save Active</strong>
+  Bin: <span style="color:#00d4ff;font-family:'Share Tech Mono',monospace;font-size:10px">6a0d35606877513b279f529d</span><br>
+  Jab save karo → sabhi visitors turant naya data dekhenge
 </div>
     </div>
 
@@ -841,22 +845,22 @@ footer{border-top:1px solid rgba(0,212,255,.09);padding:40px;text-align:center;p
     <!-- TAB: APIs -->
     <div class="adm-tab-content" id="tab-api">
       <div class="adm-sec">
-        <div class="adm-sec-title">☁️ Cloud Database (JSONBin)</div>
-        <div style="padding:10px 12px;background:rgba(0,255,136,.04);border:1px solid rgba(0,255,136,.12);border-radius:8px;font-size:11px;color:var(--tm);line-height:1.8;margin-bottom:12px;">
-          <strong style="color:#00ff88">STATUS: ACTIVE ✅</strong><br>
-          Bin ID: <span style="color:#00d4ff;font-family:'Share Tech Mono',monospace">6a0d35606877513b279f529d</span><br>
-          Sabhi viewers ek hi data dekhte hain.
+        <div class="adm-sec-title">☁️ JSONBin Cloud Database</div>
+        <div style="padding:9px 12px;background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.15);border-radius:8px;font-size:11px;color:var(--tm);line-height:1.75;margin-bottom:10px;">
+          <strong style="color:#00ff88">STATUS: CONNECTED ✅</strong><br>
+          Bin: <code style="color:#00d4ff;font-size:10px">6a0d35606877513b279f529d</code><br>
+          Sabhi viewers ek hi cloud se data paate hain.
         </div>
         <div class="adm-f"><label class="adm-l">Bin ID</label><input class="adm-in" id="api-binid" value="6a0d35606877513b279f529d"></div>
-        <div class="adm-f"><label class="adm-l">Master Key</label><input class="adm-in" id="api-binkey" value="$2a$10$Z5sLwWneIiN8cNnJCVGuzu0Wd49Ly1vDtsO6zivXelF6ej1ChF31m" type="password"></div>
+        <div class="adm-f"><label class="adm-l">Master Key</label><input class="adm-in" id="api-binkey" type="password" value="$2a$10$Z5sLwWneIiN8cNnJCVGuzu0Wd49Ly1vDtsO6zivXelF6ej1ChF31m"></div>
         <button class="adm-btn adm-btn-sec" onclick="testCloud()" style="font-size:12px;margin-bottom:6px">🔌 Test Connection</button>
-        <button class="adm-btn adm-btn-sec" onclick="loadSaved()" style="font-size:12px">🔄 Cloud Se Reload</button>
-        <div id="cloud-test-result" style="display:none;margin-top:8px;padding:8px;background:rgba(0,0,0,.2);border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--tm);"></div>
+        <button class="adm-btn adm-btn-sec" onclick="loadSaved()" style="font-size:12px">🔄 Reload from Cloud</button>
+        <div id="cloud-test-out" style="display:none;margin-top:8px;padding:8px 10px;background:rgba(0,0,0,.25);border-radius:6px;font-family:'Share Tech Mono',monospace;font-size:10px;line-height:1.6;color:var(--tm);"></div>
       </div>
       <div class="adm-div"></div>
       <div class="adm-sec">
         <div class="adm-sec-title">YouTube API</div>
-        <div class="adm-f"><label class="adm-l">API Key</label><input class="adm-in" id="api-ytkey" value="AIzaSyAFs6SzCqyhATwBrcwCyQNQ-qGO4afgUiI" type="password"></div>
+        <div class="adm-f"><label class="adm-l">API Key</label><input class="adm-in" id="api-ytkey" value="AIzaSyCEkhb3FFvhoLe8ix7b-RVx4ifk3Q7p8Z0" type="password"></div>
         <div class="adm-f"><label class="adm-l">Channel Handle</label><input class="adm-in" id="api-ytch" value="@sempaicraft"></div>
         <button class="adm-btn adm-btn-sec" onclick="reloadYT()" style="font-size:12px">🔄 Reload YouTube Stats</button>
       </div>
@@ -898,7 +902,7 @@ footer{border-top:1px solid rgba(0,212,255,.09);padding:40px;text-align:center;p
    CONFIG
 ════════════════════════════════ */
 const CFG={
-  ytKey:'AIzaSyAFs6SzCqyhATwBrcwCyQNQ-qGO4afgUiI',
+  ytKey:'AIzaSyCEkhb3FFvhoLe8ix7b-RVx4ifk3Q7p8Z0',
   ytChannel:'@sempaicraft',
   dcServerId:'1328707737361584128',
   contactEmail:'zedyt409@gmail.com',
@@ -945,12 +949,14 @@ function boot(){
   initCursor(); initParticles(); initScroll(); initObserver();
   initTyping(); initClock(); initVisitor();
   renderSkillEditor(); renderSkills();
-  loadYT(); loadSaved();
-  // Har 60 sec mein cloud se refresh (naye changes pick up karo)
+  loadYT();
+  loadSaved();
+  // Load Discord live counts on start
+  setTimeout(()=> reloadDiscord(), 2000);
+  // Auto-refresh cloud data every 60 seconds
   setInterval(()=>{
-    if(!document.getElementById('admin').classList.contains('open')){
-      loadSaved();
-    }
+    const adminOpen = document.getElementById('admin')?.classList.contains('open');
+    if(!adminOpen) loadSaved();
   }, 60000);
 }
 
@@ -1245,115 +1251,67 @@ function liveUpdate(){
   if(tv)CFG.typingTexts=tv.split(',').map(s=>s.trim()).filter(Boolean);
 }
 
-/* ═══════════════════════════════════════════
-   CLOUD SAVE — JSONBin.io
-   Admin jo bhi save kare, sabhi viewers ko dikhe
-═══════════════════════════════════════════ */
+/* ═════════════════════════════════════════════
+   CLOUD SAVE CONFIG
+   Bin: 6a0d35606877513b279f529d
+═════════════════════════════════════════════ */
 const JSONBIN_BIN_ID  = '6a0d35606877513b279f529d';
 const JSONBIN_API_KEY = '$2a$10$Z5sLwWneIiN8cNnJCVGuzu0Wd49Ly1vDtsO6zivXelF6ej1ChF31m';
 const JSONBIN_URL     = 'https://api.jsonbin.io/v3/b/' + JSONBIN_BIN_ID;
 
-// State ko page pe apply karna
-function applyStateToPage(s){
-  if(!s || typeof s !== 'object') return;
-  try{
-    if(s.name){ const el=document.getElementById('ai-name'); if(el)el.value=s.name; liveUpdate(); }
-    if(s.tag){ const el=document.getElementById('ai-tag'); if(el)el.value=s.tag; }
-    if(s.badge){ const el=document.getElementById('ai-badge'); if(el)el.value=s.badge; }
-    if(s.about){ const el=document.getElementById('ai-about'); if(el)el.value=s.about; }
-    if(s.mcuser){ const el=document.getElementById('ai-mcuser'); if(el)el.value=s.mcuser; updateMC(s.mcuser); }
-    if(s.typing){ const el=document.getElementById('ai-typing'); if(el)el.value=s.typing; }
-    if(s.pfp && s.pfp.length > 10 && s.pfp.length < 2000000) applyPfp(s.pfp);
-    if(s.skills && s.skills.length){ CFG.skills=s.skills; renderSkills(); renderSkillEditor(); }
-    if(s.colors && typeof s.colors==='object'){
-      Object.entries(s.colors).forEach(([k,v])=>document.documentElement.style.setProperty(k,v));
-    }
-    if(s.links && typeof s.links==='object'){
-      if(s.links.yt){ const el=document.getElementById('al-yt'); if(el)el.value=s.links.yt; }
-      if(s.links.ig){ const el=document.getElementById('al-ig'); if(el)el.value=s.links.ig; }
-      if(s.links.dc){ const el=document.getElementById('al-dc'); if(el)el.value=s.links.dc; }
-      if(s.links.rb){ const el=document.getElementById('al-rb'); if(el)el.value=s.links.rb; }
-      if(s.links.mc){ const el=document.getElementById('al-mc'); if(el)el.value=s.links.mc; }
-      // Apply links to actual page anchors
-      if(s.links.yt) document.querySelectorAll('a[href*="youtube.com"]').forEach(a=>a.href=s.links.yt);
-      if(s.links.ig) document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=s.links.ig);
-      if(s.links.dc) document.querySelectorAll('a[href*="discord.gg"]').forEach(a=>a.href=s.links.dc);
-      if(s.links.rb) document.querySelectorAll('a[href*="roblox.com"]').forEach(a=>a.href=s.links.rb);
-      if(s.links.mc) document.querySelectorAll('a[href*="namemc.com"]').forEach(a=>a.href=s.links.mc);
-    }
-    if(s.name) liveUpdate();
-  }catch(e){ console.warn('applyStateToPage error:',e); }
-}
-
-// Cloud se load — sabhi visitors ke liye same data
-async function loadSaved(){
-  const statusEl = document.getElementById('cloud-status');
-  try{
-    const res = await fetch(JSONBIN_URL + '/latest', {
-      headers: { 'X-Master-Key': JSONBIN_API_KEY }
-    });
-    if(!res.ok) throw new Error('Status ' + res.status);
-    const json = await res.json();
-    const s = json.record || {};
-    applyStateToPage(s);
-    if(statusEl){
-      const t = s.savedAt ? new Date(s.savedAt).toLocaleString() : 'Unknown';
-      statusEl.innerHTML = '☁️ <span style="color:#00ff88">Cloud synced</span> — Last saved: ' + t;
-    }
-    console.log('✅ Cloud data loaded');
-    return;
-  }catch(e){
-    console.warn('Cloud load failed, trying localStorage:', e.message);
-    if(statusEl) statusEl.innerHTML = '⚠️ <span style="color:#ffa500">Cloud offline</span> — Using local backup';
-  }
-  // Fallback localStorage
-  try{
-    const s = JSON.parse(localStorage.getItem('sc_state')||'{}');
-    applyStateToPage(s);
-  }catch(e2){}
-}
-
-// Cloud mein save — Admin press kare to SABHI viewers ko dikhe
 async function applyAll(){
   liveUpdate();
   updateMC(document.getElementById('ai-mcuser').value);
 
-  // Collect current CSS colors
+  // Collect ALL admin panel values
+  const g = id => (document.getElementById(id)||{}).value || '';
+
+  // Current CSS color vars
   const colorKeys = ['--nb','--np','--nc','--npi','--ng'];
   const colors = {};
   colorKeys.forEach(k => {
-    colors[k] = getComputedStyle(document.documentElement).getPropertyValue(k).trim() || '';
+    colors[k] = getComputedStyle(document.documentElement).getPropertyValue(k).trim();
   });
 
   const state = {
-    name   : document.getElementById('ai-name').value,
-    tag    : document.getElementById('ai-tag').value,
-    badge  : document.getElementById('ai-badge').value,
-    about  : document.getElementById('ai-about').value,
-    mcuser : document.getElementById('ai-mcuser').value,
-    typing : document.getElementById('ai-typing').value,
-    pfp    : CFG.pfpSrc,
-    skills : CFG.skills,
-    colors : colors,
-    links  : {
-      yt : document.getElementById('al-yt').value,
-      ig : document.getElementById('al-ig').value,
-      dc : document.getElementById('al-dc').value,
-      rb : document.getElementById('al-rb').value,
-      mc : document.getElementById('al-mc').value
+    // Profile tab
+    name    : g('ai-name'),
+    tag     : g('ai-tag'),
+    badge   : g('ai-badge'),
+    about   : g('ai-about'),
+    mcuser  : g('ai-mcuser'),
+    typing  : g('ai-typing'),
+    pfp     : CFG.pfpSrc,
+    skills  : CFG.skills,
+    // Theme colors
+    colors  : colors,
+    // Social links
+    links   : {
+      yt : g('al-yt'),
+      ig : g('al-ig'),
+      dc : g('al-dc'),
+      rb : g('al-rb'),
+      mc : g('al-mc')
     },
-    savedAt: new Date().toISOString()
+    // API settings
+    api : {
+      ytKey    : g('api-ytkey') || CFG.ytKey,
+      ytChannel: g('api-ytch') || CFG.ytChannel,
+      dcId     : g('api-dcid') || CFG.dcServerId,
+      email    : g('api-email') || CFG.contactEmail
+    },
+    savedAt : new Date().toISOString()
   };
 
-  // Button loading state
-  const btn = document.querySelector('[onclick="applyAll()"]');
-  const orig = btn ? btn.textContent : '';
-  if(btn){ btn.textContent='⏳ Saving...'; btn.disabled=true; }
-
+  // ── Show saving status ──
   const statusEl = document.getElementById('cloud-status');
-  if(statusEl) statusEl.innerHTML = '⏳ <span style="color:#ffa500">Saving to cloud...</span>';
+  const btn = document.querySelector('[onclick="applyAll()"]');
+  const origTxt = btn ? btn.textContent : '';
+  if(btn){ btn.textContent = '⏳ Saving...'; btn.disabled = true; }
+  if(statusEl) statusEl.innerHTML = '⏳ <span style="color:#ffa500">Cloud mein save ho raha hai...</span>';
 
-  // ── PUT to JSONBin ──
+  // ── PUT to JSONBin cloud ──
+  let cloudOK = false;
   try{
     const res = await fetch(JSONBIN_URL, {
       method : 'PUT',
@@ -1364,23 +1322,90 @@ async function applyAll(){
       },
       body: JSON.stringify(state)
     });
-    if(!res.ok) throw new Error('PUT failed: ' + res.status);
-    if(statusEl){
-      const t = new Date().toLocaleTimeString();
-      statusEl.innerHTML = '☁️ <span style="color:#00ff88">Saved!</span> Sabhi viewers dekh sakte hain — ' + t;
-    }
-    showNotif('☁️ Cloud save ho gaya! Sabhi visitors ko dikhe ga!');
-    console.log('✅ Cloud save OK');
-  }catch(e){
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    cloudOK = true;
+    const t = new Date().toLocaleTimeString();
+    if(statusEl) statusEl.innerHTML = '☁️ <span style="color:#00ff88">Saved!</span> Sabhi visitors dekh sakte hain — ' + t;
+    showNotif('☁️ Cloud save ho gaya! Sabhi viewers ko dikhe ga!');
+  } catch(e) {
     console.warn('Cloud save failed:', e.message);
-    if(statusEl) statusEl.innerHTML = '❌ <span style="color:#ff006e">Cloud save failed!</span> — ' + e.message;
-    showNotif('❌ Cloud save fail! Check API key. Local mein save hua.');
+    if(statusEl) statusEl.innerHTML = '❌ <span style="color:#ff006e">Cloud save failed — check API key</span><br><span style="font-size:10px">' + e.message + '</span>';
+    showNotif('❌ Cloud save fail! Check API key.');
   }
 
-  // Backup localStorage
-  try{ localStorage.setItem('sc_state', JSON.stringify(state)); }catch(e2){}
+  // ── Always backup locally ──
+  try{ localStorage.setItem('sc_state', JSON.stringify(state)); } catch(e){}
 
-  if(btn){ btn.textContent=orig; btn.disabled=false; }
+  if(btn){ btn.textContent = origTxt; btn.disabled = false; }
+}
+
+// ─── Apply cloud/saved state to full page ───
+function applyStateToPage(s){
+  if(!s || typeof s !== 'object') return;
+  const set = (id, val) => { const el=document.getElementById(id); if(el && val!==undefined) el.value=val; };
+  try{
+    // Profile
+    if(s.name){ set('ai-name', s.name); liveUpdate(); }
+    if(s.tag)   set('ai-tag',   s.tag);
+    if(s.badge) set('ai-badge', s.badge);
+    if(s.about) set('ai-about', s.about);
+    if(s.mcuser){ set('ai-mcuser', s.mcuser); updateMC(s.mcuser); }
+    if(s.typing) set('ai-typing', s.typing);
+    if(s.pfp && s.pfp.length > 10 && s.pfp.length < 2500000) applyPfp(s.pfp);
+    if(s.skills && s.skills.length){ CFG.skills=s.skills; renderSkills(); renderSkillEditor(); }
+    // Colors
+    if(s.colors && typeof s.colors === 'object'){
+      Object.entries(s.colors).forEach(([k,v])=>{ if(v) document.documentElement.style.setProperty(k,v); });
+    }
+    // Social links — apply to inputs AND actual page links
+    if(s.links && typeof s.links === 'object'){
+      const L = s.links;
+      if(L.yt){ set('al-yt', L.yt); document.querySelectorAll('a[href*="youtube.com"]').forEach(a=>a.href=L.yt); }
+      if(L.ig){ set('al-ig', L.ig); document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=L.ig); }
+      if(L.dc){ set('al-dc', L.dc); document.querySelectorAll('a[href*="discord.gg"]').forEach(a=>a.href=L.dc); }
+      if(L.rb){ set('al-rb', L.rb); document.querySelectorAll('a[href*="roblox.com"]').forEach(a=>a.href=L.rb); }
+      if(L.mc){ set('al-mc', L.mc); document.querySelectorAll('a[href*="namemc.com"]').forEach(a=>a.href=L.mc); }
+    }
+    // API keys saved in cloud
+    if(s.api && typeof s.api === 'object'){
+      const A = s.api;
+      if(A.ytKey)     { set('api-ytkey', A.ytKey);     CFG.ytKey     = A.ytKey; }
+      if(A.ytChannel) { set('api-ytch',  A.ytChannel); CFG.ytChannel = A.ytChannel; }
+      if(A.dcId)      { set('api-dcid',  A.dcId);      CFG.dcServerId= A.dcId; }
+      if(A.email)     { set('api-email', A.email);     CFG.contactEmail = A.email; }
+    }
+    if(s.name) liveUpdate();
+    // Refresh Discord counts when state is applied
+    setTimeout(()=>reloadDiscord(), 500);
+  } catch(e){ console.warn('applyStateToPage error:', e); }
+}
+
+// ─── Cloud load — sabhi viewers ke liye same data ───
+async function loadSaved(){
+  const statusEl = document.getElementById('cloud-status');
+  try{
+    const res = await fetch(JSONBIN_URL + '/latest', {
+      headers: { 'X-Master-Key': JSONBIN_API_KEY }
+    });
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
+    const s = json.record || {};
+    applyStateToPage(s);
+    if(statusEl){
+      const t = s.savedAt ? new Date(s.savedAt).toLocaleString() : 'Available';
+      statusEl.innerHTML = '☁️ <span style="color:#00ff88">Cloud synced</span> — Last saved: ' + t;
+    }
+    console.log('✅ Cloud data loaded OK');
+    return;
+  } catch(e){
+    console.warn('Cloud load failed, fallback to localStorage:', e.message);
+    if(statusEl) statusEl.innerHTML = '⚠️ <span style="color:#ffa500">Cloud offline — local backup use ho raha hai</span>';
+  }
+  // localStorage fallback
+  try{
+    const s = JSON.parse(localStorage.getItem('sc_state')||'{}');
+    if(Object.keys(s).length > 0) applyStateToPage(s);
+  } catch(e2){}
 }
 
 /* ════════════════════════════════
@@ -1451,40 +1476,43 @@ function applyLinks(){
   const ytUrl=document.getElementById('al-yt').value;
   const igUrl=document.getElementById('al-ig').value;
   const dcUrl=document.getElementById('al-dc').value;
-  const rbUrl=document.getElementById('al-rb').value;
-  const mcUrl=document.getElementById('al-mc').value;
-  document.querySelectorAll('a[href*="youtube.com"]').forEach(a=>a.href=ytUrl);
-  document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=igUrl);
-  document.querySelectorAll('a[href*="discord.gg"]').forEach(a=>a.href=dcUrl);
-  document.querySelectorAll('a[href*="roblox.com"]').forEach(a=>a.href=rbUrl);
-  document.querySelectorAll('a[href*="namemc.com"]').forEach(a=>a.href=mcUrl);
-  applyAll(); // cloud save karo
-  showNotif('✅ Links updated & cloud-saved!');
+  const rbUrl=(document.getElementById('al-rb')||{}).value||'';
+  const mcUrl=(document.getElementById('al-mc')||{}).value||'';
+  // Apply to page
+  if(ytUrl) document.querySelectorAll('a[href*="youtube.com"]').forEach(a=>a.href=ytUrl);
+  if(igUrl) document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=igUrl);
+  if(dcUrl) document.querySelectorAll('a[href*="discord.gg"]').forEach(a=>a.href=dcUrl);
+  if(rbUrl) document.querySelectorAll('a[href*="roblox.com"]').forEach(a=>a.href=rbUrl);
+  if(mcUrl) document.querySelectorAll('a[href*="namemc.com"]').forEach(a=>a.href=mcUrl);
+  // Cloud save so all viewers get new links
+  applyAll();
 }
 
 /* ════════════════════════════════
    RELOAD APIs
 ════════════════════════════════ */
 async function testCloud(){
-  const result = document.getElementById('cloud-test-result');
-  if(!result) return;
-  result.style.display = 'block';
-  result.textContent = '⏳ Testing...';
-  const binId  = (document.getElementById('api-binid')  || {value: JSONBIN_BIN_ID }).value;
-  const apiKey = (document.getElementById('api-binkey') || {value: JSONBIN_API_KEY}).value;
+  const out = document.getElementById('cloud-test-out');
+  if(!out) return;
+  out.style.display = 'block';
+  out.innerHTML = '⏳ Testing connection to JSONBin...';
+  const binId  = (document.getElementById('api-binid') ||{value:JSONBIN_BIN_ID}).value;
+  const apiKey = (document.getElementById('api-binkey')||{value:JSONBIN_API_KEY}).value;
   try{
-    const res = await fetch('https://api.jsonbin.io/v3/b/' + binId + '/latest', {
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
       headers: {'X-Master-Key': apiKey}
     });
     if(res.ok){
-      result.innerHTML = '✅ <span style="color:#00ff88">Connected! Cloud kaam kar raha hai.</span>';
+      const d = await res.json();
+      const savedAt = d.record?.savedAt ? new Date(d.record.savedAt).toLocaleString() : 'No data yet';
+      out.innerHTML = '✅ <span style="color:#00ff88">Connected!</span> Cloud kaam kar raha hai.<br>Last save: ' + savedAt;
       showNotif('✅ Cloud connection OK!');
     } else {
       const e = await res.json().catch(()=>({}));
-      result.innerHTML = '❌ <span style="color:#ff006e">Error ' + res.status + ': ' + (e.message||'Check Bin ID & Key') + '</span>';
+      out.innerHTML = '❌ <span style="color:#ff006e">Error ' + res.status + ': ' + (e.message||'Check Bin ID & Key') + '</span>';
     }
-  }catch(e){
-    result.innerHTML = '❌ <span style="color:#ff006e">' + e.message + '</span>';
+  } catch(e) {
+    out.innerHTML = '❌ <span style="color:#ff006e">' + e.message + '</span>';
   }
 }
 
@@ -1499,10 +1527,37 @@ function reloadYT(){
   loadYT(); showNotif('🔄 Reloading YouTube...');
 }
 function reloadDiscord(){
-  const id=document.getElementById('api-dcid').value;
-  const iframes=document.querySelectorAll('iframe[src*="discord.com"]');
-  iframes.forEach(f=>f.src=`https://discord.com/widget?id=${id}&theme=dark`);
-  showNotif('🔄 Discord widget reloaded!');
+  const id = document.getElementById('api-dcid').value || '1328707737361584128';
+  // Update iframe widget
+  document.querySelectorAll('iframe[src*="discord.com"]').forEach(f=>{
+    f.src = `https://discord.com/widget?id=1328707737361584128&theme=dark`;
+  });
+  // Fetch live member counts from Discord invite API
+  fetch(`https://discord.com/api/v10/invites/9qrZQmN3KS?with_counts=true`)
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.approximate_member_count){
+        const total = d.approximate_member_count;
+        const online = d.approximate_presence_count || 0;
+        const fmtN = n => n>=1000 ? (n/1000).toFixed(1)+'K' : String(n);
+        // Update all DC stat elements
+        // Update DC stat elements (dc-members + dc-online are the actual IDs)
+        const totalEl  = document.getElementById('dc-members');
+        const onlineEl = document.getElementById('dc-online');
+        if(totalEl)  totalEl.textContent  = fmtN(total);
+        if(onlineEl) onlineEl.textContent = fmtN(online);
+        // Update server icon if available
+        if(d.guild?.icon){
+          const ext = d.guild.icon.startsWith('a_') ? 'gif' : 'png';
+          const iconUrl = `https://cdn.discordapp.com/icons/${d.guild.id}/${d.guild.icon}.${ext}?size=128`;
+          document.querySelectorAll('.dc-srv-icon,.dc-icon-img').forEach(el=>{
+            el.innerHTML = `<img src="${iconUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">`;
+          });
+        }
+        showNotif(`✅ Discord: ${fmtN(total)} members, ${fmtN(online)} online!`);
+      }
+    })
+    .catch(e=>showNotif('🔄 Discord widget reloaded!'));
 }
 
 /* ════════════════════════════════
