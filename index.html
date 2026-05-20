@@ -2,954 +2,423 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>SempaiCraft — Gaming Creator Hub</title>
 <meta name="description" content="SempaiCraft — Minecraft Builder • Roblox Player • YouTuber • Gaming Creator">
-<meta name="theme-color" content="#0a0a14">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="theme-color" content="#05050f">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-:root {
-  --neon-blue: #00d4ff;
-  --neon-purple: #bf00ff;
-  --neon-cyan: #00ffff;
-  --neon-pink: #ff006e;
-  --neon-green: #00ff88;
-  --dark-bg: #05050f;
-  --card-bg: rgba(10,10,30,0.75);
-  --card-border: rgba(0,212,255,0.18);
-  --text-primary: #e8eaf6;
-  --text-muted: rgba(232,234,246,0.55);
-  --glow-blue: 0 0 20px rgba(0,212,255,0.45), 0 0 60px rgba(0,212,255,0.15);
-  --glow-purple: 0 0 20px rgba(191,0,255,0.45), 0 0 60px rgba(191,0,255,0.15);
+/* ══════════════════════════════════════
+   ROOT VARIABLES
+══════════════════════════════════════ */
+:root{
+  --nb:#00d4ff;--np:#bf00ff;--nc:#00ffff;--npi:#ff006e;--ng:#00ff88;
+  --bg:#05050f;--card:rgba(10,10,30,0.8);--border:rgba(0,212,255,0.18);
+  --tp:#e8eaf6;--tm:rgba(232,234,246,0.55);
+  --gb:0 0 20px rgba(0,212,255,0.4),0 0 60px rgba(0,212,255,0.12);
 }
+/* ══════════════════════════════════════
+   BASE
+══════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  background:#05050f;
-  color:var(--text-primary);
-  font-family:'Rajdhani',sans-serif;
-  font-size:16px;
-  overflow-x:hidden;
-  cursor:none;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-}
-/* CUSTOM CURSOR */
-#cursor{
-  position:fixed;width:12px;height:12px;
-  background:var(--neon-blue);border-radius:50%;
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:width .2s,height .2s,background .2s;
-  box-shadow:0 0 15px var(--neon-blue),0 0 30px rgba(0,212,255,0.4);
-}
-#cursor-ring{
-  position:fixed;width:36px;height:36px;
-  border:1.5px solid rgba(0,212,255,0.5);border-radius:50%;
-  pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);
-  transition:all .08s ease;
-}
-#cursor.clicking{width:8px;height:8px}
-/* SCROLL PROGRESS */
-#scroll-bar{
-  position:fixed;top:0;left:0;height:2px;
-  background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple),var(--neon-pink));
-  z-index:9997;transition:width .1s;
-  box-shadow:0 0 8px var(--neon-blue);
-}
-/* PARTICLES CANVAS */
-#particles{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  pointer-events:none;z-index:0;opacity:.6;
-}
-/* MOUSE GLOW */
-#mouse-glow{
-  position:fixed;width:400px;height:400px;
-  background:radial-gradient(circle,rgba(0,212,255,0.06) 0%,transparent 70%);
-  pointer-events:none;z-index:1;
-  transform:translate(-50%,-50%);
-  transition:all .15s ease;
-}
-/* NAV */
-nav{
-  position:fixed;top:0;left:0;width:100%;z-index:900;
-  padding:16px 40px;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(5,5,15,0.85);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(0,212,255,0.12);
-  transition:all .3s;
-}
-.nav-logo{
-  font-family:'Orbitron',sans-serif;
-  font-size:22px;font-weight:900;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  letter-spacing:2px;text-decoration:none;
-}
-.nav-links{display:flex;gap:30px;list-style:none}
-.nav-links a{
-  color:var(--text-muted);text-decoration:none;
-  font-size:13px;letter-spacing:1.5px;text-transform:uppercase;
-  font-family:'Rajdhani',sans-serif;font-weight:600;
-  transition:all .3s;position:relative;
-}
-.nav-links a::after{
-  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
-  background:var(--neon-blue);transition:width .3s;
-  box-shadow:0 0 6px var(--neon-blue);
-}
-.nav-links a:hover{color:var(--neon-blue)}
-.nav-links a:hover::after{width:100%}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.nav-hamburger span{width:24px;height:2px;background:var(--neon-blue);border-radius:2px;transition:all .3s}
-/* SECTIONS */
-section{position:relative;z-index:2;padding:100px 40px}
-.container{max-width:1200px;margin:0 auto}
-/* HERO */
-#hero{
-  min-height:100vh;min-height:100svh;
-  display:flex;align-items:center;
-  padding:0 40px;overflow:hidden;
-}
-.hero-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:60px;width:100%;max-width:1200px;margin:0 auto;
-}
-.hero-content{position:relative;z-index:3}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 18px;border-radius:30px;
-  border:1px solid rgba(0,212,255,0.35);
-  background:rgba(0,212,255,0.08);
-  font-size:12px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--neon-cyan);margin-bottom:28px;
-  font-family:'Share Tech Mono',monospace;
-}
-.hero-badge .dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--neon-green);
-  animation:pulse 1.5s infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.hero-title{
-  font-family:'Orbitron',sans-serif;
-  font-size:clamp(48px,7vw,96px);
-  font-weight:900;line-height:.95;
-  margin-bottom:20px;
-}
-.hero-title .line1{
-  display:block;
-  background:linear-gradient(135deg,#fff 30%,var(--neon-blue));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hero-title .line2{
-  display:block;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  text-shadow:none;
-}
-.hero-subtitle{
-  font-size:18px;color:var(--text-muted);
-  margin-bottom:40px;letter-spacing:.5px;
-  font-weight:300;min-height:28px;
-}
-.typing-text{color:var(--neon-cyan);font-weight:600}
-.typing-cursor{
-  display:inline-block;width:2px;height:18px;
-  background:var(--neon-blue);margin-left:2px;
-  animation:blink .7s infinite;vertical-align:middle;
-}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:12px 24px;border-radius:6px;
-  font-family:'Rajdhani',sans-serif;font-weight:700;
-  font-size:14px;letter-spacing:1.5px;text-transform:uppercase;
-  text-decoration:none;cursor:pointer;
-  border:none;transition:all .3s;position:relative;overflow:hidden;
-}
-.btn::before{
-  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
-  transition:left .5s;
-}
-.btn:hover::before{left:100%}
-.btn-primary{
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  color:#fff;box-shadow:var(--glow-blue);
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(0,212,255,0.6),0 0 80px rgba(0,212,255,0.2)}
-.btn-ghost{
-  background:rgba(0,212,255,0.06);
-  color:var(--neon-blue);
-  border:1px solid rgba(0,212,255,0.3);
-}
-.btn-ghost:hover{background:rgba(0,212,255,0.15);border-color:var(--neon-blue);transform:translateY(-2px)}
-.btn-icon{width:18px;height:18px;flex-shrink:0}
-/* SOCIAL STATS */
-.hero-stats{display:flex;gap:32px}
-.stat-item{text-align:center}
-.stat-num{
-  font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;
-  color:var(--neon-blue);display:block;
-}
-.stat-label{font-size:12px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
-/* AVATAR AREA */
-.hero-visual{
-  position:relative;display:flex;justify-content:center;align-items:center;
-}
-.avatar-container{
-  position:relative;width:340px;height:340px;
-  display:flex;align-items:center;justify-content:center;
-}
-.avatar-rings{
-  position:absolute;inset:0;
-  animation:spin 20s linear infinite;
-}
-.avatar-ring-1,.avatar-ring-2,.avatar-ring-3{
-  position:absolute;border-radius:50%;
-  border:1px solid;
-}
-.avatar-ring-1{
-  inset:0;border-color:rgba(0,212,255,0.25);
-}
-.avatar-ring-2{
-  inset:20px;border-color:rgba(191,0,255,0.2);
-  animation:spin-reverse 15s linear infinite;
-}
-.avatar-ring-3{
-  inset:40px;border-color:rgba(0,212,255,0.15);
-  animation:spin 10s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes spin-reverse{to{transform:rotate(-360deg)}}
-.avatar-ring-1::before,.avatar-ring-1::after{
-  content:'';position:absolute;width:8px;height:8px;border-radius:50%;
-  background:var(--neon-blue);box-shadow:0 0 10px var(--neon-blue);
-  top:50%;margin-top:-4px;
-}
-.avatar-ring-1::before{left:-4px}
-.avatar-ring-1::after{right:-4px}
-.avatar-core{
-  width:220px;height:220px;border-radius:50%;
-  overflow:hidden;
-  border:3px solid rgba(0,212,255,0.4);
-  box-shadow:0 0 40px rgba(0,212,255,0.3),0 0 100px rgba(0,212,255,0.1),inset 0 0 40px rgba(0,0,0,0.5);
-  animation:float 4s ease-in-out infinite;
-  position:relative;z-index:2;
-  background:linear-gradient(135deg,#0a0a20,#1a0a30);
-  display:flex;align-items:center;justify-content:center;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-.avatar-placeholder{
-  font-family:'Orbitron',sans-serif;font-size:80px;font-weight:900;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.avatar-glow{
-  position:absolute;width:280px;height:280px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,212,255,0.15) 0%,transparent 70%);
-  animation:glow-pulse 3s ease-in-out infinite;
-}
-@keyframes glow-pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
-/* Floating tags */
-.floating-tag{
-  position:absolute;
-  padding:6px 14px;border-radius:20px;
-  font-size:12px;font-weight:700;letter-spacing:1px;
-  font-family:'Share Tech Mono',monospace;
-  backdrop-filter:blur(10px);
-  animation:float-tag 4s ease-in-out infinite;
-}
-.tag-minecraft{
-  top:10%;right:-20px;
-  background:rgba(0,255,136,0.12);border:1px solid rgba(0,255,136,0.35);
-  color:var(--neon-green);
-  animation-delay:0s;
-}
-.tag-roblox{
-  bottom:20%;right:-10px;
-  background:rgba(255,0,110,0.12);border:1px solid rgba(255,0,110,0.35);
-  color:var(--neon-pink);
-  animation-delay:1.3s;
-}
-.tag-youtube{
-  bottom:5%;left:0;
-  background:rgba(255,50,50,0.12);border:1px solid rgba(255,50,50,0.35);
-  color:#ff5555;
-  animation-delay:0.7s;
-}
-@keyframes float-tag{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-/* SECTION STYLES */
-.section-label{
-  font-family:'Share Tech Mono',monospace;font-size:12px;
-  color:var(--neon-blue);letter-spacing:3px;text-transform:uppercase;
-  margin-bottom:12px;display:flex;align-items:center;gap:10px;
-}
-.section-label::before{content:'//';opacity:.5}
-.section-title{
-  font-family:'Orbitron',sans-serif;
-  font-size:clamp(32px,4vw,52px);font-weight:700;
-  line-height:1.1;margin-bottom:20px;
-}
-.gradient-text{
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-/* GLASS CARD */
-.glass-card{
-  background:var(--card-bg);
-  border:1px solid var(--card-border);
-  border-radius:16px;
-  backdrop-filter:blur(20px);
-  padding:32px;
-  transition:all .3s;position:relative;overflow:hidden;
-}
-.glass-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.4),transparent);
-}
-.glass-card:hover{
-  border-color:rgba(0,212,255,0.35);
-  transform:translateY(-4px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 40px rgba(0,212,255,0.1);
-}
-/* RGB BORDER */
-.rgb-border{
-  position:relative;border-radius:16px;padding:1px;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple),var(--neon-pink),var(--neon-blue));
-  background-size:300% 300%;
-  animation:rgb-shift 4s ease infinite;
-}
-@keyframes rgb-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.rgb-inner{
-  background:#08081a;border-radius:15px;
-  padding:32px;
-}
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.about-desc{
-  font-size:17px;line-height:1.9;color:var(--text-muted);
-  font-weight:300;
-}
-.about-desc p+p{margin-top:16px}
-.about-desc strong{color:var(--neon-cyan);font-weight:600}
-.skills-grid{display:grid;gap:16px}
-.skill-item{}
-.skill-header{display:flex;justify-content:space-between;margin-bottom:8px}
-.skill-name{font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:var(--text-primary)}
-.skill-pct{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--neon-blue)}
-.skill-bar{height:4px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden}
-.skill-fill{
-  height:100%;border-radius:2px;
-  background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));
-  box-shadow:0 0 10px rgba(0,212,255,0.5);
-  width:0%;transition:width 1.5s cubic-bezier(.25,1,.5,1);
-}
-/* PLATFORMS */
-.platforms-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;
-}
-.platform-card{
-  text-align:center;padding:40px 24px;border-radius:16px;
-  background:rgba(10,10,30,0.6);
-  border:1px solid rgba(0,212,255,0.12);
-  transition:all .3s;text-decoration:none;color:inherit;
-  display:block;position:relative;overflow:hidden;
-}
-.platform-card::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 100%,rgba(0,212,255,0.1) 0%,transparent 60%);
-  opacity:0;transition:opacity .3s;
-}
-.platform-card:hover::after{opacity:1}
-.platform-card:hover{
-  transform:translateY(-6px);border-color:var(--neon-blue);
-  box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 30px rgba(0,212,255,0.15);
-}
-.platform-icon{font-size:48px;margin-bottom:16px;display:block}
-.platform-name{
-  font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;
-  margin-bottom:8px;color:var(--text-primary);
-}
-.platform-desc{font-size:14px;color:var(--text-muted);line-height:1.5}
-/* SOCIAL HUB */
-.socials-grid{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:20px;
-}
-.social-link{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 28px;border-radius:40px;
-  text-decoration:none;font-weight:700;
-  font-size:15px;letter-spacing:1px;
-  transition:all .3s;border:1px solid;
-}
-.social-yt{color:#ff4444;border-color:rgba(255,68,68,.3);background:rgba(255,68,68,.07)}
-.social-yt:hover{background:rgba(255,68,68,.18);box-shadow:0 0 25px rgba(255,68,68,.25);transform:translateY(-3px)}
-.social-ig{color:#e1306c;border-color:rgba(225,48,108,.3);background:rgba(225,48,108,.07)}
-.social-ig:hover{background:rgba(225,48,108,.18);box-shadow:0 0 25px rgba(225,48,108,.25);transform:translateY(-3px)}
-.social-dc{color:#5865f2;border-color:rgba(88,101,242,.3);background:rgba(88,101,242,.07)}
-.social-dc:hover{background:rgba(88,101,242,.18);box-shadow:0 0 25px rgba(88,101,242,.25);transform:translateY(-3px)}
-.social-rb{color:#e53e3e;border-color:rgba(229,62,62,.3);background:rgba(229,62,62,.07)}
-.social-rb:hover{background:rgba(229,62,62,.18);box-shadow:0 0 25px rgba(229,62,62,.25);transform:translateY(-3px)}
-.social-mc{color:#5d9e3f;border-color:rgba(93,158,63,.3);background:rgba(93,158,63,.07)}
-.social-mc:hover{background:rgba(93,158,63,.18);box-shadow:0 0 25px rgba(93,158,63,.25);transform:translateY(-3px)}
-/* DISCORD SECTION */
-.discord-widget-wrap{
-  background:rgba(88,101,242,0.06);
-  border:1px solid rgba(88,101,242,0.25);
-  border-radius:16px;padding:40px;text-align:center;
-}
-.discord-icon{font-size:72px;margin-bottom:20px;display:block}
-.discord-members{
-  display:flex;justify-content:center;gap:40px;margin:28px 0;
-}
-.discord-stat{text-align:center}
-.discord-num{
-  font-family:'Orbitron',sans-serif;font-size:32px;font-weight:700;
-  color:#5865f2;display:block;
-}
-.discord-label{font-size:13px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
-/* MINECRAFT SECTION */
-.minecraft-grid{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:start}
-.mc-skin-showcase{
-  position:relative;text-align:center;
-  padding:40px 24px;
-  background:rgba(93,158,63,0.06);
-  border:1px solid rgba(93,158,63,0.2);
-  border-radius:16px;
-}
-.mc-skin-wrap{
-  width:140px;height:280px;margin:0 auto 24px;position:relative;
-}
-.mc-skin-img{
-  width:100%;height:100%;object-fit:cover;
-  image-rendering:pixelated;
-  filter:drop-shadow(0 0 20px rgba(93,158,63,0.5));
-  animation:float 4s ease-in-out infinite;
-}
-.mc-skin-placeholder{
-  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  font-size:80px;animation:float 4s ease-in-out infinite;
-}
-.mc-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;text-align:left}
-.mc-info-item{
-  padding:12px 16px;border-radius:8px;
-  background:rgba(93,158,63,0.08);
-  border:1px solid rgba(93,158,63,0.15);
-}
-.mc-info-label{font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
-.mc-info-val{font-family:'Share Tech Mono',monospace;font-size:14px;color:var(--neon-green)}
-/* FLOATING CUBES */
-.cube-particle{
-  position:absolute;width:10px;height:10px;
-  background:rgba(93,158,63,0.4);border:1px solid rgba(93,158,63,0.6);
-  animation:cube-float 6s ease-in-out infinite;
-}
-@keyframes cube-float{
-  0%,100%{transform:translateY(0) rotate(0deg);opacity:.4}
-  50%{transform:translateY(-30px) rotate(180deg);opacity:.8}
-}
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.contact-form{display:grid;gap:16px}
-.form-group{display:grid;gap:8px}
-.form-label{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);font-weight:600}
-.form-input,.form-textarea{
-  background:rgba(0,212,255,0.04);
-  border:1px solid rgba(0,212,255,0.15);
-  border-radius:8px;padding:14px 18px;
-  color:var(--text-primary);font-family:'Rajdhani',sans-serif;font-size:16px;
-  transition:all .3s;width:100%;
-  font-weight:400;
-}
-.form-input:focus,.form-textarea:focus{
-  outline:none;border-color:rgba(0,212,255,0.5);
-  background:rgba(0,212,255,0.08);
-  box-shadow:0 0 20px rgba(0,212,255,0.1);
-}
-.form-textarea{height:140px;resize:none;font-family:'Rajdhani',sans-serif}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(232,234,246,.25)}
-.contact-info{display:grid;gap:20px;align-content:start}
-.contact-info-item{
-  display:flex;align-items:center;gap:16px;
-  padding:20px;border-radius:12px;
-  background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.12);
-  text-decoration:none;color:var(--text-primary);
-  transition:all .3s;
-}
-.contact-info-item:hover{border-color:rgba(0,212,255,.35);transform:translateX(6px)}
-.contact-info-icon{font-size:28px;flex-shrink:0}
-.contact-info-text strong{display:block;font-weight:700;margin-bottom:4px}
-.contact-info-text span{font-size:14px;color:var(--text-muted);font-family:'Share Tech Mono',monospace}
-/* FOOTER */
-footer{
-  border-top:1px solid rgba(0,212,255,0.1);
-  padding:40px;text-align:center;position:relative;z-index:2;
-}
-.footer-logo{
-  font-family:'Orbitron',sans-serif;font-size:28px;font-weight:900;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:16px;display:block;
-}
-.footer-sub{color:var(--text-muted);font-size:14px;margin-bottom:28px}
-.footer-links{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
-.footer-links a{
-  color:var(--text-muted);text-decoration:none;font-size:13px;
-  letter-spacing:1px;text-transform:uppercase;transition:color .3s;
-}
-.footer-links a:hover{color:var(--neon-blue)}
-.footer-copy{margin-top:28px;font-size:13px;color:rgba(232,234,246,.25)}
-/* DIGITAL CLOCK */
-.clock-widget{
-  position:fixed;bottom:30px;left:30px;z-index:800;
-  font-family:'Share Tech Mono',monospace;font-size:14px;
-  color:rgba(0,212,255,.7);
-  background:rgba(5,5,15,0.8);
-  border:1px solid rgba(0,212,255,0.2);
-  padding:8px 16px;border-radius:6px;
-  backdrop-filter:blur(10px);
-}
-/* VISITOR COUNTER */
-.visitor-badge{
-  position:fixed;bottom:30px;right:30px;z-index:800;
-  font-family:'Share Tech Mono',monospace;font-size:12px;
-  color:rgba(191,0,255,.7);
-  background:rgba(5,5,15,0.8);
-  border:1px solid rgba(191,0,255,0.2);
-  padding:8px 16px;border-radius:6px;
-  backdrop-filter:blur(10px);
-  display:flex;align-items:center;gap:8px;
-}
-.visitor-dot{width:6px;height:6px;border-radius:50%;background:var(--neon-green);animation:pulse 1.5s infinite}
-/* LOADING SCREEN */
-#loader{
-  position:fixed;inset:0;z-index:9999;
-  background:#05050f;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  transition:opacity .6s;
-}
+body{background:var(--bg);color:var(--tp);font-family:'Rajdhani',sans-serif;font-size:16px;overflow-x:hidden;cursor:none;min-height:100vh;-webkit-font-smoothing:antialiased}
+@media(hover:none),(pointer:coarse){body{cursor:auto}#cursor,#cursor-ring,#mglow{display:none!important}}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+/* ══════════════════════════════════════
+   CURSOR
+══════════════════════════════════════ */
+#cursor{position:fixed;width:10px;height:10px;background:var(--nb);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 12px var(--nb),0 0 25px rgba(0,212,255,0.35);transition:width .15s,height .15s}
+#cursor-ring{position:fixed;width:34px;height:34px;border:1.5px solid rgba(0,212,255,0.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .06s,top .06s}
+#cursor.click{width:6px;height:6px}
+#mglow{position:fixed;width:450px;height:450px;background:radial-gradient(circle,rgba(0,212,255,0.055) 0%,transparent 70%);pointer-events:none;z-index:1;transform:translate(-50%,-50%);transition:left .12s,top .12s}
+#scrollbar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--nb),var(--np),var(--npi));z-index:9997;box-shadow:0 0 6px var(--nb);transition:width .1s}
+/* ══════════════════════════════════════
+   LOADER
+══════════════════════════════════════ */
+#loader{position:fixed;inset:0;z-index:99999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s}
 #loader.hide{opacity:0;pointer-events:none}
-.loader-logo{
-  font-family:'Orbitron',sans-serif;font-size:36px;font-weight:900;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:32px;letter-spacing:4px;
-  animation:loader-pulse 1s ease-in-out infinite;
-}
-@keyframes loader-pulse{0%,100%{opacity:.7}50%{opacity:1}}
-.loader-bar-wrap{width:240px;height:2px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
-.loader-bar{
-  height:100%;width:0%;border-radius:2px;
-  background:linear-gradient(90deg,var(--neon-blue),var(--neon-purple));
-  box-shadow:0 0 10px var(--neon-blue);
-  transition:width .8s ease;
-}
-.loader-text{
-  margin-top:16px;font-family:'Share Tech Mono',monospace;font-size:12px;
-  color:var(--text-muted);letter-spacing:2px;
-}
-/* DIVIDER */
-.section-divider{
-  height:1px;
-  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.3),transparent);
-  margin:0 40px;position:relative;z-index:2;
-}
-/* GRID OVERLAY */
-.grid-overlay{
-  position:absolute;inset:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);
-  background-size:60px 60px;
-}
-/* ADMIN PASSWORD MODAL */
-#admin-pw-overlay{
-  position:fixed;inset:0;z-index:9995;
-  background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);
-  display:none;align-items:center;justify-content:center;
-}
-#admin-pw-overlay.show{display:flex}
-#admin-pw-box{
-  background:rgba(5,5,20,0.98);
-  border:1px solid rgba(0,212,255,0.3);
-  border-radius:20px;padding:44px 40px;
-  width:360px;max-width:90vw;text-align:center;
-  position:relative;
-  box-shadow:0 0 60px rgba(0,212,255,0.15),0 30px 80px rgba(0,0,0,0.7);
-}
-#admin-pw-box::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;border-radius:20px 20px 0 0;
-  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.5),transparent);
-}
-.pw-icon{
-  font-size:48px;margin-bottom:16px;display:block;
-  animation:float 3s ease-in-out infinite;
-}
-.pw-title{
-  font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;
-  color:var(--neon-blue);margin-bottom:6px;letter-spacing:2px;
-}
-.pw-subtitle{
-  font-size:13px;color:var(--text-muted);margin-bottom:28px;
-  font-family:'Share Tech Mono',monospace;letter-spacing:1px;
-}
-#pw-input{
-  width:100%;background:rgba(0,212,255,0.05);
-  border:1px solid rgba(0,212,255,0.2);border-radius:10px;
-  padding:14px 18px;color:var(--text-primary);
-  font-family:'Share Tech Mono',monospace;font-size:18px;
-  letter-spacing:4px;text-align:center;
-  transition:all .3s;margin-bottom:16px;
-}
-#pw-input:focus{
-  outline:none;border-color:rgba(0,212,255,0.6);
-  background:rgba(0,212,255,0.1);
-  box-shadow:0 0 20px rgba(0,212,255,0.15);
-}
-#pw-input.shake{animation:pw-shake .4s ease}
-@keyframes pw-shake{
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-8px)}
-  40%{transform:translateX(8px)}
-  60%{transform:translateX(-6px)}
-  80%{transform:translateX(6px)}
-}
-#pw-input.error{border-color:rgba(255,0,110,0.6);color:var(--neon-pink)}
-#pw-err{
-  font-size:13px;color:var(--neon-pink);margin-bottom:16px;
-  font-family:'Share Tech Mono',monospace;letter-spacing:1px;
-  min-height:20px;transition:opacity .3s;
-}
-.pw-btn{
-  width:100%;padding:14px;border-radius:10px;border:none;cursor:pointer;
-  font-family:'Orbitron',sans-serif;font-weight:700;font-size:14px;
-  letter-spacing:2px;text-transform:uppercase;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  color:#fff;transition:all .3s;
-  box-shadow:0 0 20px rgba(0,212,255,0.25);
-}
-.pw-btn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(0,212,255,0.45)}
-.pw-cancel{
-  display:block;margin-top:14px;font-size:13px;
-  color:var(--text-muted);cursor:pointer;
-  font-family:'Share Tech Mono',monospace;
-  background:none;border:none;width:100%;
-  letter-spacing:1px;transition:color .3s;
-}
-.pw-cancel:hover{color:var(--neon-blue)}
-.pw-dots{
-  display:flex;justify-content:center;gap:8px;margin-bottom:24px;
-}
-.pw-dot-ind{
-  width:10px;height:10px;border-radius:50%;
-  border:1.5px solid rgba(0,212,255,0.35);
-  transition:all .2s;
-}
-.pw-dot-ind.filled{
-  background:var(--neon-blue);border-color:var(--neon-blue);
-  box-shadow:0 0 8px var(--neon-blue);
-}
-/* ADMIN PANEL */
-#admin-panel{
-  position:fixed;right:-420px;top:0;bottom:0;width:420px;
-  background:rgba(5,5,15,0.97);
-  border-left:1px solid rgba(0,212,255,0.2);
-  z-index:9990;backdrop-filter:blur(20px);
-  transition:right .4s cubic-bezier(.25,1,.5,1);
-  overflow-y:auto;padding:24px;
-}
-#admin-panel.open{right:0}
-#admin-toggle{
-  position:fixed;right:20px;top:50%;transform:translateY(-50%);
-  z-index:9991;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  border:none;color:#fff;cursor:pointer;
-  width:42px;height:42px;border-radius:50%;
-  font-size:18px;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 20px rgba(0,212,255,0.4);
-  transition:all .3s;
-}
+.ld-logo{font-family:'Orbitron',sans-serif;font-size:clamp(24px,6vw,42px);font-weight:900;background:linear-gradient(135deg,var(--nb),var(--np));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:36px;letter-spacing:4px;animation:ldpulse 1s ease-in-out infinite}
+@keyframes ldpulse{0%,100%{opacity:.6}50%{opacity:1}}
+.ld-bar-wrap{width:220px;height:2px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;margin-bottom:16px}
+.ld-bar{height:100%;width:0;background:linear-gradient(90deg,var(--nb),var(--np));box-shadow:0 0 8px var(--nb);transition:width .6s ease;border-radius:2px}
+.ld-txt{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--tm);letter-spacing:2px}
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;width:100%;z-index:890;padding:14px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,15,0.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,212,255,0.1);transition:.3s}
+.nav-logo{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:900;background:linear-gradient(135deg,var(--nb),var(--np));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;display:flex;align-items:center;gap:10px}
+.nav-logo-pfp{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,212,255,0.4);display:none}
+.nav-logo-pfp.loaded{display:block}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--tm);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-family:'Rajdhani',sans-serif;font-weight:600;transition:.3s;position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--nb);box-shadow:0 0 6px var(--nb);transition:width .3s}
+.nav-links a:hover{color:var(--nb)}.nav-links a:hover::after{width:100%}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.nav-burger span{width:22px;height:2px;background:var(--nb);border-radius:2px;transition:.3s;display:block}
+/* mobile nav */
+.nav-open .nav-links{display:flex!important;flex-direction:column;position:fixed;top:56px;left:0;right:0;bottom:0;background:rgba(5,5,15,0.98);padding:32px 28px;gap:20px;z-index:889;overflow-y:auto}
+.nav-open .nav-links a{font-size:20px;padding:10px 0;border-bottom:1px solid rgba(0,212,255,0.08)}
+/* ══════════════════════════════════════
+   PARTICLES
+══════════════════════════════════════ */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.55}
+/* ══════════════════════════════════════
+   SECTIONS
+══════════════════════════════════════ */
+section{position:relative;z-index:2;padding:100px 40px}
+.container{max-width:1180px;margin:0 auto}
+.sec-label{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--nb);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec-label::before{content:'//';opacity:.45}
+.sec-title{font-family:'Orbitron',sans-serif;font-size:clamp(28px,5vw,54px);font-weight:700;line-height:1.05;margin-bottom:16px}
+.grad{background:linear-gradient(135deg,var(--nb),var(--np));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.25),transparent);margin:0 40px;position:relative;z-index:2}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+/* ══════════════════════════════════════
+   GLASS CARD
+══════════════════════════════════════ */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;backdrop-filter:blur(20px);padding:28px;transition:.3s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.35),transparent)}
+.card:hover{border-color:rgba(0,212,255,0.32);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.45),0 0 40px rgba(0,212,255,0.08)}
+.rgb-wrap{border-radius:16px;padding:1.5px;background:linear-gradient(135deg,var(--nb),var(--np),var(--npi),var(--nb));background-size:300% 300%;animation:rgbshift 4s ease infinite}
+@keyframes rgbshift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.rgb-inner{background:#08081c;border-radius:15px;padding:28px}
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:8px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:none;transition:.3s;position:relative;overflow:hidden;white-space:nowrap}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.09),transparent);transition:left .45s}
+.btn:hover::before{left:100%}
+.btn-p{background:linear-gradient(135deg,var(--nb),var(--np));color:#fff;box-shadow:var(--gb)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(0,212,255,0.55),0 0 80px rgba(0,212,255,0.18)}
+.btn-g{background:rgba(0,212,255,0.06);color:var(--nb);border:1px solid rgba(0,212,255,0.28)}
+.btn-g:hover{background:rgba(0,212,255,0.14);border-color:var(--nb);transform:translateY(-2px)}
+.btn-r{background:rgba(255,50,50,0.08);color:#ff5555;border:1px solid rgba(255,50,50,0.28)}
+.btn-r:hover{background:rgba(255,50,50,0.18);border-color:#ff5555;transform:translateY(-2px)}
+.btn-d{background:rgba(88,101,242,0.1);color:#5865f2;border:1px solid rgba(88,101,242,0.3)}
+.btn-d:hover{background:rgba(88,101,242,0.2);border-color:#5865f2;transform:translateY(-2px)}
+/* ══════════════════════════════════════
+   FADE ANIMATIONS
+══════════════════════════════════════ */
+.fadeup{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fadeup.vis{opacity:1;transform:translateY(0)}
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+#hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:80px 40px 40px}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;align-items:center;gap:60px;width:100%;max-width:1180px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 16px;border-radius:30px;border:1px solid rgba(0,212,255,0.32);background:rgba(0,212,255,0.07);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--nc);margin-bottom:24px;font-family:'Share Tech Mono',monospace}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--ng);animation:pulse 1.4s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+.hero-title{font-family:'Orbitron',sans-serif;font-size:clamp(52px,8vw,96px);font-weight:900;line-height:.9;margin-bottom:18px}
+.hero-title .l1{display:block;background:linear-gradient(135deg,#fff 40%,var(--nb));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-title .l2{display:block;background:linear-gradient(135deg,var(--nb),var(--np));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:17px;color:var(--tm);margin-bottom:36px;letter-spacing:.3px;font-weight:300;min-height:26px}
+.typing{color:var(--nc);font-weight:600}
+.tcursor{display:inline-block;width:2px;height:17px;background:var(--nb);margin-left:2px;animation:blink .7s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.hero-stats{display:flex;gap:28px}
+.stat-n{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:700;color:var(--nb);display:block}
+.stat-l{font-size:11px;color:var(--tm);letter-spacing:1px;text-transform:uppercase}
+/* Avatar */
+.hero-visual{display:flex;justify-content:center;align-items:center}
+.av-wrap{position:relative;width:380px;height:380px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.av-rings{position:absolute;inset:0;animation:spin 20s linear infinite}
+.av-r1,.av-r2,.av-r3{position:absolute;border-radius:50%;border:1px solid}
+.av-r1{inset:0;border-color:rgba(0,212,255,.22)}.av-r1::before,.av-r1::after{content:'';position:absolute;width:7px;height:7px;border-radius:50%;background:var(--nb);box-shadow:0 0 8px var(--nb);top:50%;margin-top:-3.5px}.av-r1::before{left:-3.5px}.av-r1::after{right:-3.5px}
+.av-r2{inset:22px;border-color:rgba(191,0,255,.18);animation:spinr 15s linear infinite}
+.av-r3{inset:44px;border-color:rgba(0,212,255,.13)}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes spinr{to{transform:rotate(-360deg)}}
+.av-glow{position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,.14) 0%,transparent 70%);animation:glowpulse 3s ease-in-out infinite}
+@keyframes glowpulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.av-core{width:230px;height:230px;border-radius:50%;overflow:hidden;border:3px solid rgba(0,212,255,.38);box-shadow:0 0 40px rgba(0,212,255,.28),0 0 100px rgba(0,212,255,.09),inset 0 0 40px rgba(0,0,0,.5);animation:float 4s ease-in-out infinite;position:relative;z-index:2;background:linear-gradient(135deg,#0a0a20,#1a0830);display:flex;align-items:center;justify-content:center}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.av-img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.av-placeholder{font-size:72px}
+.ftag{position:absolute;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;font-family:'Share Tech Mono',monospace;backdrop-filter:blur(10px);animation:tagfloat 4s ease-in-out infinite;white-space:nowrap}
+.t-mc{top:8%;right:-18px;background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.35);color:var(--ng);animation-delay:0s}
+.t-rb{bottom:22%;right:-12px;background:rgba(255,0,110,.1);border:1px solid rgba(255,0,110,.35);color:var(--npi);animation-delay:1.2s}
+.t-yt{bottom:4%;left:-4px;background:rgba(255,50,50,.1);border:1px solid rgba(255,50,50,.35);color:#ff5555;animation-delay:.6s}
+@keyframes tagfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* ══════════════════════════════════════
+   ABOUT / SKILLS
+══════════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-desc{font-size:16px;line-height:1.9;color:var(--tm);font-weight:300}
+.about-desc p+p{margin-top:14px}
+.about-desc strong{color:var(--nc);font-weight:600}
+.skills-list{display:grid;gap:14px}
+.sk-hd{display:flex;justify-content:space-between;margin-bottom:7px}
+.sk-name{font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.sk-pct{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--nb)}
+.sk-bar{height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden}
+.sk-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--nb),var(--np));box-shadow:0 0 8px rgba(0,212,255,.45);width:0;transition:width 1.6s cubic-bezier(.25,1,.5,1)}
+/* ══════════════════════════════════════
+   PLATFORMS
+══════════════════════════════════════ */
+.plat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px}
+.plat-card{text-align:center;padding:32px 16px;border-radius:14px;background:rgba(10,10,30,.6);border:1px solid rgba(0,212,255,.1);transition:.3s;display:block;color:inherit;position:relative;overflow:hidden}
+.plat-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 100%,rgba(0,212,255,.09) 0%,transparent 60%);opacity:0;transition:.3s}
+.plat-card:hover::after{opacity:1}
+.plat-card:hover{transform:translateY(-6px);border-color:rgba(0,212,255,.35);box-shadow:0 18px 50px rgba(0,0,0,.4),0 0 28px rgba(0,212,255,.12)}
+.plat-icon{font-size:40px;margin-bottom:12px;display:block}
+.plat-name{font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;margin-bottom:6px}
+.plat-desc{font-size:12px;color:var(--tm);line-height:1.4}
+/* ══════════════════════════════════════
+   YOUTUBE
+══════════════════════════════════════ */
+.yt-head{display:flex;align-items:center;gap:20px;padding:24px 28px;background:rgba(255,30,30,.06);border:1px solid rgba(255,50,50,.18);border-radius:16px;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.yt-av{width:76px;height:76px;border-radius:50%;border:2px solid rgba(255,50,50,.45);background:linear-gradient(135deg,#1a0000,#330000);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;overflow:hidden}
+.yt-av img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.yt-ch-name{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.yt-badge{background:#ff4444;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:1px}
+.yt-handle{font-family:'Share Tech Mono',monospace;font-size:13px;color:rgba(255,100,100,.65)}
+.yt-info{flex:1;min-width:160px}
+.yt-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.yt-sc{padding:22px 16px;border-radius:14px;text-align:center;background:rgba(255,30,30,.06);border:1px solid rgba(255,50,50,.13);transition:.3s}
+.yt-sc:hover{border-color:rgba(255,50,50,.35);transform:translateY(-3px)}
+.yt-si{font-size:26px;margin-bottom:8px;display:block}
+.yt-sn{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:700;color:#ff4444;display:block;margin-bottom:4px}
+.yt-sl{font-size:11px;color:var(--tm);letter-spacing:1px;text-transform:uppercase}
+.yt-vt{font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;color:#ff4444;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,0,0,.85);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;padding:2px 9px;border-radius:4px;animation:livep 1s ease-in-out infinite}
+@keyframes livep{0%,100%{opacity:1}50%{opacity:.65}}
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.yt-card{border-radius:12px;overflow:hidden;background:rgba(10,10,20,.85);border:1px solid rgba(255,50,50,.1);transition:.3s;display:block;color:inherit}
+.yt-card:hover{border-color:rgba(255,50,50,.38);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.yt-tw{position:relative;padding-top:56.25%;overflow:hidden;background:#0d0d0d}
+.yt-tw img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.yt-card:hover .yt-tw img{transform:scale(1.06)}
+.yt-play-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);opacity:0;transition:.3s}
+.yt-card:hover .yt-play-ov{opacity:1}
+.yt-play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,0,0,.85);display:flex;align-items:center;justify-content:center;padding-left:4px;font-size:16px}
+.yt-vi{padding:12px}
+.yt-vname{font-size:13px;font-weight:600;color:var(--tp);line-height:1.4;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.yt-vmeta{font-size:11px;color:var(--tm);font-family:'Share Tech Mono',monospace}
+.yt-skel{background:linear-gradient(90deg,rgba(255,255,255,.04) 25%,rgba(255,255,255,.08) 50%,rgba(255,255,255,.04) 75%);background-size:200% 100%;animation:skelsh 1.4s infinite;border-radius:8px}
+@keyframes skelsh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* ══════════════════════════════════════
+   MINECRAFT
+══════════════════════════════════════ */
+.mc-grid{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:start}
+.mc-skin-box{text-align:center;padding:36px 20px;background:rgba(93,158,63,.05);border:1px solid rgba(93,158,63,.18);border-radius:16px;position:relative;overflow:hidden}
+.mc-skin-img{width:120px;height:240px;image-rendering:pixelated;margin:0 auto 20px;filter:drop-shadow(0 0 18px rgba(93,158,63,.5));animation:float 4s ease-in-out infinite}
+.mc-username{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;color:var(--ng);margin-bottom:6px}
+.mc-sub{font-size:13px;color:var(--tm);margin-bottom:20px}
+.mc-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;text-align:left}
+.mc-fact{padding:10px 14px;border-radius:8px;background:rgba(93,158,63,.07);border:1px solid rgba(93,158,63,.14)}
+.mc-fl{font-size:10px;color:var(--tm);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.mc-fv{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--ng)}
+.cube{position:absolute;width:9px;height:9px;background:rgba(93,158,63,.35);border:1px solid rgba(93,158,63,.55);animation:cubefloat 6s ease-in-out infinite}
+@keyframes cubefloat{0%,100%{transform:translateY(0) rotate(0deg);opacity:.35}50%{transform:translateY(-28px) rotate(180deg);opacity:.75}}
+/* ══════════════════════════════════════
+   DISCORD
+══════════════════════════════════════ */
+.dc-box{background:rgba(88,101,242,.06);border:1px solid rgba(88,101,242,.22);border-radius:16px;padding:36px;text-align:center;max-width:680px;margin:40px auto 0}
+.dc-icon{font-size:64px;margin-bottom:16px;display:block}
+.dc-title{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;color:#5865f2;margin-bottom:10px}
+.dc-desc{color:var(--tm);font-size:15px;margin-bottom:24px;line-height:1.6}
+.dc-stats{display:flex;justify-content:center;gap:40px;margin:20px 0 28px}
+.dc-sn{font-family:'Orbitron',sans-serif;font-size:30px;font-weight:700;color:#5865f2;display:block}
+.dc-sl{font-size:11px;color:var(--tm);letter-spacing:1px;text-transform:uppercase}
+.dc-widget{margin-top:22px;border-radius:10px;overflow:hidden;border:1px solid rgba(88,101,242,.2)}
+.dc-widget iframe{display:block;width:100%;border:none}
+/* ══════════════════════════════════════
+   SOCIAL HUB
+══════════════════════════════════════ */
+.socials-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.soc{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:40px;font-weight:700;font-size:14px;letter-spacing:1px;transition:.3s;border:1px solid}
+.s-yt{color:#ff4444;border-color:rgba(255,68,68,.28);background:rgba(255,68,68,.06)}.s-yt:hover{background:rgba(255,68,68,.16);box-shadow:0 0 22px rgba(255,68,68,.22);transform:translateY(-3px)}
+.s-ig{color:#e1306c;border-color:rgba(225,48,108,.28);background:rgba(225,48,108,.06)}.s-ig:hover{background:rgba(225,48,108,.16);box-shadow:0 0 22px rgba(225,48,108,.22);transform:translateY(-3px)}
+.s-dc{color:#5865f2;border-color:rgba(88,101,242,.28);background:rgba(88,101,242,.06)}.s-dc:hover{background:rgba(88,101,242,.16);box-shadow:0 0 22px rgba(88,101,242,.22);transform:translateY(-3px)}
+.s-rb{color:#e53e3e;border-color:rgba(229,62,62,.28);background:rgba(229,62,62,.06)}.s-rb:hover{background:rgba(229,62,62,.16);transform:translateY(-3px)}
+.s-mc{color:#5d9e3f;border-color:rgba(93,158,63,.28);background:rgba(93,158,63,.06)}.s-mc:hover{background:rgba(93,158,63,.16);transform:translateY(-3px)}
+/* ══════════════════════════════════════
+   CONTACT
+══════════════════════════════════════ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.form-group{margin-bottom:14px}
+.form-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--tm);font-weight:600;margin-bottom:6px;display:block}
+.form-input,.form-ta{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.14);border-radius:8px;padding:13px 16px;color:var(--tp);font-family:'Rajdhani',sans-serif;font-size:16px;transition:.3s;width:100%}
+.form-input:focus,.form-ta:focus{outline:none;border-color:rgba(0,212,255,.48);background:rgba(0,212,255,.08);box-shadow:0 0 18px rgba(0,212,255,.09)}
+.form-input::placeholder,.form-ta::placeholder{color:rgba(232,234,246,.22)}
+.form-ta{height:130px;resize:none;font-family:'Rajdhani',sans-serif}
+.ci{display:flex;align-items:center;gap:14px;padding:18px;border-radius:12px;background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.1);transition:.3s;margin-bottom:12px;color:inherit}
+.ci:hover{border-color:rgba(0,212,255,.3);transform:translateX(5px)}
+.ci-icon{font-size:26px;flex-shrink:0}
+.ci strong{display:block;font-weight:700;margin-bottom:3px}
+.ci span{font-size:13px;color:var(--tm);font-family:'Share Tech Mono',monospace}
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{border-top:1px solid rgba(0,212,255,.09);padding:40px;text-align:center;position:relative;z-index:2}
+.ft-logo{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:900;background:linear-gradient(135deg,var(--nb),var(--np));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:12px}
+.ft-sub{color:var(--tm);font-size:13px;margin-bottom:22px}
+.ft-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-bottom:22px}
+.ft-links a{color:var(--tm);font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:.3s}.ft-links a:hover{color:var(--nb)}
+.ft-copy{font-size:12px;color:rgba(232,234,246,.2)}
+/* ══════════════════════════════════════
+   FIXED WIDGETS
+══════════════════════════════════════ */
+#clock{position:fixed;bottom:28px;left:28px;z-index:800;font-family:'Share Tech Mono',monospace;font-size:13px;color:rgba(0,212,255,.65);background:rgba(5,5,15,.85);border:1px solid rgba(0,212,255,.18);padding:7px 14px;border-radius:6px;backdrop-filter:blur(10px)}
+#vis-badge{position:fixed;bottom:28px;right:80px;z-index:800;font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(191,0,255,.7);background:rgba(5,5,15,.85);border:1px solid rgba(191,0,255,.2);padding:7px 14px;border-radius:6px;backdrop-filter:blur(10px);display:flex;align-items:center;gap:7px}
+.vdot{width:5px;height:5px;border-radius:50%;background:var(--ng);animation:pulse 1.4s infinite;flex-shrink:0}
+/* ══════════════════════════════════════
+   NOTIFICATION
+══════════════════════════════════════ */
+#notif{position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-90px);background:rgba(0,212,255,.13);border:1px solid rgba(0,212,255,.32);border-radius:8px;padding:12px 24px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;color:var(--nc);z-index:99999;letter-spacing:1px;transition:transform .4s cubic-bezier(.25,1,.5,1);backdrop-filter:blur(10px);white-space:nowrap;max-width:90vw;text-align:center}
+#notif.show{transform:translateX(-50%) translateY(0)}
+/* ══════════════════════════════════════
+   ADMIN PASSWORD MODAL
+══════════════════════════════════════ */
+#pw-overlay{position:fixed;inset:0;z-index:9994;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:20px}
+#pw-overlay.show{display:flex}
+#pw-box{background:rgba(5,5,22,0.98);border:1px solid rgba(0,212,255,.28);border-radius:20px;padding:40px 36px;width:100%;max-width:360px;text-align:center;position:relative;box-shadow:0 0 60px rgba(0,212,255,.12),0 30px 80px rgba(0,0,0,.7)}
+#pw-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;border-radius:20px 20px 0 0;background:linear-gradient(90deg,transparent,rgba(0,212,255,.5),transparent)}
+.pw-ico{font-size:44px;display:block;margin-bottom:14px;animation:float 3s ease-in-out infinite}
+.pw-title{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;color:var(--nb);margin-bottom:5px;letter-spacing:2px}
+.pw-sub{font-size:12px;color:var(--tm);margin-bottom:24px;font-family:'Share Tech Mono',monospace;letter-spacing:1px}
+.pw-dots{display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+.pw-d{width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(0,212,255,.3);transition:.2s}
+.pw-d.on{background:var(--nb);border-color:var(--nb);box-shadow:0 0 8px var(--nb)}
+#pw-in{width:100%;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.18);border-radius:10px;padding:13px 16px;color:var(--tp);font-family:'Share Tech Mono',monospace;font-size:18px;letter-spacing:5px;text-align:center;transition:.3s;margin-bottom:12px}
+#pw-in:focus{outline:none;border-color:rgba(0,212,255,.55);background:rgba(0,212,255,.09);box-shadow:0 0 18px rgba(0,212,255,.12)}
+#pw-in.err{border-color:rgba(255,0,110,.55);color:var(--npi)}
+#pw-in.shake{animation:pwshk .4s ease}
+@keyframes pwshk{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+#pw-err{font-size:12px;color:var(--npi);font-family:'Share Tech Mono',monospace;letter-spacing:1px;min-height:18px;margin-bottom:14px}
+.pw-btn{width:100%;padding:13px;border-radius:10px;border:none;cursor:pointer;font-family:'Orbitron',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(135deg,var(--nb),var(--np));color:#fff;transition:.3s;box-shadow:0 0 18px rgba(0,212,255,.22)}
+.pw-btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(0,212,255,.4)}
+.pw-cancel{display:block;margin-top:12px;font-size:12px;color:var(--tm);cursor:pointer;font-family:'Share Tech Mono',monospace;background:none;border:none;width:100%;letter-spacing:1px;transition:.3s}
+.pw-cancel:hover{color:var(--nb)}
+/* ══════════════════════════════════════
+   ADMIN TOGGLE BUTTON
+══════════════════════════════════════ */
+#admin-toggle{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:9991;background:linear-gradient(135deg,var(--nb),var(--np));border:none;color:#fff;cursor:pointer;width:40px;height:40px;border-radius:50%;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(0,212,255,.38);transition:.3s}
 #admin-toggle:hover{transform:translateY(-50%) scale(1.1)}
-.admin-header{
-  font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;
-  color:var(--neon-blue);margin-bottom:24px;padding-bottom:16px;
-  border-bottom:1px solid rgba(0,212,255,0.15);
-  display:flex;align-items:center;justify-content:space-between;
+/* ══════════════════════════════════════
+   ADMIN PANEL
+══════════════════════════════════════ */
+#admin{position:fixed;right:-100%;top:0;bottom:0;width:440px;max-width:100vw;background:rgba(4,4,18,.98);border-left:1px solid rgba(0,212,255,.18);z-index:9990;backdrop-filter:blur(24px);transition:right .4s cubic-bezier(.25,1,.5,1);overflow-y:auto;padding:0}
+#admin.open{right:0}
+.adm-hd{padding:20px 22px;border-bottom:1px solid rgba(0,212,255,.12);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(4,4,18,.97);z-index:10;backdrop-filter:blur(10px)}
+.adm-title{font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:var(--nb);letter-spacing:1px}
+.adm-close{background:none;border:none;color:var(--tm);font-size:20px;cursor:pointer;padding:4px;transition:.3s;line-height:1}
+.adm-close:hover{color:var(--npi)}
+.adm-body{padding:20px}
+/* Tabs */
+.adm-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.adm-tab{padding:7px 14px;border-radius:20px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-family:'Rajdhani',sans-serif;font-weight:700;cursor:pointer;border:1px solid rgba(0,212,255,.18);background:transparent;color:var(--tm);transition:.3s}
+.adm-tab.active,.adm-tab:hover{background:rgba(0,212,255,.12);border-color:rgba(0,212,255,.4);color:var(--nb)}
+.adm-tab-content{display:none}
+.adm-tab-content.active{display:block}
+/* Sections */
+.adm-sec{margin-bottom:22px}
+.adm-sec-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--np);font-weight:700;margin-bottom:12px;font-family:'Share Tech Mono',monospace;display:flex;align-items:center;gap:6px}
+.adm-sec-title::before{content:'▸';color:var(--nb)}
+.adm-f{margin-bottom:12px}
+.adm-l{font-size:11px;color:var(--tm);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;display:block}
+.adm-in{width:100%;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.14);border-radius:7px;padding:9px 13px;color:var(--tp);font-family:'Rajdhani',sans-serif;font-size:14px;transition:.3s}
+.adm-in:focus{outline:none;border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.09)}
+.adm-ta{width:100%;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.14);border-radius:7px;padding:9px 13px;color:var(--tp);font-family:'Rajdhani',sans-serif;font-size:14px;height:90px;resize:none;transition:.3s}
+.adm-ta:focus{outline:none;border-color:rgba(0,212,255,.4);background:rgba(0,212,255,.09)}
+.adm-btn{width:100%;padding:11px;border-radius:8px;border:none;cursor:pointer;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;background:linear-gradient(135deg,var(--nb),var(--np));color:#fff;margin-top:6px;transition:.3s}
+.adm-btn:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(0,212,255,.38)}
+.adm-btn-sec{background:rgba(0,212,255,.1);color:var(--nb);border:1px solid rgba(0,212,255,.25)}
+.adm-btn-sec:hover{background:rgba(0,212,255,.2)}
+.adm-btn-red{background:rgba(255,0,110,.12);color:var(--npi);border:1px solid rgba(255,0,110,.25)}
+.adm-btn-red:hover{background:rgba(255,0,110,.22)}
+.adm-toggle-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.adm-tl{font-size:13px;color:var(--tp)}
+.sw{position:relative;width:42px;height:22px;cursor:pointer;flex-shrink:0}
+.sw input{display:none}
+.sw-track{position:absolute;inset:0;border-radius:11px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);transition:.3s}
+.sw input:checked+.sw-track{background:var(--nb);border-color:var(--nb)}
+.sw-thumb{position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.3s}
+.sw input:checked~.sw-thumb{left:23px}
+/* PFP Upload */
+.pfp-upload-area{border:2px dashed rgba(0,212,255,.25);border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:.3s;position:relative;overflow:hidden;background:rgba(0,212,255,.03)}
+.pfp-upload-area:hover{border-color:rgba(0,212,255,.5);background:rgba(0,212,255,.07)}
+.pfp-preview{width:90px;height:90px;border-radius:50%;margin:0 auto 12px;border:2px solid rgba(0,212,255,.35);overflow:hidden;background:linear-gradient(135deg,#0a0a20,#1a0830);display:flex;align-items:center;justify-content:center;font-size:32px}
+.pfp-preview img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+#pfp-file{display:none}
+.pfp-label{font-size:12px;color:var(--tm);margin-bottom:6px;display:block}
+.pfp-hint{font-size:10px;color:rgba(232,234,246,.3);font-family:'Share Tech Mono',monospace;letter-spacing:1px}
+/* Color picker */
+.color-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.color-item label{font-size:10px;color:var(--tm);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:4px}
+.color-item input[type=color]{width:100%;height:38px;border-radius:6px;border:1px solid rgba(0,212,255,.15);background:transparent;cursor:pointer;padding:2px}
+/* Skill editor */
+.skill-editor{display:grid;gap:10px}
+.skill-row{display:flex;gap:8px;align-items:center}
+.skill-row .adm-in{flex:1}
+.skill-row input[type=range]{flex:1;accent-color:var(--nb)}
+.skill-row .pct-show{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--nb);width:36px;flex-shrink:0}
+.skill-del{background:rgba(255,0,110,.12);border:1px solid rgba(255,0,110,.25);color:var(--npi);border-radius:6px;padding:6px 10px;cursor:pointer;font-size:13px;flex-shrink:0;transition:.3s}
+.skill-del:hover{background:rgba(255,0,110,.25)}
+/* Adm divider */
+.adm-div{height:1px;background:rgba(0,212,255,.08);margin:16px 0}
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:36px;text-align:center;padding-top:60px}
+  .hero-visual{order:-1}
+  .av-wrap{width:280px;height:280px;margin:0 auto}
+  .av-core{width:170px;height:170px}
+  .hero-btns{justify-content:center}
+  .hero-stats{justify-content:center}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .plat-grid{grid-template-columns:repeat(3,1fr)}
+  .mc-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+  .yt-stats{grid-template-columns:1fr 1fr}
+  #admin{width:100%;max-width:100vw}
+  #clock,#vis-badge{display:none}
+  .divider{margin:0 20px}
 }
-.admin-close{
-  background:none;border:none;color:var(--text-muted);
-  font-size:20px;cursor:pointer;padding:4px;transition:color .3s;
-}
-.admin-close:hover{color:var(--neon-blue)}
-.admin-section{margin-bottom:28px}
-.admin-section-title{
-  font-size:12px;letter-spacing:2px;text-transform:uppercase;
-  color:var(--neon-purple);font-weight:700;margin-bottom:14px;
-  font-family:'Share Tech Mono',monospace;
-}
-.admin-field{margin-bottom:14px}
-.admin-label{
-  font-size:12px;color:var(--text-muted);letter-spacing:1px;
-  text-transform:uppercase;margin-bottom:6px;display:block;
-}
-.admin-input{
-  width:100%;background:rgba(0,212,255,0.05);
-  border:1px solid rgba(0,212,255,0.15);border-radius:6px;
-  padding:10px 14px;color:var(--text-primary);
-  font-family:'Rajdhani',sans-serif;font-size:15px;
-  transition:all .3s;
-}
-.admin-input:focus{
-  outline:none;border-color:rgba(0,212,255,0.4);
-  background:rgba(0,212,255,0.08);
-}
-.admin-btn{
-  width:100%;padding:12px;border-radius:8px;border:none;cursor:pointer;
-  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:14px;
-  letter-spacing:1.5px;text-transform:uppercase;
-  background:linear-gradient(135deg,var(--neon-blue),var(--neon-purple));
-  color:#fff;margin-top:8px;transition:all .3s;
-}
-.admin-btn:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(0,212,255,0.4)}
-.admin-toggle-field{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.admin-toggle-label{font-size:14px;color:var(--text-primary)}
-.toggle-switch{
-  position:relative;width:44px;height:24px;cursor:pointer;
-}
-.toggle-switch input{display:none}
-.toggle-track{
-  position:absolute;inset:0;border-radius:12px;
-  background:rgba(255,255,255,0.1);transition:.3s;
-  border:1px solid rgba(255,255,255,0.15);
-}
-.toggle-switch input:checked+.toggle-track{background:var(--neon-blue);border-color:var(--neon-blue)}
-.toggle-thumb{
-  position:absolute;top:3px;left:3px;width:16px;height:16px;
-  border-radius:50%;background:#fff;transition:.3s;
-}
-.toggle-switch input:checked~.toggle-thumb{left:23px}
-/* NOTIFICATION */
-.notification{
-  position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);
-  background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.35);
-  border-radius:8px;padding:14px 24px;
-  font-family:'Rajdhani',sans-serif;font-weight:700;font-size:15px;
-  color:var(--neon-cyan);z-index:9999;letter-spacing:1px;
-  transition:transform .4s cubic-bezier(.25,1,.5,1);backdrop-filter:blur(10px);
-}
-.notification.show{transform:translateX(-50%) translateY(0)}
-/* ANIMATE IN */
-.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-/* YOUTUBE SECTION */
-.yt-section-header{
-  display:flex;align-items:center;gap:20px;
-  padding:28px 32px;
-  background:rgba(255,30,30,0.06);
-  border:1px solid rgba(255,50,50,0.2);
-  border-radius:16px;margin-bottom:28px;
-}
-.yt-channel-avatar{
-  width:80px;height:80px;border-radius:50%;
-  border:2px solid rgba(255,50,50,0.5);
-  background:linear-gradient(135deg,#1a0000,#330000);
-  display:flex;align-items:center;justify-content:center;
-  font-size:32px;flex-shrink:0;overflow:hidden;
-}
-.yt-channel-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.yt-channel-info{flex:1}
-.yt-channel-name{
-  font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;
-  color:#fff;display:flex;align-items:center;gap:10px;margin-bottom:6px;
-}
-.yt-verified{
-  background:#ff4444;color:#fff;font-size:10px;
-  padding:2px 8px;border-radius:10px;font-family:'Rajdhani',sans-serif;
-  font-weight:700;letter-spacing:1px;
-}
-.yt-handle{font-family:'Share Tech Mono',monospace;font-size:14px;color:rgba(255,100,100,0.7)}
-.yt-stats-row{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;
-}
-.yt-stat-card{
-  padding:24px 20px;border-radius:14px;text-align:center;
-  background:rgba(255,30,30,0.06);border:1px solid rgba(255,50,50,0.15);
-  transition:all .3s;
-}
-.yt-stat-card:hover{border-color:rgba(255,50,50,0.4);transform:translateY(-3px)}
-.yt-stat-icon{font-size:28px;margin-bottom:10px;display:block}
-.yt-stat-num{
-  font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;
-  color:#ff4444;display:block;margin-bottom:4px;
-}
-.yt-stat-label{font-size:12px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase}
-.yt-videos-title{
-  font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;
-  color:#ff4444;margin-bottom:18px;display:flex;align-items:center;gap:10px;
-}
-.yt-videos-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;
-}
-.yt-video-card{
-  border-radius:12px;overflow:hidden;
-  background:rgba(10,10,20,0.8);
-  border:1px solid rgba(255,50,50,0.12);
-  transition:all .3s;cursor:pointer;text-decoration:none;display:block;
-}
-.yt-video-card:hover{border-color:rgba(255,50,50,0.4);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.5)}
-.yt-thumb-wrap{position:relative;padding-top:56.25%;overflow:hidden;background:#0d0d0d}
-.yt-thumb-wrap img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;transition:transform .4s;
-}
-.yt-video-card:hover .yt-thumb-wrap img{transform:scale(1.06)}
-.yt-thumb-play{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,0.3);opacity:0;transition:opacity .3s;
-}
-.yt-video-card:hover .yt-thumb-play{opacity:1}
-.yt-play-btn{
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(255,0,0,0.85);display:flex;align-items:center;justify-content:center;
-  font-size:18px;padding-left:4px;
-}
-.yt-duration{
-  position:absolute;bottom:6px;right:8px;
-  background:rgba(0,0,0,0.85);color:#fff;
-  font-size:11px;padding:2px 6px;border-radius:4px;
-  font-family:'Share Tech Mono',monospace;
-}
-.yt-video-info{padding:14px}
-.yt-video-title{
-  font-size:14px;font-weight:600;color:var(--text-primary);
-  line-height:1.4;margin-bottom:8px;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-}
-.yt-video-meta{font-size:12px;color:var(--text-muted);font-family:'Share Tech Mono',monospace}
-.yt-skeleton{
-  background:linear-gradient(90deg,rgba(255,255,255,0.04) 25%,rgba(255,255,255,0.08) 50%,rgba(255,255,255,0.04) 75%);
-  background-size:200% 100%;
-  animation:skeleton-shine 1.4s infinite;
-  border-radius:8px;
-}
-@keyframes skeleton-shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.yt-error{
-  text-align:center;padding:48px 24px;
-  color:var(--text-muted);font-size:15px;
-}
-.live-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(255,0,0,0.85);color:#fff;
-  font-size:11px;font-weight:700;letter-spacing:1px;
-  padding:3px 10px;border-radius:4px;font-family:'Rajdhani',sans-serif;
-  animation:live-pulse 1s ease-in-out infinite;
-}
-@keyframes live-pulse{0%,100%{opacity:1}50%{opacity:.7}}
 @media(max-width:768px){
-  .yt-stats-row{grid-template-columns:1fr 1fr}
-  .yt-videos-grid{grid-template-columns:1fr 1fr}
-  .yt-section-header{flex-direction:column;text-align:center}
+  nav{padding:12px 18px}
+  .nav-links{display:none}
+  .nav-burger{display:flex}
+  section{padding:70px 18px}
+  #hero{padding:70px 18px 40px}
+  .av-wrap{width:240px;height:240px}
+  .av-core{width:148px;height:148px}
+  .av-placeholder{font-size:60px}
+  .plat-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .yt-stats{grid-template-columns:1fr 1fr}
+  .yt-grid{grid-template-columns:1fr 1fr}
+  .dc-stats{gap:24px}
+  .mc-skin-img{width:90px;height:180px}
+  .ftag{font-size:10px;padding:4px 10px}
+  .t-mc{right:-8px}.t-rb{right:-4px}.t-yt{left:-4px}
+  .adm-tabs{gap:4px}
+  .adm-tab{padding:6px 10px;font-size:10px}
 }
 @media(max-width:480px){
-  .yt-stats-row{grid-template-columns:1fr}
-  .yt-videos-grid{grid-template-columns:1fr}
-  .yt-stat-num{font-size:22px}
+  .hero-title{font-size:clamp(44px,14vw,72px)}
+  .hero-btns{flex-direction:column;align-items:center;width:100%}
+  .btn{width:100%;max-width:300px}
+  .hero-stats{gap:18px}
+  .stat-n{font-size:20px}
+  .plat-grid{grid-template-columns:1fr 1fr}
+  .yt-stats{grid-template-columns:1fr}
+  .yt-grid{grid-template-columns:1fr}
+  .dc-stats{flex-direction:column;gap:14px}
+  .socials-wrap{gap:10px}
+  .soc{padding:10px 16px;font-size:13px}
+  #pw-box{padding:28px 20px}
+  .adm-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  .color-grid{grid-template-columns:1fr}
+  section{padding:60px 14px}
 }
-@media(hover:none),(pointer:coarse){
-  body{cursor:auto}
-  #cursor,#cursor-ring,#mouse-glow{display:none!important}
-}
-/* ===== TABLET ===== */
-@media(max-width:968px){
-  nav{padding:14px 20px}
-  .nav-links{display:none}
-  .nav-hamburger{display:flex}
-  .nav-mobile-open .nav-links{
-    display:flex;flex-direction:column;
-    position:fixed;top:58px;left:0;right:0;bottom:0;
-    background:rgba(5,5,15,0.99);
-    padding:32px 28px;gap:24px;z-index:899;
-    overflow-y:auto;
-    border-bottom:1px solid rgba(0,212,255,0.15);
-  }
-  .nav-mobile-open .nav-links a{font-size:20px;padding:8px 0}
-  section{padding:70px 20px}
-  #hero{padding:0 20px;min-height:100svh}
-  .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center;padding-top:80px;padding-bottom:40px}
-  .hero-visual{order:-1}
-  .avatar-container{width:240px;height:240px;margin:0 auto}
-  .avatar-core{width:150px;height:150px}
-  .hero-btns{justify-content:center;gap:10px}
-  .hero-stats{justify-content:center;gap:24px}
-  .stat-num{font-size:22px}
-  .about-grid{grid-template-columns:1fr;gap:32px}
-  .minecraft-grid{grid-template-columns:1fr;gap:24px}
-  .contact-grid{grid-template-columns:1fr;gap:24px}
-  .section-divider{margin:0 20px}
-  #admin-panel{width:100%;right:-100%}
-  #admin-panel.open{right:0}
-  .clock-widget,.visitor-badge{display:none}
-  .discord-members{gap:24px}
-  .glass-card{padding:24px}
-}
-/* ===== MOBILE ===== */
-@media(max-width:600px){
-  nav{padding:12px 16px}
-  .nav-logo{font-size:18px}
-  section{padding:60px 16px}
-  #hero{padding:0 16px}
-  .hero-grid{gap:28px;padding-top:72px;padding-bottom:32px}
-  .avatar-container{width:200px;height:200px}
-  .avatar-core{width:130px;height:130px}
-  .avatar-placeholder{font-size:60px}
-  .hero-badge{font-size:10px;padding:5px 14px;letter-spacing:1.5px}
-  .hero-title{font-size:clamp(40px,12vw,64px)}
-  .hero-subtitle{font-size:15px}
-  .hero-btns{flex-direction:column;align-items:center;gap:10px;width:100%}
-  .btn{width:100%;max-width:320px;justify-content:center;padding:13px 20px;font-size:14px}
-  .hero-stats{gap:20px}
-  .stat-num{font-size:20px}
-  .stat-label{font-size:11px}
-  .section-title{font-size:clamp(26px,8vw,40px)}
-  .platforms-grid{grid-template-columns:1fr 1fr;gap:12px}
-  .platform-card{padding:24px 14px}
-  .platform-icon{font-size:36px;margin-bottom:10px}
-  .platform-name{font-size:14px}
-  .platform-desc{font-size:12px}
-  .socials-grid{gap:12px}
-  .social-link{padding:10px 16px;font-size:13px;gap:8px}
-  .discord-members{flex-direction:column;gap:16px}
-  .discord-num{font-size:26px}
-  .mc-info{grid-template-columns:1fr 1fr}
-  .about-desc{font-size:15px}
-  .skill-item.glass-card{padding:16px}
-  .skill-name{font-size:13px}
-  .glass-card{padding:20px}
-  .rgb-inner{padding:20px}
-  .contact-info-item{padding:14px}
-  footer{padding:32px 16px}
-  .footer-links{gap:16px}
-  #admin-toggle{right:14px;width:38px;height:38px;font-size:16px}
-  #admin-pw-box{padding:32px 24px}
-  .pw-title{font-size:17px}
-  #pw-input{font-size:16px;padding:12px 14px}
-  .floating-tag{font-size:10px;padding:4px 10px}
-  .tag-minecraft{right:-8px}
-  .tag-roblox{right:-4px}
-  .tag-youtube{left:-4px}
-}
-/* ===== VERY SMALL (320px) ===== */
 @media(max-width:360px){
-  .platforms-grid{grid-template-columns:1fr}
+  .plat-grid{grid-template-columns:1fr}
+  .yt-grid{grid-template-columns:1fr}
   .hero-btns .btn{font-size:13px}
-  .hero-stats{gap:14px}
-  .social-link{padding:9px 12px;font-size:12px}
 }
 </style>
 </head>
@@ -957,313 +426,211 @@ footer{
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="loader-logo">SEMPAICRAFT</div>
-  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
-  <div class="loader-text" id="loader-text">INITIALIZING...</div>
+  <div class="ld-logo">SEMPAICRAFT</div>
+  <div class="ld-bar-wrap"><div class="ld-bar" id="ld-bar"></div></div>
+  <div class="ld-txt" id="ld-txt">INITIALIZING...</div>
 </div>
 
-<!-- CURSOR -->
+<!-- FX -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
-<!-- SCROLL BAR -->
-<div id="scroll-bar" style="width:0%"></div>
-<!-- MOUSE GLOW -->
-<div id="mouse-glow"></div>
-<!-- PARTICLES -->
+<div id="mglow"></div>
+<div id="scrollbar" style="width:0"></div>
 <canvas id="particles"></canvas>
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">SEMPAICRAFT</a>
+  <a href="#hero" class="nav-logo">
+    <img src="" alt="" class="nav-logo-pfp" id="nav-pfp">
+    SEMPAICRAFT
+  </a>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#platforms">Platforms</a></li>
-    <li><a href="#youtube">YouTube</a></li>
-    <li><a href="#minecraft">Minecraft</a></li>
-    <li><a href="#community">Community</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#platforms" onclick="closeNav()">Platforms</a></li>
+    <li><a href="#youtube" onclick="closeNav()">YouTube</a></li>
+    <li><a href="#minecraft" onclick="closeNav()">Minecraft</a></li>
+    <li><a href="#community" onclick="closeNav()">Discord</a></li>
+    <li><a href="#contact" onclick="closeNav()">Contact</a></li>
   </ul>
-  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+  <button class="nav-burger" id="burger" onclick="toggleNav()">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="grid-overlay"></div>
+  <div class="grid-bg"></div>
   <div class="hero-grid">
-    <div class="hero-content">
-      <div class="hero-badge fade-up"><span class="dot"></span>CREATOR HUB ONLINE</div>
-      <h1 class="hero-title fade-up">
-        <span class="line1">SEMPAI</span>
-        <span class="line2">CRAFT</span>
+    <div>
+      <div class="hero-badge fadeup"><span class="dot"></span><span id="hb-text">CREATOR HUB ONLINE</span></div>
+      <h1 class="hero-title fadeup">
+        <span class="l1" id="hero-l1">SEMPAI</span>
+        <span class="l2" id="hero-l2">CRAFT</span>
       </h1>
-      <p class="hero-subtitle fade-up">
-        <span class="typing-text" id="typing"></span><span class="typing-cursor"></span>
-      </p>
-      <div class="hero-btns fade-up">
-        <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      <p class="hero-sub fadeup"><span class="typing" id="typing-el"></span><span class="tcursor"></span></p>
+      <div class="hero-btns fadeup">
+        <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-r" id="btn-yt">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           Subscribe
         </a>
-        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="btn btn-ghost">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          Join Discord
+        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="btn btn-d" id="btn-dc">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Discord
         </a>
-        <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="btn btn-ghost">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.324 12 18.324s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="btn btn-g" id="btn-ig">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.324 12 18.324s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           Instagram
         </a>
       </div>
-      <div class="hero-stats fade-up">
-        <div class="stat-item"><span class="stat-num" data-target="50">0</span><span class="stat-label">K+ Subs</span></div>
-        <div class="stat-item"><span class="stat-num" data-target="120">0</span><span class="stat-label">Videos</span></div>
-        <div class="stat-item"><span class="stat-num" data-target="5000">0</span><span class="stat-label">Community</span></div>
+      <div class="hero-stats fadeup">
+        <div><span class="stat-n" id="hs-subs">—</span><span class="stat-l">Subscribers</span></div>
+        <div><span class="stat-n" id="hs-vids">—</span><span class="stat-l">Videos</span></div>
+        <div><span class="stat-n" id="hs-views">—</span><span class="stat-l">Total Views</span></div>
       </div>
     </div>
-    <div class="hero-visual fade-up">
-      <div class="avatar-container">
-        <div class="avatar-rings">
-          <div class="avatar-ring-1"></div>
-          <div class="avatar-ring-2"></div>
-          <div class="avatar-ring-3"></div>
+    <div class="hero-visual">
+      <div class="av-wrap fadeup">
+        <div class="av-rings"><div class="av-r1"></div><div class="av-r2"></div><div class="av-r3"></div></div>
+        <div class="av-glow"></div>
+        <div class="av-core" id="av-core">
+          <img src="" alt="SempaiCraft" class="av-img" id="av-img" style="display:none">
+          <span class="av-placeholder" id="av-ph">⚔</span>
         </div>
-        <div class="avatar-glow"></div>
-        <div class="avatar-core">
-          <span class="avatar-placeholder">⚔</span>
-        </div>
-        <div class="floating-tag tag-minecraft">⛏ MINECRAFT</div>
-        <div class="floating-tag tag-roblox">🎮 ROBLOX</div>
-        <div class="floating-tag tag-youtube">▶ YOUTUBE</div>
+        <div class="ftag t-mc">⛏ MINECRAFT</div>
+        <div class="ftag t-rb">🎮 ROBLOX</div>
+        <div class="ftag t-yt">▶ YOUTUBE</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <section id="about">
   <div class="container">
-    <div class="section-label fade-up">About</div>
-    <h2 class="section-title fade-up"><span class="gradient-text">WHO IS</span><br>SEMPAICRAFT?</h2>
-    <div class="about-grid">
-      <div class="about-desc fade-up">
-        <p>Welcome to the hub of <strong>SempaiCraft</strong> — a passionate gaming creator living at the intersection of creativity, strategy, and community. Born from a love of blocky worlds and Roblox adventures, SempaiCraft has evolved into a full-fledged content creator powerhouse.</p>
-        <p>From <strong>epic Minecraft builds</strong> that push the limits of imagination, to intense <strong>Roblox PvP battles</strong> that keep audiences on the edge of their seats — every piece of content is crafted with precision and passion.</p>
-        <p>With a commitment to <strong>high-quality video editing</strong>, authentic storytelling, and a tight-knit <strong>community-first</strong> mentality, SempaiCraft isn't just a channel — it's an experience. A universe built pixel by pixel, frame by frame.</p>
-        <p style="margin-top:24px">
-          <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary" style="display:inline-flex">View Channel ↗</a>
-        </p>
+    <div class="sec-label fadeup">About</div>
+    <h2 class="sec-title fadeup"><span class="grad">WHO IS</span><br>SEMPAICRAFT?</h2>
+    <div class="about-grid" style="margin-top:36px">
+      <div>
+        <div class="card fadeup">
+          <div class="about-desc" id="about-text">
+            <p>Welcome to the hub of <strong>SempaiCraft</strong> — a passionate gaming creator living at the intersection of creativity, strategy, and community. Born from a love of blocky worlds and Roblox adventures, SempaiCraft has evolved into a full-fledged content creator powerhouse.</p>
+            <p>From <strong>epic Minecraft builds</strong> that push the limits of imagination, to intense <strong>Roblox PvP battles</strong> — every piece of content is crafted with precision and passion.</p>
+            <p>With a commitment to <strong>high-quality video editing</strong>, authentic storytelling, and a tight-knit <strong>community-first</strong> mentality, SempaiCraft isn't just a channel — it's an experience.</p>
+          </div>
+          <div style="margin-top:24px">
+            <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-p" style="font-size:13px">View Channel ↗</a>
+          </div>
+        </div>
       </div>
-      <div class="skills-grid fade-up">
-        <div class="skill-item glass-card" style="padding:20px">
-          <div class="skill-header"><span class="skill-name">⛏ Minecraft Building</span><span class="skill-pct">95%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
-        </div>
-        <div class="skill-item glass-card" style="padding:20px">
-          <div class="skill-header"><span class="skill-name">🎮 Roblox Gameplay</span><span class="skill-pct">90%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-item glass-card" style="padding:20px">
-          <div class="skill-header"><span class="skill-name">⚔ PvP Combat</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="88" style="background:linear-gradient(90deg,#ff006e,#bf00ff)"></div></div>
-        </div>
-        <div class="skill-item glass-card" style="padding:20px">
-          <div class="skill-header"><span class="skill-name">🎬 Video Editing</span><span class="skill-pct">85%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="85" style="background:linear-gradient(90deg,#bf00ff,#00d4ff)"></div></div>
-        </div>
-        <div class="skill-item glass-card" style="padding:20px">
-          <div class="skill-header"><span class="skill-name">🎯 Content Creation</span><span class="skill-pct">92%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
-        </div>
-        <div class="skill-item glass-card" style="padding:20px">
-          <div class="skill-header"><span class="skill-name">👥 Community Building</span><span class="skill-pct">97%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="97" style="background:linear-gradient(90deg,#00ff88,#00d4ff)"></div></div>
-        </div>
+      <div class="skills-list fadeup" id="skills-container">
+        <!-- skills rendered by JS -->
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- PLATFORMS -->
+<!-- ══ PLATFORMS ══ -->
 <section id="platforms">
   <div class="container">
-    <div class="section-label fade-up">Find Me</div>
-    <h2 class="section-title fade-up">PLATFORMS &amp; <span class="gradient-text">PROFILES</span></h2>
-    <div class="platforms-grid" style="margin-top:40px">
-      <a href="https://youtube.com/@sempaicraft" target="_blank" class="platform-card fade-up">
-        <span class="platform-icon">▶️</span>
-        <div class="platform-name">YouTube</div>
-        <div class="platform-desc">Gaming videos, builds, tutorials & Shorts</div>
-      </a>
-      <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="platform-card fade-up">
-        <span class="platform-icon">📸</span>
-        <div class="platform-name">Instagram</div>
-        <div class="platform-desc">Behind the scenes, reels & community posts</div>
-      </a>
-      <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="platform-card fade-up">
-        <span class="platform-icon">💬</span>
-        <div class="platform-name">Discord</div>
-        <div class="platform-desc">Live community, events & exclusive content</div>
-      </a>
-      <a href="https://www.roblox.com/share?code=1b4f728fe9991243b01323c3fa5eeefd&type=Profile&source=ProfileShare&stamp=1779159809166" target="_blank" class="platform-card fade-up">
-        <span class="platform-icon">🟥</span>
-        <div class="platform-name">Roblox</div>
-        <div class="platform-desc">Check out my Roblox profile & games</div>
-      </a>
-      <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="platform-card fade-up">
-        <span class="platform-icon">⛏️</span>
-        <div class="platform-name">NameMC</div>
-        <div class="platform-desc">Minecraft profile, skin & UUID</div>
-      </a>
+    <div class="sec-label fadeup">Find Me</div>
+    <h2 class="sec-title fadeup">PLATFORMS &amp; <span class="grad">PROFILES</span></h2>
+    <div class="plat-grid">
+      <a href="https://youtube.com/@sempaicraft" target="_blank" class="plat-card fadeup"><span class="plat-icon">▶️</span><div class="plat-name">YouTube</div><div class="plat-desc">Gaming videos, builds & Shorts</div></a>
+      <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="plat-card fadeup"><span class="plat-icon">📸</span><div class="plat-name">Instagram</div><div class="plat-desc">Behind the scenes & reels</div></a>
+      <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="plat-card fadeup"><span class="plat-icon">💬</span><div class="plat-name">Discord</div><div class="plat-desc">Live community & events</div></a>
+      <a href="https://www.roblox.com/share?code=1b4f728fe9991243b01323c3fa5eeefd&type=Profile&source=ProfileShare" target="_blank" class="plat-card fadeup"><span class="plat-icon">🟥</span><div class="plat-name">Roblox</div><div class="plat-desc">My Roblox profile & games</div></a>
+      <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="plat-card fadeup"><span class="plat-icon">⛏️</span><div class="plat-name">NameMC</div><div class="plat-desc">Minecraft profile & skin</div></a>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- YOUTUBE STATS -->
+<!-- ══ YOUTUBE ══ -->
 <section id="youtube">
   <div class="container">
-    <div class="section-label fade-up">YouTube</div>
-    <h2 class="section-title fade-up">YOUTUBE <span class="gradient-text">CHANNEL STATS</span></h2>
-
-    <!-- Channel Header Skeleton / Real -->
-    <div id="yt-header" class="yt-section-header fade-up">
-      <div class="yt-channel-avatar" id="yt-avatar">▶</div>
-      <div class="yt-channel-info">
-        <div class="yt-channel-name" id="yt-name">
-          <span>Loading...</span>
+    <div class="sec-label fadeup">YouTube</div>
+    <h2 class="sec-title fadeup">LIVE CHANNEL <span class="grad">STATS</span></h2>
+    <div style="margin-top:32px">
+      <!-- Channel header -->
+      <div class="yt-head fadeup">
+        <div class="yt-av" id="yt-av">▶</div>
+        <div class="yt-info">
+          <div class="yt-ch-name"><span id="yt-chname">SempaiCraft</span><span class="yt-badge">✓ CREATOR</span><span id="yt-live-badge" class="live-badge" style="display:none">● LIVE</span></div>
+          <div class="yt-handle">@sempaicraft</div>
         </div>
-        <div class="yt-handle" id="yt-handle">@sempaicraft</div>
+        <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-r" style="flex-shrink:0;font-size:13px">Subscribe ↗</a>
       </div>
-      <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary" style="flex-shrink:0">
-        Subscribe ↗
-      </a>
-    </div>
-
-    <!-- Stats Row -->
-    <div class="yt-stats-row fade-up">
-      <div class="yt-stat-card">
-        <span class="yt-stat-icon">👥</span>
-        <span class="yt-stat-num" id="yt-subs">—</span>
-        <span class="yt-stat-label">Subscribers</span>
+      <!-- Stats -->
+      <div class="yt-stats fadeup">
+        <div class="yt-sc"><span class="yt-si">👥</span><span class="yt-sn" id="yt-subs">Loading...</span><span class="yt-sl">Subscribers</span></div>
+        <div class="yt-sc"><span class="yt-si">👁</span><span class="yt-sn" id="yt-views">Loading...</span><span class="yt-sl">Total Views</span></div>
+        <div class="yt-sc"><span class="yt-si">🎬</span><span class="yt-sn" id="yt-vcnt">Loading...</span><span class="yt-sl">Videos</span></div>
       </div>
-      <div class="yt-stat-card">
-        <span class="yt-stat-icon">👁</span>
-        <span class="yt-stat-num" id="yt-views">—</span>
-        <span class="yt-stat-label">Total Views</span>
+      <!-- Videos -->
+      <div class="yt-vt fadeup">🔴 LATEST VIDEOS</div>
+      <div class="yt-grid fadeup" id="yt-grid">
+        <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,.1)"><div class="yt-skel" style="padding-top:56.25%"></div><div style="padding:12px"><div class="yt-skel" style="height:13px;margin-bottom:7px;width:88%"></div><div class="yt-skel" style="height:11px;width:55%"></div></div></div>
+        <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,.1)"><div class="yt-skel" style="padding-top:56.25%"></div><div style="padding:12px"><div class="yt-skel" style="height:13px;margin-bottom:7px;width:80%"></div><div class="yt-skel" style="height:11px;width:50%"></div></div></div>
+        <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,.1)"><div class="yt-skel" style="padding-top:56.25%"></div><div style="padding:12px"><div class="yt-skel" style="height:13px;margin-bottom:7px;width:75%"></div><div class="yt-skel" style="height:11px;width:48%"></div></div></div>
+        <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,.1)"><div class="yt-skel" style="padding-top:56.25%"></div><div style="padding:12px"><div class="yt-skel" style="height:13px;margin-bottom:7px;width:85%"></div><div class="yt-skel" style="height:11px;width:52%"></div></div></div>
       </div>
-      <div class="yt-stat-card">
-        <span class="yt-stat-icon">🎬</span>
-        <span class="yt-stat-num" id="yt-vids">—</span>
-        <span class="yt-stat-label">Videos</span>
+      <div style="text-align:center;margin-top:24px" class="fadeup">
+        <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-g">View All Videos ↗</a>
       </div>
-    </div>
-
-    <!-- Latest Videos -->
-    <div class="yt-videos-title fade-up">
-      🔴 LATEST VIDEOS
-      <span id="yt-live-badge" style="display:none" class="live-badge">● LIVE NOW</span>
-    </div>
-    <div class="yt-videos-grid fade-up" id="yt-videos-grid">
-      <!-- skeleton cards -->
-      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,0.1)">
-        <div class="yt-skeleton" style="padding-top:56.25%;width:100%"></div>
-        <div style="padding:14px"><div class="yt-skeleton" style="height:14px;margin-bottom:8px;width:90%"></div><div class="yt-skeleton" style="height:12px;width:60%"></div></div>
-      </div>
-      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,0.1)">
-        <div class="yt-skeleton" style="padding-top:56.25%;width:100%"></div>
-        <div style="padding:14px"><div class="yt-skeleton" style="height:14px;margin-bottom:8px;width:85%"></div><div class="yt-skeleton" style="height:12px;width:55%"></div></div>
-      </div>
-      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,0.1)">
-        <div class="yt-skeleton" style="padding-top:56.25%;width:100%"></div>
-        <div style="padding:14px"><div class="yt-skeleton" style="height:14px;margin-bottom:8px;width:80%"></div><div class="yt-skeleton" style="height:12px;width:50%"></div></div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:28px" class="fade-up">
-      <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-ghost">View All Videos ↗</a>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- MINECRAFT -->
+<!-- ══ MINECRAFT ══ -->
 <section id="minecraft">
   <div class="container">
-    <div class="section-label fade-up">Minecraft</div>
-    <h2 class="section-title fade-up">MINECRAFT <span class="gradient-text">PROFILE</span></h2>
-    <div class="minecraft-grid" style="margin-top:40px">
-      <div class="mc-skin-showcase fade-up">
-        <div class="cube-particle" style="top:10%;left:10%;animation-delay:0s"></div>
-        <div class="cube-particle" style="top:20%;right:15%;animation-delay:1s"></div>
-        <div class="cube-particle" style="bottom:20%;left:20%;animation-delay:2s"></div>
-        <div class="mc-skin-wrap">
-          <img
-            src="https://visage.surgeplay.com/full/512/SempaiCraft1"
-            alt="SempaiCraft Minecraft Skin"
-            class="mc-skin-img"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-          >
-          <div class="mc-skin-placeholder" style="display:none">🧱</div>
-        </div>
-        <div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:var(--neon-green);margin-bottom:8px">SempaiCraft1</div>
-        <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px">Minecraft Java Edition</div>
-        <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="btn btn-ghost" style="font-size:13px;padding:10px 20px">View on NameMC ↗</a>
-        <div class="mc-info">
-          <div class="mc-info-item">
-            <div class="mc-info-label">Edition</div>
-            <div class="mc-info-val">Java</div>
-          </div>
-          <div class="mc-info-item">
-            <div class="mc-info-label">Status</div>
-            <div class="mc-info-val" style="color:var(--neon-green)">Active</div>
-          </div>
+    <div class="sec-label fadeup">Minecraft</div>
+    <h2 class="sec-title fadeup">MINECRAFT <span class="grad">PROFILE</span></h2>
+    <div class="mc-grid" style="margin-top:36px">
+      <div class="mc-skin-box fadeup">
+        <div class="cube" style="top:8%;left:8%;animation-delay:0s"></div>
+        <div class="cube" style="top:15%;right:12%;animation-delay:1.2s"></div>
+        <div class="cube" style="bottom:18%;left:16%;animation-delay:2.1s"></div>
+        <img src="https://visage.surgeplay.com/full/512/SempaiCraft1" alt="Skin" class="mc-skin-img" id="mc-skin" onerror="this.style.display='none';document.getElementById('mc-ph').style.display='flex'">
+        <div id="mc-ph" style="display:none;font-size:72px;animation:float 4s ease-in-out infinite;justify-content:center;align-items:center;height:240px">🧱</div>
+        <div class="mc-username" id="mc-uname">SempaiCraft1</div>
+        <div class="mc-sub">Minecraft Java Edition</div>
+        <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="btn btn-g" style="font-size:12px;padding:9px 18px;margin:0 auto">View NameMC ↗</a>
+        <div class="mc-facts" style="margin-top:16px">
+          <div class="mc-fact"><div class="mc-fl">Edition</div><div class="mc-fv">Java</div></div>
+          <div class="mc-fact"><div class="mc-fl">Status</div><div class="mc-fv" style="color:var(--ng)">Active ✓</div></div>
+          <div class="mc-fact"><div class="mc-fl">Head</div><div class="mc-fv"><img src="https://mc-heads.net/avatar/SempaiCraft1/28" style="width:28px;height:28px;image-rendering:pixelated;border-radius:3px" onerror="this.style.display='none'"></div></div>
+          <div class="mc-fact"><div class="mc-fl">NameMC</div><div class="mc-fv">SempaiCraft1.1</div></div>
         </div>
       </div>
-      <div class="fade-up">
-        <div class="rgb-border" style="margin-bottom:20px">
+      <div class="fadeup">
+        <div class="rgb-wrap" style="margin-bottom:20px">
           <div class="rgb-inner">
-            <div style="font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;color:var(--neon-green);margin-bottom:16px">⛏ Skin Preview</div>
-            <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap">
-              <img src="https://mc-heads.net/avatar/SempaiCraft1/100" alt="Head" style="width:80px;height:80px;image-rendering:pixelated;border-radius:8px;border:2px solid rgba(93,158,63,0.4)" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%22 height=%22100%22 fill=%22%23222%22/><text x=%2250%22 y=%2260%22 text-anchor=%22middle%22 font-size=%2240%22>🧱</text></svg>'">
-              <img src="https://mc-heads.net/skin/SempaiCraft1" alt="Skin" style="width:64px;height:128px;image-rendering:pixelated;border-radius:4px;border:2px solid rgba(93,158,63,0.4)" onerror="this.style.display='none'">
-              <div style="flex:1;min-width:160px">
-                <div style="font-size:14px;color:var(--text-muted);line-height:1.8">
-                  <div>Username: <span style="color:var(--neon-green);font-family:'Share Tech Mono',monospace">SempaiCraft1</span></div>
-                  <div>Profile: <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" style="color:var(--neon-blue)">SempaiCraft1.1</a></div>
-                  <div>API: <span style="color:var(--neon-green);font-family:'Share Tech Mono',monospace">Mojang ✓</span></div>
-                </div>
-              </div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:var(--ng);margin-bottom:16px">⛏ Creator Highlights</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div style="padding:16px;background:rgba(93,158,63,.07);border:1px solid rgba(93,158,63,.15);border-radius:10px;text-align:center"><div style="font-size:26px;margin-bottom:6px">🏗️</div><div style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:var(--ng)">Builder</div><div style="font-size:12px;color:var(--tm)">Epic structures</div></div>
+              <div style="padding:16px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.12);border-radius:10px;text-align:center"><div style="font-size:26px;margin-bottom:6px">⚔️</div><div style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:var(--nb)">PvP Pro</div><div style="font-size:12px;color:var(--tm)">Combat master</div></div>
+              <div style="padding:16px;background:rgba(191,0,255,.05);border:1px solid rgba(191,0,255,.12);border-radius:10px;text-align:center"><div style="font-size:26px;margin-bottom:6px">🎬</div><div style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:var(--np)">Creator</div><div style="font-size:12px;color:var(--tm)">100+ videos</div></div>
+              <div style="padding:16px;background:rgba(255,0,110,.05);border:1px solid rgba(255,0,110,.12);border-radius:10px;text-align:center"><div style="font-size:26px;margin-bottom:6px">🌐</div><div style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:var(--npi)">Streamer</div><div style="font-size:12px;color:var(--tm)">Live sessions</div></div>
             </div>
           </div>
         </div>
-        <div class="glass-card fade-up">
-          <div style="font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:var(--neon-cyan);margin-bottom:20px">🏆 Creator Highlights</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-            <div style="padding:16px;background:rgba(93,158,63,0.08);border:1px solid rgba(93,158,63,0.15);border-radius:10px;text-align:center">
-              <div style="font-size:28px;margin-bottom:6px">🏗️</div>
-              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-green)">Builder</div>
-              <div style="font-size:12px;color:var(--text-muted)">Epic structures & landscapes</div>
-            </div>
-            <div style="padding:16px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.15);border-radius:10px;text-align:center">
-              <div style="font-size:28px;margin-bottom:6px">⚔️</div>
-              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-blue)">PvP Pro</div>
-              <div style="font-size:12px;color:var(--text-muted)">Competitive combat skills</div>
-            </div>
-            <div style="padding:16px;background:rgba(191,0,255,0.06);border:1px solid rgba(191,0,255,0.15);border-radius:10px;text-align:center">
-              <div style="font-size:28px;margin-bottom:6px">🎬</div>
-              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-purple)">Creator</div>
-              <div style="font-size:12px;color:var(--text-muted)">100+ videos uploaded</div>
-            </div>
-            <div style="padding:16px;background:rgba(255,0,110,0.06);border:1px solid rgba(255,0,110,0.15);border-radius:10px;text-align:center">
-              <div style="font-size:28px;margin-bottom:6px">🌐</div>
-              <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--neon-pink)">Streamer</div>
-              <div style="font-size:12px;color:var(--text-muted)">Live gaming sessions</div>
+        <div class="card fadeup">
+          <div style="font-family:'Orbitron',sans-serif;font-size:15px;font-weight:700;color:var(--nc);margin-bottom:16px">🧱 Skin Preview</div>
+          <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+            <img src="https://mc-heads.net/avatar/SempaiCraft1/80" alt="Head" style="width:80px;height:80px;image-rendering:pixelated;border-radius:8px;border:2px solid rgba(93,158,63,.35)" onerror="this.style.display='none'">
+            <img src="https://mc-heads.net/skin/SempaiCraft1" alt="Skin flat" style="width:56px;height:112px;image-rendering:pixelated;border-radius:4px;border:2px solid rgba(93,158,63,.25)" onerror="this.style.display='none'">
+            <div style="flex:1;min-width:140px;font-size:14px;color:var(--tm);line-height:2">
+              <div>User: <span style="color:var(--ng);font-family:'Share Tech Mono',monospace" id="mc-disp-name">SempaiCraft1</span></div>
+              <div>Profile: <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" style="color:var(--nb)">SempaiCraft1.1</a></div>
+              <div>API: <span style="color:var(--ng);font-family:'Share Tech Mono',monospace">Mojang ✓</span></div>
             </div>
           </div>
         </div>
@@ -1272,756 +639,730 @@ footer{
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- COMMUNITY / DISCORD -->
+<!-- ══ DISCORD ══ -->
 <section id="community">
   <div class="container">
-    <div class="section-label fade-up">Community</div>
-    <h2 class="section-title fade-up">JOIN THE <span class="gradient-text">COMMUNITY</span></h2>
-    <div style="max-width:700px;margin:40px auto 0;text-align:center" class="fade-up">
-      <div class="discord-widget-wrap">
-        <span class="discord-icon">💬</span>
-        <div style="font-family:'Orbitron',sans-serif;font-size:28px;font-weight:700;color:#5865f2;margin-bottom:12px">SempaiCraft Discord</div>
-        <div style="color:var(--text-muted);font-size:16px;margin-bottom:28px">Join the SempaiCraft gaming community! Chat, game together, get exclusive updates, and be part of something epic.</div>
-        <div class="discord-members">
-          <div class="discord-stat">
-            <span class="discord-num">500+</span>
-            <span class="discord-label">Members</span>
-          </div>
-          <div class="discord-stat">
-            <span class="discord-num" style="color:var(--neon-green)">🟢 Online</span>
-            <span class="discord-label">Right Now</span>
-          </div>
-        </div>
-        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="btn btn-primary" style="font-size:16px;padding:16px 40px">
-          <svg style="width:20px;height:20px" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          Join Discord Server
-        </a>
-        <div style="margin-top:20px">
-          <iframe src="https://discord.com/widget?id=1328707737361584128&theme=dark" width="100%" height="300" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="border-radius:10px;border:1px solid rgba(88,101,242,0.3);max-width:500px;width:100%;display:block;margin:0 auto"></iframe>
-        </div>
+    <div class="sec-label fadeup" style="justify-content:center;text-align:center">Community</div>
+    <h2 class="sec-title fadeup" style="text-align:center">JOIN THE <span class="grad">COMMUNITY</span></h2>
+    <div class="dc-box fadeup">
+      <span class="dc-icon">💬</span>
+      <div class="dc-title">SempaiCraft Discord</div>
+      <div class="dc-desc">Join the SempaiCraft gaming community! Chat, play together, get exclusive updates, and be part of something epic.</div>
+      <div class="dc-stats">
+        <div><span class="dc-sn" id="dc-members">500+</span><span class="dc-sl">Members</span></div>
+        <div><span class="dc-sn" style="color:var(--ng)" id="dc-online">🟢 Online</span><span class="dc-sl">Right Now</span></div>
+      </div>
+      <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="btn btn-d" style="font-size:15px;padding:14px 36px;margin:0 auto">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Join Discord Server
+      </a>
+      <div class="dc-widget">
+        <iframe src="https://discord.com/widget?id=1328707737361584128&theme=dark" height="300" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- SOCIAL HUB -->
+<!-- ══ SOCIAL HUB ══ -->
 <section id="socials">
   <div class="container" style="text-align:center">
-    <div class="section-label fade-up" style="justify-content:center">Links</div>
-    <h2 class="section-title fade-up">SOCIAL <span class="gradient-text">HUB</span></h2>
-    <div class="socials-grid fade-up" style="margin-top:40px">
-      <a href="https://youtube.com/@sempaicraft" target="_blank" class="social-link social-yt">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        YouTube
-      </a>
-      <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="social-link social-ig">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.324 12 18.324s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        Instagram
-      </a>
-      <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="social-link social-dc">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-        Discord
-      </a>
-      <a href="https://www.roblox.com/share?code=1b4f728fe9991243b01323c3fa5eeefd&type=Profile&source=ProfileShare&stamp=1779159809166" target="_blank" class="social-link social-rb">
-        🟥 Roblox
-      </a>
-      <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="social-link social-mc">
-        ⛏ NameMC
-      </a>
+    <div class="sec-label fadeup" style="justify-content:center">Links</div>
+    <h2 class="sec-title fadeup">SOCIAL <span class="grad">HUB</span></h2>
+    <div class="socials-wrap fadeup" style="margin-top:36px">
+      <a href="https://youtube.com/@sempaicraft" target="_blank" class="soc s-yt"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
+      <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="soc s-ig"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.324 12 18.324s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+      <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="soc s-dc"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.114 18.1.134 18.11a19.92 19.92 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.11 13.11 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>Discord</a>
+      <a href="https://www.roblox.com/share?code=1b4f728fe9991243b01323c3fa5eeefd&type=Profile&source=ProfileShare" target="_blank" class="soc s-rb">🟥 Roblox</a>
+      <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" class="soc s-mc">⛏ NameMC</a>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="container">
-    <div class="section-label fade-up">Contact</div>
-    <h2 class="section-title fade-up">GET IN <span class="gradient-text">TOUCH</span></h2>
-    <div class="contact-grid" style="margin-top:40px">
-      <div class="glass-card fade-up">
-        <div style="font-family:'Orbitron',sans-serif;font-size:18px;font-weight:700;color:var(--neon-blue);margin-bottom:24px">Send a Message</div>
-        <div class="contact-form" id="contact-form">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input type="text" class="form-input" placeholder="Enter your name" id="cf-name">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email Address</label>
-            <input type="email" class="form-input" placeholder="your@email.com" id="cf-email">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Subject</label>
-            <input type="text" class="form-input" placeholder="Collab? Business? Fan mail?" id="cf-subject">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Write your message here..." id="cf-message"></textarea>
-          </div>
-          <button class="btn btn-primary" onclick="sendMessage()" style="width:100%;justify-content:center;font-size:15px;padding:16px">
-            Send Message ✉
-          </button>
-        </div>
+    <div class="sec-label fadeup">Contact</div>
+    <h2 class="sec-title fadeup">GET IN <span class="grad">TOUCH</span></h2>
+    <div class="contact-grid" style="margin-top:36px">
+      <div class="card fadeup">
+        <div style="font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:var(--nb);margin-bottom:20px">📨 Send a Message</div>
+        <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" id="cf-name" placeholder="Your name"></div>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="cf-email" placeholder="your@email.com"></div>
+        <div class="form-group"><label class="form-label">Subject</label><input type="text" class="form-input" id="cf-subject" placeholder="Collab? Fan mail?"></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-ta" id="cf-msg" placeholder="Write your message..."></textarea></div>
+        <button class="btn btn-p" onclick="sendMsg()" style="width:100%;font-size:14px;padding:14px" id="send-btn">Send Message ✉</button>
       </div>
-      <div class="contact-info fade-up">
-        <a href="https://youtube.com/@sempaicraft" target="_blank" class="contact-info-item">
-          <span class="contact-info-icon">▶️</span>
-          <div class="contact-info-text">
-            <strong>YouTube Channel</strong>
-            <span>@sempaicraft</span>
-          </div>
-        </a>
-        <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="contact-info-item">
-          <span class="contact-info-icon">📸</span>
-          <div class="contact-info-text">
-            <strong>Instagram</strong>
-            <span>@other_side_of_sempai</span>
-          </div>
-        </a>
-        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="contact-info-item">
-          <span class="contact-info-icon">💬</span>
-          <div class="contact-info-text">
-            <strong>Discord Community</strong>
-            <span>discord.gg/9qrZQmN3KS</span>
-          </div>
-        </a>
-        <div class="glass-card" style="margin-top:8px">
-          <div style="font-size:14px;color:var(--text-muted);line-height:1.7">
-            For <strong style="color:var(--neon-cyan)">business inquiries</strong>, collaborations, or sponsorships — reach out through any platform. SempaiCraft is open to creative partnerships that align with the gaming community.
-          </div>
+      <div class="fadeup">
+        <a href="https://youtube.com/@sempaicraft" target="_blank" class="ci"><span class="ci-icon">▶️</span><div><strong>YouTube</strong><span>@sempaicraft</span></div></a>
+        <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" class="ci"><span class="ci-icon">📸</span><div><strong>Instagram</strong><span>@other_side_of_sempai</span></div></a>
+        <a href="https://discord.gg/9qrZQmN3KS" target="_blank" class="ci"><span class="ci-icon">💬</span><div><strong>Discord</strong><span>discord.gg/9qrZQmN3KS</span></div></a>
+        <div class="card" style="margin-top:4px">
+          <div style="font-size:13px;color:var(--tm);line-height:1.7">For <strong style="color:var(--nc)">business, collabs, or sponsorships</strong> — reach out on any platform or send a message. Open to creative partnerships!</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
-  <span class="footer-logo">SEMPAICRAFT</span>
-  <div class="footer-sub">Gaming Creator • Minecraft Builder • Roblox Player • YouTuber</div>
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#platforms">Platforms</a>
-    <a href="#minecraft">Minecraft</a>
-    <a href="#community">Community</a>
-    <a href="#contact">Contact</a>
+  <span class="ft-logo">SEMPAICRAFT</span>
+  <div class="ft-sub" id="footer-sub">Gaming Creator • Minecraft Builder • Roblox Player • YouTuber</div>
+  <div class="ft-links">
+    <a href="#about">About</a><a href="#platforms">Platforms</a><a href="#youtube">YouTube</a><a href="#minecraft">Minecraft</a><a href="#community">Discord</a><a href="#contact">Contact</a>
   </div>
-  <div style="margin-top:20px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap">
-    <a href="https://youtube.com/@sempaicraft" target="_blank" style="color:rgba(232,234,246,.4);font-size:22px;text-decoration:none">▶</a>
-    <a href="https://discord.gg/9qrZQmN3KS" target="_blank" style="color:rgba(232,234,246,.4);font-size:18px;text-decoration:none">💬</a>
-    <a href="https://www.instagram.com/other_side_of_sempai" target="_blank" style="color:rgba(232,234,246,.4);font-size:22px;text-decoration:none">📸</a>
-    <a href="https://namemc.com/profile/SempaiCraft1.1" target="_blank" style="color:rgba(232,234,246,.4);font-size:22px;text-decoration:none">⛏</a>
-  </div>
-  <div class="footer-copy">© 2025 SempaiCraft. All rights reserved. Built with ⚡ and ☕</div>
+  <div class="ft-copy">© 2025 SempaiCraft. All rights reserved. Built with ⚡</div>
 </footer>
 
-<!-- CLOCK -->
-<div class="clock-widget" id="clock">00:00:00</div>
-
-<!-- VISITOR -->
-<div class="visitor-badge">
-  <span class="visitor-dot"></span>
-  <span id="visitor-count">1,337</span> visitors
-</div>
-
-<!-- ADMIN PASSWORD MODAL -->
-<div id="admin-pw-overlay">
-  <div id="admin-pw-box">
-    <span class="pw-icon">🔐</span>
-    <div class="pw-title">ADMIN ACCESS</div>
-    <div class="pw-subtitle">// ENTER SECURITY CODE</div>
-    <div class="pw-dots">
-      <div class="pw-dot-ind" id="dot-0"></div>
-      <div class="pw-dot-ind" id="dot-1"></div>
-      <div class="pw-dot-ind" id="dot-2"></div>
-      <div class="pw-dot-ind" id="dot-3"></div>
-      <div class="pw-dot-ind" id="dot-4"></div>
-      <div class="pw-dot-ind" id="dot-5"></div>
-      <div class="pw-dot-ind" id="dot-6"></div>
-      <div class="pw-dot-ind" id="dot-7"></div>
-    </div>
-    <input type="password" id="pw-input" placeholder="••••••••" maxlength="8"
-      oninput="updateDots()" onkeydown="if(event.key==='Enter')checkPassword()">
-    <div id="pw-err"></div>
-    <button class="pw-btn" onclick="checkPassword()">⚡ AUTHENTICATE</button>
-    <button class="pw-cancel" onclick="closePasswordModal()">✕ Cancel</button>
-  </div>
-</div>
+<!-- FIXED WIDGETS -->
+<div id="clock">00:00:00</div>
+<div id="vis-badge"><span class="vdot"></span><span id="vis-cnt">1,337</span> visitors</div>
 
 <!-- ADMIN TOGGLE -->
-<button id="admin-toggle" onclick="openPasswordModal()" title="Admin Panel">⚙</button>
+<button id="admin-toggle" onclick="openAdmin()" title="Admin Panel">⚙</button>
 
-<!-- ADMIN PANEL -->
-<div id="admin-panel">
-  <div class="admin-header">
-    ⚙ ADMIN PANEL
-    <button class="admin-close" onclick="document.getElementById('admin-panel').classList.remove('open')">✕</button>
+<!-- PASSWORD MODAL -->
+<div id="pw-overlay">
+  <div id="pw-box">
+    <span class="pw-ico">🔐</span>
+    <div class="pw-title">ADMIN ACCESS</div>
+    <div class="pw-sub">// ENTER SECURITY CODE</div>
+    <div class="pw-dots" id="pw-dots"></div>
+    <input type="password" id="pw-in" placeholder="••••••••" maxlength="8" oninput="pwDots()" onkeydown="if(event.key==='Enter')checkPw()">
+    <div id="pw-err"></div>
+    <button class="pw-btn" onclick="checkPw()">⚡ AUTHENTICATE</button>
+    <button class="pw-cancel" onclick="closePwModal()">✕ Cancel</button>
   </div>
-
-  <div class="admin-section">
-    <div class="admin-section-title">Personal Info</div>
-    <div class="admin-field">
-      <label class="admin-label">Creator Name</label>
-      <input class="admin-input" id="admin-name" value="SempaiCraft" oninput="updateContent('hero-name',this.value)">
-    </div>
-    <div class="admin-field">
-      <label class="admin-label">Tagline</label>
-      <input class="admin-input" id="admin-tag" value="Gaming Creator • Minecraft Builder • Roblox Player • YouTuber">
-    </div>
-  </div>
-
-  <div class="admin-section">
-    <div class="admin-section-title">Social Links</div>
-    <div class="admin-field">
-      <label class="admin-label">YouTube URL</label>
-      <input class="admin-input" value="https://youtube.com/@sempaicraft">
-    </div>
-    <div class="admin-field">
-      <label class="admin-label">Instagram URL</label>
-      <input class="admin-input" value="https://www.instagram.com/other_side_of_sempai">
-    </div>
-    <div class="admin-field">
-      <label class="admin-label">Discord Invite</label>
-      <input class="admin-input" value="https://discord.gg/9qrZQmN3KS">
-    </div>
-    <div class="admin-field">
-      <label class="admin-label">NameMC Profile</label>
-      <input class="admin-input" value="https://namemc.com/profile/SempaiCraft1.1">
-    </div>
-  </div>
-
-  <div class="admin-section">
-    <div class="admin-section-title">Design Settings</div>
-    <div class="admin-field">
-      <label class="admin-label">Primary Neon Color</label>
-      <input type="color" class="admin-input" value="#00d4ff" style="height:44px;padding:4px;cursor:pointer" oninput="updateColor('--neon-blue',this.value)">
-    </div>
-    <div class="admin-field">
-      <label class="admin-label">Secondary Neon Color</label>
-      <input type="color" class="admin-input" value="#bf00ff" style="height:44px;padding:4px;cursor:pointer" oninput="updateColor('--neon-purple',this.value)">
-    </div>
-    <div class="admin-field">
-      <label class="admin-label">Accent Color</label>
-      <input type="color" class="admin-input" value="#00ff88" style="height:44px;padding:4px;cursor:pointer" oninput="updateColor('--neon-green',this.value)">
-    </div>
-  </div>
-
-  <div class="admin-section">
-    <div class="admin-section-title">Features</div>
-    <div class="admin-toggle-field">
-      <span class="admin-toggle-label">Particle Effects</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked onchange="toggleParticles(this.checked)">
-        <div class="toggle-track"></div>
-        <div class="toggle-thumb"></div>
-      </label>
-    </div>
-    <div class="admin-toggle-field">
-      <span class="admin-toggle-label">Cursor Glow</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked onchange="toggleCursorGlow(this.checked)">
-        <div class="toggle-track"></div>
-        <div class="toggle-thumb"></div>
-      </label>
-    </div>
-    <div class="admin-toggle-field">
-      <span class="admin-toggle-label">Mouse Glow</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked onchange="toggleMouseGlow(this.checked)">
-        <div class="toggle-track"></div>
-        <div class="toggle-thumb"></div>
-      </label>
-    </div>
-    <div class="admin-toggle-field">
-      <span class="admin-toggle-label">Digital Clock</span>
-      <label class="toggle-switch">
-        <input type="checkbox" checked onchange="document.getElementById('clock').style.display=this.checked?'block':'none'">
-        <div class="toggle-track"></div>
-        <div class="toggle-thumb"></div>
-      </label>
-    </div>
-  </div>
-
-  <div class="admin-section">
-    <div class="admin-section-title">Minecraft Settings</div>
-    <div class="admin-field">
-      <label class="admin-label">Minecraft Username</label>
-      <input class="admin-input" id="admin-mc-user" value="SempaiCraft1" oninput="updateMCSkin(this.value)">
-    </div>
-  </div>
-
-  <button class="admin-btn" onclick="saveSettings()">💾 Save Settings</button>
-  <button class="admin-btn" style="margin-top:8px;background:rgba(0,212,255,0.15);color:var(--neon-blue);border:1px solid rgba(0,212,255,0.3)" onclick="exportHTML()">📤 Export HTML</button>
 </div>
 
+<!-- ADMIN PANEL -->
+<div id="admin">
+  <div class="adm-hd">
+    <span class="adm-title">⚙ ADMIN PANEL</span>
+    <button class="adm-close" onclick="closeAdmin()">✕</button>
+  </div>
+  <div class="adm-body">
+
+    <!-- TABS -->
+    <div class="adm-tabs">
+      <button class="adm-tab active" onclick="showTab('tab-profile',this)">Profile</button>
+      <button class="adm-tab" onclick="showTab('tab-design',this)">Design</button>
+      <button class="adm-tab" onclick="showTab('tab-skills',this)">Skills</button>
+      <button class="adm-tab" onclick="showTab('tab-links',this)">Links</button>
+      <button class="adm-tab" onclick="showTab('tab-api',this)">APIs</button>
+      <button class="adm-tab" onclick="showTab('tab-fx',this)">FX</button>
+    </div>
+
+    <!-- TAB: PROFILE -->
+    <div class="adm-tab-content active" id="tab-profile">
+      <div class="adm-sec">
+        <div class="adm-sec-title">Profile Picture</div>
+        <div class="pfp-upload-area" onclick="document.getElementById('pfp-file').click()">
+          <div class="pfp-preview" id="pfp-preview"><span>👤</span></div>
+          <span class="pfp-label">Click to upload profile picture</span>
+          <span class="pfp-hint">JPG · PNG · GIF · Max 5MB</span>
+          <input type="file" id="pfp-file" accept="image/*" onchange="handlePfp(event)">
+        </div>
+        <button class="adm-btn adm-btn-red" onclick="removePfp()" style="margin-top:8px;font-size:12px">✕ Remove PFP</button>
+      </div>
+      <div class="adm-div"></div>
+      <div class="adm-sec">
+        <div class="adm-sec-title">Creator Info</div>
+        <div class="adm-f"><label class="adm-l">Creator Name</label><input class="adm-in" id="ai-name" value="SempaiCraft" oninput="liveUpdate()"></div>
+        <div class="adm-f"><label class="adm-l">Tagline / Subtitle</label><input class="adm-in" id="ai-tag" value="Gaming Creator • Minecraft Builder • Roblox Player • YouTuber" oninput="liveUpdate()"></div>
+        <div class="adm-f"><label class="adm-l">Hero Badge Text</label><input class="adm-in" id="ai-badge" value="CREATOR HUB ONLINE" oninput="liveUpdate()"></div>
+        <div class="adm-f"><label class="adm-l">About Text</label><textarea class="adm-ta" id="ai-about" oninput="liveUpdate()">Welcome to the hub of SempaiCraft — a passionate gaming creator living at the intersection of creativity, strategy, and community. From epic Minecraft builds to intense Roblox PvP battles, every piece of content is crafted with precision and passion.</textarea></div>
+        <div class="adm-f"><label class="adm-l">Minecraft Username</label><input class="adm-in" id="ai-mcuser" value="SempaiCraft1" oninput="updateMC(this.value)"></div>
+        <div class="adm-f"><label class="adm-l">Typing Texts (comma separated)</label><input class="adm-in" id="ai-typing" value="Gaming Creator,Minecraft Builder,Roblox Player,YouTuber,PvP Champion"></div>
+      </div>
+      <button class="adm-btn" onclick="applyAll()">💾 Apply All Changes</button>
+    </div>
+
+    <!-- TAB: DESIGN -->
+    <div class="adm-tab-content" id="tab-design">
+      <div class="adm-sec">
+        <div class="adm-sec-title">Neon Colors</div>
+        <div class="color-grid">
+          <div class="color-item"><label>Primary Blue</label><input type="color" value="#00d4ff" oninput="setVar('--nb',this.value)"></div>
+          <div class="color-item"><label>Secondary Purple</label><input type="color" value="#bf00ff" oninput="setVar('--np',this.value)"></div>
+          <div class="color-item"><label>Accent Cyan</label><input type="color" value="#00ffff" oninput="setVar('--nc',this.value)"></div>
+          <div class="color-item"><label>Pink / Hot</label><input type="color" value="#ff006e" oninput="setVar('--npi',this.value)"></div>
+          <div class="color-item"><label>Green</label><input type="color" value="#00ff88" oninput="setVar('--ng',this.value)"></div>
+          <div class="color-item"><label>Background</label><input type="color" value="#05050f" oninput="setVar('--bg',this.value);document.body.style.background=this.value"></div>
+        </div>
+      </div>
+      <div class="adm-div"></div>
+      <div class="adm-sec">
+        <div class="adm-sec-title">Quick Themes</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button class="adm-btn adm-btn-sec" onclick="applyTheme('cyber')" style="font-size:11px">💙 Cyberpunk Blue</button>
+          <button class="adm-btn adm-btn-sec" onclick="applyTheme('purple')" style="font-size:11px">💜 Neon Purple</button>
+          <button class="adm-btn adm-btn-sec" onclick="applyTheme('green')" style="font-size:11px">💚 Matrix Green</button>
+          <button class="adm-btn adm-btn-sec" onclick="applyTheme('gold')" style="font-size:11px">🟡 Gold Fire</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: SKILLS -->
+    <div class="adm-tab-content" id="tab-skills">
+      <div class="adm-sec">
+        <div class="adm-sec-title">Skill Bars</div>
+        <div class="skill-editor" id="skill-editor"></div>
+        <button class="adm-btn adm-btn-sec" onclick="addSkill()" style="margin-top:10px;font-size:12px">+ Add Skill</button>
+        <button class="adm-btn" onclick="renderSkills();showNotif('✓ Skills updated!')" style="margin-top:8px">💾 Save Skills</button>
+      </div>
+    </div>
+
+    <!-- TAB: LINKS -->
+    <div class="adm-tab-content" id="tab-links">
+      <div class="adm-sec">
+        <div class="adm-sec-title">Social Links</div>
+        <div class="adm-f"><label class="adm-l">YouTube URL</label><input class="adm-in" id="al-yt" value="https://youtube.com/@sempaicraft"></div>
+        <div class="adm-f"><label class="adm-l">Instagram URL</label><input class="adm-in" id="al-ig" value="https://www.instagram.com/other_side_of_sempai"></div>
+        <div class="adm-f"><label class="adm-l">Discord Invite</label><input class="adm-in" id="al-dc" value="https://discord.gg/9qrZQmN3KS"></div>
+        <div class="adm-f"><label class="adm-l">Roblox Profile</label><input class="adm-in" id="al-rb" value="https://www.roblox.com/share?code=1b4f728fe9991243b01323c3fa5eeefd&type=Profile&source=ProfileShare"></div>
+        <div class="adm-f"><label class="adm-l">NameMC Profile</label><input class="adm-in" id="al-mc" value="https://namemc.com/profile/SempaiCraft1.1"></div>
+      </div>
+      <button class="adm-btn" onclick="applyLinks()">💾 Update All Links</button>
+    </div>
+
+    <!-- TAB: APIs -->
+    <div class="adm-tab-content" id="tab-api">
+      <div class="adm-sec">
+        <div class="adm-sec-title">YouTube API</div>
+        <div class="adm-f"><label class="adm-l">API Key</label><input class="adm-in" id="api-ytkey" value="AIzaSyAFs6SzCqyhATwBrcwCyQNQ-qGO4afgUiI" type="password"></div>
+        <div class="adm-f"><label class="adm-l">Channel Handle</label><input class="adm-in" id="api-ytch" value="@sempaicraft"></div>
+        <button class="adm-btn adm-btn-sec" onclick="reloadYT()" style="font-size:12px">🔄 Reload YouTube Stats</button>
+      </div>
+      <div class="adm-div"></div>
+      <div class="adm-sec">
+        <div class="adm-sec-title">Discord Widget</div>
+        <div class="adm-f"><label class="adm-l">Server ID</label><input class="adm-in" id="api-dcid" value="1328707737361584128"></div>
+        <button class="adm-btn adm-btn-sec" onclick="reloadDiscord()" style="font-size:12px">🔄 Reload Discord Widget</button>
+      </div>
+      <div class="adm-div"></div>
+      <div class="adm-sec">
+        <div class="adm-sec-title">Contact Email</div>
+        <div class="adm-f"><label class="adm-l">Receive emails at</label><input class="adm-in" id="api-email" value="zedyt409@gmail.com"></div>
+      </div>
+    </div>
+
+    <!-- TAB: FX -->
+    <div class="adm-tab-content" id="tab-fx">
+      <div class="adm-sec">
+        <div class="adm-sec-title">Visual Effects</div>
+        <div class="adm-toggle-row"><span class="adm-tl">Particles</span><label class="sw"><input type="checkbox" id="fx-particles" checked onchange="toggleFX('particles',this.checked)"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
+        <div class="adm-toggle-row"><span class="adm-tl">Cursor Glow</span><label class="sw"><input type="checkbox" id="fx-cursor" checked onchange="toggleFX('cursor',this.checked)"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
+        <div class="adm-toggle-row"><span class="adm-tl">Mouse Halo</span><label class="sw"><input type="checkbox" id="fx-mglow" checked onchange="toggleFX('mglow',this.checked)"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
+        <div class="adm-toggle-row"><span class="adm-tl">Digital Clock</span><label class="sw"><input type="checkbox" id="fx-clock" checked onchange="document.getElementById('clock').style.display=this.checked?'block':'none'"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
+        <div class="adm-toggle-row"><span class="adm-tl">Visitor Counter</span><label class="sw"><input type="checkbox" id="fx-vis" checked onchange="document.getElementById('vis-badge').style.display=this.checked?'flex':'none'"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
+        <div class="adm-toggle-row"><span class="adm-tl">Scroll Progress Bar</span><label class="sw"><input type="checkbox" id="fx-scroll" checked onchange="document.getElementById('scrollbar').style.display=this.checked?'block':'none'"><div class="sw-track"></div><div class="sw-thumb"></div></label></div>
+      </div>
+    </div>
+
+  </div><!-- /adm-body -->
+</div><!-- /admin -->
+
 <!-- NOTIFICATION -->
-<div class="notification" id="notification">✓ Settings saved!</div>
+<div id="notif"></div>
 
 <script>
-// ===== LOADER =====
-const loaderTexts=['LOADING ASSETS...','BUILDING WORLD...','CONNECTING TO SERVERS...','INITIALIZING UI...','READY!'];
-let lt=0;
-const lbar=document.getElementById('loader-bar');
-const ltxt=document.getElementById('loader-text');
-function runLoader(){
+'use strict';
+/* ════════════════════════════════
+   CONFIG
+════════════════════════════════ */
+const CFG={
+  ytKey:'AIzaSyAFs6SzCqyhATwBrcwCyQNQ-qGO4afgUiI',
+  ytChannel:'@sempaicraft',
+  dcServerId:'1328707737361584128',
+  contactEmail:'zedyt409@gmail.com',
+  adminPass:'h1a2c3k4',
+  pfpSrc:'',
+  skills:[
+    {name:'⛏ Minecraft Building',pct:95,color:'linear-gradient(90deg,#00d4ff,#bf00ff)'},
+    {name:'🎮 Roblox Gameplay',pct:90,color:'linear-gradient(90deg,#00d4ff,#bf00ff)'},
+    {name:'⚔ PvP Combat',pct:88,color:'linear-gradient(90deg,#ff006e,#bf00ff)'},
+    {name:'🎬 Video Editing',pct:85,color:'linear-gradient(90deg,#bf00ff,#00d4ff)'},
+    {name:'🎯 Content Creation',pct:92,color:'linear-gradient(90deg,#00d4ff,#bf00ff)'},
+    {name:'👥 Community Building',pct:97,color:'linear-gradient(90deg,#00ff88,#00d4ff)'}
+  ],
+  typingTexts:['Gaming Creator','Minecraft Builder','Roblox Player','YouTuber','PvP Champion','Content Creator']
+};
+
+/* ════════════════════════════════
+   LOADER
+════════════════════════════════ */
+const ldMsgs=['LOADING ASSETS...','BUILDING WORLD...','CONNECTING APIs...','RENDERING UI...','READY!'];
+let ldIdx=0;
+(function runLoader(){
   let p=0;
+  const bar=document.getElementById('ld-bar'),txt=document.getElementById('ld-txt');
   const iv=setInterval(()=>{
-    p+=Math.random()*25;
-    if(p>100)p=100;
-    lbar.style.width=p+'%';
-    lt=Math.min(lt,loaderTexts.length-1);
-    if(p>20&&lt===0){ltxt.textContent=loaderTexts[1];lt=1}
-    if(p>50&&lt===1){ltxt.textContent=loaderTexts[2];lt=2}
-    if(p>75&&lt===2){ltxt.textContent=loaderTexts[3];lt=3}
+    p+=Math.random()*22+3; if(p>100)p=100;
+    bar.style.width=p+'%';
+    const stage=Math.floor(p/25); if(stage!==ldIdx&&stage<ldMsgs.length){ldIdx=stage;txt.textContent=ldMsgs[stage]}
     if(p>=100){
-      ltxt.textContent=loaderTexts[4];
-      clearInterval(iv);
+      txt.textContent=ldMsgs[4]; clearInterval(iv);
       setTimeout(()=>{
         document.getElementById('loader').classList.add('hide');
-        setTimeout(()=>document.getElementById('loader').remove(),600);
-        initAnims();
-      },400);
+        setTimeout(()=>document.getElementById('loader').remove(),700);
+        boot();
+      },350);
     }
-  },120);
+  },100);
+})();
+
+/* ════════════════════════════════
+   BOOT
+════════════════════════════════ */
+function boot(){
+  initCursor(); initParticles(); initScroll(); initObserver();
+  initTyping(); initClock(); initVisitor();
+  renderSkillEditor(); renderSkills();
+  loadYT(); loadSaved();
 }
-runLoader();
 
-// ===== CURSOR =====
-const cur=document.getElementById('cursor');
-const ring=document.getElementById('cursor-ring');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
-  setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px'},80);
-  document.getElementById('mouse-glow').style.left=e.clientX+'px';
-  document.getElementById('mouse-glow').style.top=e.clientY+'px';
-});
-document.addEventListener('mousedown',()=>cur.classList.add('clicking'));
-document.addEventListener('mouseup',()=>cur.classList.remove('clicking'));
+/* ════════════════════════════════
+   CURSOR
+════════════════════════════════ */
+function initCursor(){
+  const c=document.getElementById('cursor'),r=document.getElementById('cursor-ring'),g=document.getElementById('mglow');
+  document.addEventListener('mousemove',e=>{
+    c.style.left=e.clientX+'px'; c.style.top=e.clientY+'px';
+    setTimeout(()=>{r.style.left=e.clientX+'px';r.style.top=e.clientY+'px'},70);
+    g.style.left=e.clientX+'px'; g.style.top=e.clientY+'px';
+  });
+  document.addEventListener('mousedown',()=>c.classList.add('click'));
+  document.addEventListener('mouseup',()=>c.classList.remove('click'));
+}
 
-// ===== SCROLL =====
-window.addEventListener('scroll',()=>{
-  const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
-  document.getElementById('scroll-bar').style.width=pct+'%';
-});
-
-// ===== PARTICLES =====
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-let particles=[];
+/* ════════════════════════════════
+   PARTICLES
+════════════════════════════════ */
 let particlesOn=true;
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
-resizeCanvas();window.addEventListener('resize',resizeCanvas);
-class Particle{
-  constructor(){this.reset()}
-  reset(){
-    this.x=Math.random()*canvas.width;
-    this.y=Math.random()*canvas.height;
-    this.size=Math.random()*1.5+0.3;
-    this.speedX=(Math.random()-.5)*.4;
-    this.speedY=(Math.random()-.5)*.4;
-    this.opacity=Math.random()*.6+.1;
-    this.color=Math.random()>.5?'0,212,255':'191,0,255';
+function initParticles(){
+  const cv=document.getElementById('particles'),ctx=cv.getContext('2d');
+  function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight}
+  resize(); window.addEventListener('resize',resize);
+  const pts=Array.from({length:110},()=>mkPt(cv));
+  function mkPt(cv){return{x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.4+.3,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,o:Math.random()*.55+.1,col:Math.random()>.5?'0,212,255':'191,0,255'}}
+  function frame(){
+    if(!particlesOn){ctx.clearRect(0,0,cv.width,cv.height);requestAnimationFrame(frame);return}
+    ctx.clearRect(0,0,cv.width,cv.height);
+    pts.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>cv.width||p.y<0||p.y>cv.height){const np=mkPt(cv);Object.assign(p,np)}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.col},${p.o})`;ctx.fill();
+    });
+    requestAnimationFrame(frame);
   }
-  update(){
-    this.x+=this.speedX;this.y+=this.speedY;
-    if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset();
-  }
-  draw(){
-    ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fillStyle=`rgba(${this.color},${this.opacity})`;ctx.fill();
-  }
+  frame();
 }
-for(let i=0;i<120;i++)particles.push(new Particle());
-function animParticles(){
-  if(!particlesOn){requestAnimationFrame(animParticles);return}
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{p.update();p.draw()});
-  requestAnimationFrame(animParticles);
-}
-animParticles();
 
-// ===== TYPING =====
-const typingTexts=['Gaming Creator','Minecraft Builder','Roblox Player','YouTuber','PvP Champion','Content Creator'];
-let tIdx=0,cIdx=0,deleting=false;
-const typEl=document.getElementById('typing');
-function typeLoop(){
-  const word=typingTexts[tIdx];
-  if(!deleting){
-    typEl.textContent=word.slice(0,cIdx+1);cIdx++;
-    if(cIdx===word.length){deleting=true;setTimeout(typeLoop,1400);return}
-  }else{
-    typEl.textContent=word.slice(0,cIdx-1);cIdx--;
-    if(cIdx===0){deleting=false;tIdx=(tIdx+1)%typingTexts.length;setTimeout(typeLoop,400);return}
-  }
-  setTimeout(typeLoop,deleting?50:100);
+/* ════════════════════════════════
+   SCROLL
+════════════════════════════════ */
+function initScroll(){
+  window.addEventListener('scroll',()=>{
+    const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+    document.getElementById('scrollbar').style.width=pct+'%';
+  });
 }
-setTimeout(typeLoop,1200);
 
-// ===== CLOCK =====
-function updateClock(){
-  const now=new Date();
-  const h=String(now.getHours()).padStart(2,'0');
-  const m=String(now.getMinutes()).padStart(2,'0');
-  const s=String(now.getSeconds()).padStart(2,'0');
+/* ════════════════════════════════
+   INTERSECTION OBSERVER
+════════════════════════════════ */
+function initObserver(){
+  const ob=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');if(e.target.id==='skills-container')animSkills()}});
+  },{threshold:.12});
+  document.querySelectorAll('.fadeup').forEach(el=>ob.observe(el));
+}
+
+/* ════════════════════════════════
+   TYPING
+════════════════════════════════ */
+function initTyping(){
+  let ti=0,ci=0,del=false;
+  const el=document.getElementById('typing-el');
+  function loop(){
+    const word=CFG.typingTexts[ti];
+    if(!del){el.textContent=word.slice(0,ci+1);ci++;if(ci===word.length){del=true;setTimeout(loop,1300);return}}
+    else{el.textContent=word.slice(0,ci-1);ci--;if(ci===0){del=false;ti=(ti+1)%CFG.typingTexts.length;setTimeout(loop,350);return}}
+    setTimeout(loop,del?48:95);
+  }
+  setTimeout(loop,1000);
+}
+
+/* ════════════════════════════════
+   CLOCK
+════════════════════════════════ */
+function initClock(){
   const el=document.getElementById('clock');
-  if(el)el.textContent=h+':'+m+':'+s;
-}
-setInterval(updateClock,1000);updateClock();
-
-// ===== COUNTER ANIM =====
-function animateCounter(el,target){
-  let current=0;const duration=2000;const steps=60;
-  const increment=target/steps;
-  const iv=setInterval(()=>{
-    current=Math.min(current+increment,target);
-    el.textContent=Math.floor(current).toLocaleString();
-    if(current>=target)clearInterval(iv);
-  },duration/steps);
+  function tick(){const n=new Date();el.textContent=[n.getHours(),n.getMinutes(),n.getSeconds()].map(v=>String(v).padStart(2,'0')).join(':')}
+  tick(); setInterval(tick,1000);
 }
 
-// ===== SKILL BARS =====
-function animateSkills(){
-  document.querySelectorAll('.skill-fill').forEach(el=>{
-    const w=el.dataset.width;
-    el.style.width=w+'%';
+/* ════════════════════════════════
+   VISITOR
+════════════════════════════════ */
+function initVisitor(){
+  let c=parseInt(localStorage.getItem('sc_vis')||'1337')+Math.floor(Math.random()*4);
+  localStorage.setItem('sc_vis',c);
+  const el=document.getElementById('vis-cnt');
+  if(el)el.textContent=c.toLocaleString();
+}
+
+/* ════════════════════════════════
+   SKILLS RENDER
+════════════════════════════════ */
+function renderSkills(){
+  const c=document.getElementById('skills-container');
+  c.innerHTML='';
+  CFG.skills.forEach(sk=>{
+    const d=document.createElement('div');
+    d.className='card';d.style.padding='18px';
+    d.innerHTML=`<div class="sk-hd"><span class="sk-name">${sk.name}</span><span class="sk-pct">${sk.pct}%</span></div><div class="sk-bar"><div class="sk-fill" data-w="${sk.pct}" style="background:${sk.color}"></div></div>`;
+    c.appendChild(d);
+  });
+}
+function animSkills(){
+  document.querySelectorAll('.sk-fill').forEach(el=>{
+    el.style.width=el.dataset.w+'%';
   });
 }
 
-// ===== SCROLL ANIMATIONS =====
-function initAnims(){
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        // counter
-        if(e.target.dataset.target){
-          animateCounter(e.target,parseInt(e.target.dataset.target));
-        }
-      }
-    });
-  },{threshold:.1});
-  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-  // skills
-  const skillObs=new IntersectionObserver((entries)=>{
-    if(entries[0].isIntersecting)animateSkills();
-  },{threshold:.2});
-  const skillSection=document.querySelector('.skills-grid');
-  if(skillSection)skillObs.observe(skillSection);
-  // stat counters
-  document.querySelectorAll('[data-target]').forEach(el=>obs.observe(el));
-}
-
-// ===== NAV =====
-function toggleMenu(){
-  document.getElementById('navbar').classList.toggle('nav-mobile-open');
-}
-document.querySelectorAll('.nav-links a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    document.getElementById('navbar').classList.remove('nav-mobile-open');
+/* ════════════════════════════════
+   SKILL EDITOR
+════════════════════════════════ */
+function renderSkillEditor(){
+  const ed=document.getElementById('skill-editor');
+  ed.innerHTML='';
+  CFG.skills.forEach((sk,i)=>{
+    const row=document.createElement('div');
+    row.className='skill-row';
+    row.innerHTML=`<input class="adm-in" value="${sk.name}" oninput="CFG.skills[${i}].name=this.value" style="font-size:12px">
+      <input type="range" min="0" max="100" value="${sk.pct}" oninput="CFG.skills[${i}].pct=+this.value;this.nextElementSibling.textContent=this.value+'%'" >
+      <span class="pct-show">${sk.pct}%</span>
+      <button class="skill-del" onclick="CFG.skills.splice(${i},1);renderSkillEditor();renderSkills()">✕</button>`;
+    ed.appendChild(row);
   });
-});
-
-// ===== ADMIN PASSWORD =====
-const ADMIN_PASS='h1a2c3k4';
-let adminUnlocked=false;
-let failCount=0;
-let lockUntil=0;
-
-function openPasswordModal(){
-  if(adminUnlocked){
-    document.getElementById('admin-panel').classList.toggle('open');
-    return;
-  }
-  const now=Date.now();
-  if(lockUntil>now){
-    const secs=Math.ceil((lockUntil-now)/1000);
-    showNotif('🔒 Too many attempts. Wait '+secs+'s');
-    return;
-  }
-  document.getElementById('pw-input').value='';
-  document.getElementById('pw-err').textContent='';
-  document.getElementById('pw-input').classList.remove('error');
-  updateDots();
-  document.getElementById('admin-pw-overlay').classList.add('show');
-  setTimeout(()=>document.getElementById('pw-input').focus(),120);
+}
+function addSkill(){
+  CFG.skills.push({name:'New Skill',pct:75,color:'linear-gradient(90deg,var(--nb),var(--np))'});
+  renderSkillEditor(); renderSkills();
 }
 
-function closePasswordModal(){
-  document.getElementById('admin-pw-overlay').classList.remove('show');
-  document.getElementById('pw-input').value='';
-  document.getElementById('pw-err').textContent='';
-  document.getElementById('pw-input').classList.remove('error');
-  updateDots();
-}
+/* ════════════════════════════════
+   YOUTUBE API
+════════════════════════════════ */
+function fmtN(n){n=parseInt(n)||0;return n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':String(n)}
+function fmtAgo(iso){const d=Math.floor((Date.now()-new Date(iso))/864e5);return d===0?'Today':d===1?'Yesterday':d<7?d+'d ago':d<30?Math.floor(d/7)+'w ago':d<365?Math.floor(d/30)+'mo ago':Math.floor(d/365)+'y ago'}
 
-function updateDots(){
-  const val=document.getElementById('pw-input').value;
-  for(let i=0;i<8;i++){
-    const d=document.getElementById('dot-'+i);
-    if(d)d.classList.toggle('filled',i<val.length);
-  }
-}
-
-function checkPassword(){
-  const now=Date.now();
-  if(lockUntil>now){
-    const secs=Math.ceil((lockUntil-now)/1000);
-    document.getElementById('pw-err').textContent='🔒 Locked out. Try in '+secs+'s';
-    return;
-  }
-  const val=document.getElementById('pw-input').value;
-  if(val===ADMIN_PASS){
-    failCount=0;
-    adminUnlocked=true;
-    closePasswordModal();
-    setTimeout(()=>{
-      document.getElementById('admin-panel').classList.add('open');
-      showNotif('✅ Admin access granted!');
-    },180);
-  } else {
-    failCount++;
-    const inp=document.getElementById('pw-input');
-    const err=document.getElementById('pw-err');
-    inp.classList.add('error','shake');
-    setTimeout(()=>inp.classList.remove('shake','error'),500);
-    inp.value='';updateDots();
-    if(failCount>=5){
-      lockUntil=Date.now()+30000;
-      err.textContent='🚫 Too many attempts. Locked 30s.';
-    } else {
-      const left=5-failCount;
-      err.textContent='✗ Wrong password. '+left+' attempt'+(left!==1?'s':'')+' left.';
-    }
-    setTimeout(()=>document.getElementById('pw-input').focus(),50);
-  }
-}
-
-function toggleAdmin(){
-  if(!adminUnlocked){openPasswordModal();return}
-  document.getElementById('admin-panel').classList.toggle('open');
-}
-function updateContent(id,val){
-  const el=document.getElementById(id);
-  if(el)el.textContent=val;
-}
-function updateColor(prop,val){
-  document.documentElement.style.setProperty(prop,val);
-}
-function toggleParticles(on){
-  particlesOn=on;
-  canvas.style.opacity=on?'.6':'0';
-}
-function toggleCursorGlow(on){
-  cur.style.display=on?'block':'none';
-  ring.style.display=on?'block':'none';
-}
-function toggleMouseGlow(on){
-  document.getElementById('mouse-glow').style.display=on?'block':'none';
-}
-function updateMCSkin(username){
-  const img=document.querySelector('.mc-skin-img');
-  if(img){img.src=`https://visage.surgeplay.com/full/512/${username}`}
-  const head=document.querySelector('img[alt="Head"]');
-  if(head){head.src=`https://mc-heads.net/avatar/${username}/100`}
-}
-function showNotif(msg){
-  const n=document.getElementById('notification');
-  n.textContent=msg;n.classList.add('show');
-  setTimeout(()=>n.classList.remove('show'),2800);
-}
-function saveSettings(){showNotif('✓ Settings saved!')}
-function exportHTML(){showNotif('📤 HTML export ready!')}
-
-// ===== YOUTUBE API =====
-const YT_API_KEY='AIzaSyAFs6SzCqyhATwBrcwCyQNQ-qGO4afgUiI';
-const YT_CHANNEL='@sempaicraft';
-
-function fmtNum(n){
-  n=parseInt(n)||0;
-  if(n>=1000000)return (n/1000000).toFixed(1)+'M';
-  if(n>=1000)return (n/1000).toFixed(1)+'K';
-  return n.toString();
-}
-function fmtDate(iso){
-  const d=new Date(iso);
-  const diff=Math.floor((Date.now()-d)/86400000);
-  if(diff===0)return 'Today';
-  if(diff===1)return 'Yesterday';
-  if(diff<7)return diff+' days ago';
-  if(diff<30)return Math.floor(diff/7)+' weeks ago';
-  if(diff<365)return Math.floor(diff/30)+' months ago';
-  return Math.floor(diff/365)+' years ago';
-}
-
-async function loadYouTube(){
+async function loadYT(){
+  const KEY=CFG.ytKey, CH=CFG.ytChannel;
   try{
-    // Step 1: get channel ID from handle
-    const searchRes=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${YT_CHANNEL}&key=${YT_API_KEY}`);
-    const searchData=await searchRes.json();
-    if(!searchData.items||!searchData.items.length)throw new Error('Channel not found');
-    const channelId=searchData.items[0].snippet.channelId;
-
-    // Step 2: get channel stats + snippet
-    const chRes=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,brandingSettings&id=${channelId}&key=${YT_API_KEY}`);
-    const chData=await chRes.json();
-    if(!chData.items||!chData.items.length)throw new Error('Channel data error');
-    const ch=chData.items[0];
-    const stats=ch.statistics;
-    const snippet=ch.snippet;
-
-    // Update header
-    const avatarEl=document.getElementById('yt-avatar');
-    if(snippet.thumbnails&&snippet.thumbnails.medium){
-      avatarEl.innerHTML=`<img src="${snippet.thumbnails.medium.url}" alt="Channel">`;
-    }
-    document.getElementById('yt-name').innerHTML=
-      `<span>${snippet.title}</span><span class="yt-verified">✓ CREATOR</span>`;
-    document.getElementById('yt-handle').textContent='@sempaicraft';
-
-    // Update stats
-    document.getElementById('yt-subs').textContent=fmtNum(stats.subscriberCount);
-    document.getElementById('yt-views').textContent=fmtNum(stats.viewCount);
-    document.getElementById('yt-vids').textContent=fmtNum(stats.videoCount);
-
-    // Animate stat numbers
-    ['yt-subs','yt-views','yt-vids'].forEach(id=>{
-      const el=document.getElementById(id);
-      const txt=el.textContent;
-      el.style.animation='none';
-      el.offsetHeight;
-      el.style.animation='';
-    });
-
-    // Step 3: get uploads playlist
-    const uploadsId=ch.contentDetails?ch.contentDetails.relatedPlaylists.uploads:null;
-    let uploadsPlaylistId=uploadsId;
-    if(!uploadsPlaylistId){
-      const ch2=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${channelId}&key=${YT_API_KEY}`);
-      const ch2d=await ch2.json();
-      uploadsPlaylistId=ch2d.items[0].contentDetails.relatedPlaylists.uploads;
-    }
-
-    // Step 4: get latest videos
-    const plRes=await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=6&playlistId=${uploadsPlaylistId}&key=${YT_API_KEY}`);
-    const plData=await plRes.json();
-    if(!plData.items)throw new Error('No videos');
-
-    // Check for live stream
-    const liveRes=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&eventType=live&key=${YT_API_KEY}`);
-    const liveData=await liveRes.json();
-    if(liveData.items&&liveData.items.length>0){
-      document.getElementById('yt-live-badge').style.display='inline-flex';
-    }
-
-    // Render video cards
-    const grid=document.getElementById('yt-videos-grid');
+    const sr=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${CH}&key=${KEY}`);
+    const sd=await sr.json(); if(sd.error)throw sd.error;
+    const cid=sd.items[0].snippet.channelId;
+    const cr=await fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&id=${cid}&key=${KEY}`);
+    const cd=await cr.json(); const ch=cd.items[0];
+    const sn=ch.snippet,st=ch.statistics;
+    // header
+    const av=document.getElementById('yt-av');
+    if(sn.thumbnails?.medium){av.innerHTML=`<img src="${sn.thumbnails.medium.url}" alt="ch">`}
+    document.getElementById('yt-chname').textContent=sn.title;
+    // stats
+    document.getElementById('yt-subs').textContent=fmtN(st.subscriberCount);
+    document.getElementById('yt-views').textContent=fmtN(st.viewCount);
+    document.getElementById('yt-vcnt').textContent=fmtN(st.videoCount);
+    // hero stats
+    document.getElementById('hs-subs').textContent=fmtN(st.subscriberCount);
+    document.getElementById('hs-vids').textContent=fmtN(st.videoCount);
+    document.getElementById('hs-views').textContent=fmtN(st.viewCount);
+    // live check
+    const lr=await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${cid}&type=video&eventType=live&key=${KEY}`);
+    const ld=await lr.json();
+    if(ld.items?.length){document.getElementById('yt-live-badge').style.display='inline-flex'}
+    // videos
+    const pid=ch.contentDetails.relatedPlaylists.uploads;
+    const vr=await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=8&playlistId=${pid}&key=${KEY}`);
+    const vd=await vr.json();
+    const grid=document.getElementById('yt-grid');
     grid.innerHTML='';
-    plData.items.forEach(item=>{
-      const s=item.snippet;
-      const vid=s.resourceId.videoId;
-      const thumb=s.thumbnails.maxres||s.thumbnails.high||s.thumbnails.medium||s.thumbnails.default;
-      const card=document.createElement('a');
-      card.className='yt-video-card';
-      card.href=`https://www.youtube.com/watch?v=${vid}`;
-      card.target='_blank';
-      card.rel='noopener';
-      card.innerHTML=`
-        <div class="yt-thumb-wrap">
-          <img src="${thumb.url}" alt="${s.title}" loading="lazy">
-          <div class="yt-thumb-play"><div class="yt-play-btn">▶</div></div>
-        </div>
-        <div class="yt-video-info">
-          <div class="yt-video-title">${s.title}</div>
-          <div class="yt-video-meta">${fmtDate(s.publishedAt)}</div>
-        </div>
-      `;
-      grid.appendChild(card);
+    (vd.items||[]).forEach(item=>{
+      const s=item.snippet,vid=s.resourceId.videoId;
+      const th=(s.thumbnails.maxres||s.thumbnails.high||s.thumbnails.medium||s.thumbnails.default).url;
+      const a=document.createElement('a');
+      a.className='yt-card';a.href=`https://www.youtube.com/watch?v=${vid}`;a.target='_blank';a.rel='noopener';
+      a.innerHTML=`<div class="yt-tw"><img src="${th}" alt="${s.title}" loading="lazy"><div class="yt-play-ov"><div class="yt-play-btn">▶</div></div></div><div class="yt-vi"><div class="yt-vname">${s.title}</div><div class="yt-vmeta">${fmtAgo(s.publishedAt)}</div></div>`;
+      grid.appendChild(a);
     });
-
-    // Also update hero stats with real data
-    const subsEl=document.querySelector('[data-target="50"]');
-    if(subsEl){
-      const realSubs=parseInt(stats.subscriberCount)||0;
-      subsEl.dataset.target=Math.round(realSubs/1000);
-      subsEl.textContent=fmtNum(realSubs);
-    }
-    const vidsEl=document.querySelector('[data-target="120"]');
-    if(vidsEl){
-      vidsEl.dataset.target=parseInt(stats.videoCount)||0;
-      vidsEl.textContent=stats.videoCount||'—';
-    }
-
-  }catch(err){
-    console.warn('YouTube API error:',err);
-    document.getElementById('yt-videos-grid').innerHTML=`
-      <div class="yt-error" style="grid-column:1/-1">
-        <div style="font-size:40px;margin-bottom:12px">▶️</div>
-        <div style="color:var(--text-primary);font-weight:600;margin-bottom:8px">Check out SempaiCraft on YouTube!</div>
-        <div style="margin-bottom:20px">Subscribe for Minecraft builds, Roblox gameplay & more</div>
-        <a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-primary">Visit Channel ↗</a>
-      </div>`;
-    document.getElementById('yt-name').innerHTML='<span>SempaiCraft</span><span class="yt-verified">✓ CREATOR</span>';
-    document.getElementById('yt-subs').textContent='50K+';
-    document.getElementById('yt-views').textContent='1M+';
-    document.getElementById('yt-vids').textContent='120+';
+  }catch(e){
+    console.warn('YT API:',e);
+    document.getElementById('yt-subs').textContent='—';
+    document.getElementById('yt-views').textContent='—';
+    document.getElementById('yt-vcnt').textContent='—';
+    document.getElementById('hs-subs').textContent='—';
+    document.getElementById('hs-vids').textContent='—';
+    document.getElementById('hs-views').textContent='—';
+    document.getElementById('yt-grid').innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:36px;color:var(--tm)"><div style="font-size:40px;margin-bottom:12px">▶️</div><div style="font-weight:600;color:var(--tp);margin-bottom:8px">Watch SempaiCraft on YouTube!</div><a href="https://youtube.com/@sempaicraft" target="_blank" class="btn btn-r" style="margin:16px auto 0">Visit Channel ↗</a></div>`;
   }
 }
 
-// ===== CONTACT via FormSubmit =====
-async function sendMessage(){
+/* ════════════════════════════════
+   NAV
+════════════════════════════════ */
+function toggleNav(){document.getElementById('navbar').classList.toggle('nav-open')}
+function closeNav(){document.getElementById('navbar').classList.remove('nav-open')}
+
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
+async function sendMsg(){
   const name=document.getElementById('cf-name').value.trim();
   const email=document.getElementById('cf-email').value.trim();
   const subject=document.getElementById('cf-subject').value.trim()||'Website Contact';
-  const message=document.getElementById('cf-message').value.trim();
-  if(!name||!email||!message){showNotif('⚠ Please fill all fields');return}
-
-  const btn=document.querySelector('#contact-form .btn-primary');
+  const msg=document.getElementById('cf-msg').value.trim();
+  if(!name||!email||!msg){showNotif('⚠ Fill all fields!');return}
+  const btn=document.getElementById('send-btn');
   btn.textContent='Sending...';btn.disabled=true;
-
   try{
-    const formData=new FormData();
-    formData.append('name',name);
-    formData.append('email',email);
-    formData.append('_subject','[SempaiCraft] '+subject);
-    formData.append('message',message);
-    formData.append('_template','table');
-    formData.append('_captcha','false');
-
-    const res=await fetch('https://formsubmit.co/ajax/zedyt409@gmail.com',{
-      method:'POST',body:formData
-    });
+    const fd=new FormData();
+    fd.append('name',name);fd.append('email',email);
+    fd.append('_subject','[SempaiCraft] '+subject);
+    fd.append('message',msg);fd.append('_template','table');fd.append('_captcha','false');
+    const res=await fetch(`https://formsubmit.co/ajax/${CFG.contactEmail}`,{method:'POST',body:fd});
     const data=await res.json();
     if(data.success){
-      showNotif('✅ Message sent to SempaiCraft!');
-      document.getElementById('cf-name').value='';
-      document.getElementById('cf-email').value='';
-      document.getElementById('cf-subject').value='';
-      document.getElementById('cf-message').value='';
-    }else{
-      throw new Error('Send failed');
-    }
-  }catch(e){
-    // Fallback: open mailto
-    window.location.href=`mailto:zedyt409@gmail.com?subject=${encodeURIComponent('[SempaiCraft] '+subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\n\n'+message)}`;
+      showNotif('✅ Message sent!');
+      ['cf-name','cf-email','cf-subject','cf-msg'].forEach(id=>document.getElementById(id).value='');
+    }else throw new Error();
+  }catch{
+    window.location.href=`mailto:${CFG.contactEmail}?subject=${encodeURIComponent('[SempaiCraft] '+subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\n\n'+msg)}`;
     showNotif('📧 Opening email client...');
-  }finally{
-    btn.textContent='Send Message ✉';btn.disabled=false;
-  }
+  }finally{btn.textContent='Send Message ✉';btn.disabled=false}
 }
 
-// ===== VISITOR COUNTER =====
-(function(){
-  let count=localStorage.getItem('sc_visitors')||1337;
-  count=parseInt(count)+Math.floor(Math.random()*3);
-  localStorage.setItem('sc_visitors',count);
-  const el=document.getElementById('visitor-count');
-  if(el)el.textContent=parseInt(count).toLocaleString();
-})();
+/* ════════════════════════════════
+   ADMIN PASSWORD
+════════════════════════════════ */
+let adminUnlocked=false,failCt=0,lockUntil=0;
+// build dots
+(function(){const d=document.getElementById('pw-dots');for(let i=0;i<8;i++){const s=document.createElement('span');s.className='pw-d';s.id='pd'+i;d.appendChild(s)}})();
+function pwDots(){const v=document.getElementById('pw-in').value;for(let i=0;i<8;i++)document.getElementById('pd'+i).classList.toggle('on',i<v.length)}
+function openAdmin(){
+  if(adminUnlocked){document.getElementById('admin').classList.toggle('open');return}
+  const now=Date.now();
+  if(lockUntil>now){showNotif('🔒 Locked '+(Math.ceil((lockUntil-now)/1000))+'s');return}
+  document.getElementById('pw-in').value='';document.getElementById('pw-err').textContent='';
+  document.getElementById('pw-in').classList.remove('err');pwDots();
+  document.getElementById('pw-overlay').classList.add('show');
+  setTimeout(()=>document.getElementById('pw-in').focus(),100);
+}
+function closePwModal(){document.getElementById('pw-overlay').classList.remove('show');document.getElementById('pw-in').value='';pwDots();document.getElementById('pw-err').textContent=''}
+function closeAdmin(){document.getElementById('admin').classList.remove('open')}
+function checkPw(){
+  const now=Date.now();if(lockUntil>now){document.getElementById('pw-err').textContent='🔒 Wait '+(Math.ceil((lockUntil-now)/1000))+'s';return}
+  const v=document.getElementById('pw-in').value;
+  if(v===CFG.adminPass){
+    failCt=0;adminUnlocked=true;closePwModal();
+    setTimeout(()=>{document.getElementById('admin').classList.add('open');showNotif('✅ Admin access granted!')},150);
+  }else{
+    failCt++;
+    const inp=document.getElementById('pw-in');
+    inp.classList.add('err','shake');setTimeout(()=>inp.classList.remove('shake','err'),450);
+    inp.value='';pwDots();
+    if(failCt>=5){lockUntil=Date.now()+30000;document.getElementById('pw-err').textContent='🚫 Locked 30s.'}
+    else document.getElementById('pw-err').textContent=`✗ Wrong. ${5-failCt} left.`;
+    setTimeout(()=>inp.focus(),60);
+  }
+}
+document.getElementById('pw-in').addEventListener('keydown',e=>{if(e.key==='Enter')checkPw()});
+
+/* ════════════════════════════════
+   ADMIN TABS
+════════════════════════════════ */
+function showTab(id,btn){
+  document.querySelectorAll('.adm-tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.adm-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ════════════════════════════════
+   ADMIN LIVE UPDATE
+════════════════════════════════ */
+function liveUpdate(){
+  // title
+  const name=document.getElementById('ai-name').value;
+  document.getElementById('hero-l1').textContent=name.slice(0,name.length/2)||name;
+  document.getElementById('hero-l2').textContent=name.slice(name.length/2)||'';
+  document.querySelector('.nav-logo').lastChild.textContent=' '+name;
+  document.querySelector('.ft-logo').textContent=name;
+  // badge
+  document.getElementById('hb-text').textContent=document.getElementById('ai-badge').value;
+  // footer sub
+  document.getElementById('footer-sub').textContent=document.getElementById('ai-tag').value;
+  // about
+  const ab=document.getElementById('ai-about').value;
+  document.getElementById('about-text').innerHTML=`<p>${ab.replace(/\n/g,'</p><p>')}</p>`;
+  // typing
+  const tv=document.getElementById('ai-typing').value;
+  if(tv)CFG.typingTexts=tv.split(',').map(s=>s.trim()).filter(Boolean);
+}
+
+function applyAll(){
+  liveUpdate();
+  // mc username
+  updateMC(document.getElementById('ai-mcuser').value);
+  // save to localStorage
+  const state={
+    name:document.getElementById('ai-name').value,
+    tag:document.getElementById('ai-tag').value,
+    badge:document.getElementById('ai-badge').value,
+    about:document.getElementById('ai-about').value,
+    mcuser:document.getElementById('ai-mcuser').value,
+    typing:document.getElementById('ai-typing').value,
+    pfp:CFG.pfpSrc,
+    skills:CFG.skills
+  };
+  localStorage.setItem('sc_state',JSON.stringify(state));
+  showNotif('✅ All changes applied & saved!');
+}
+
+function loadSaved(){
+  try{
+    const s=JSON.parse(localStorage.getItem('sc_state')||'{}');
+    if(s.name){document.getElementById('ai-name').value=s.name;liveUpdate()}
+    if(s.tag)document.getElementById('ai-tag').value=s.tag;
+    if(s.badge)document.getElementById('ai-badge').value=s.badge;
+    if(s.about)document.getElementById('ai-about').value=s.about;
+    if(s.mcuser){document.getElementById('ai-mcuser').value=s.mcuser;updateMC(s.mcuser)}
+    if(s.typing)document.getElementById('ai-typing').value=s.typing;
+    if(s.pfp&&s.pfp!=='')applyPfp(s.pfp);
+    if(s.skills&&s.skills.length){CFG.skills=s.skills;renderSkills();renderSkillEditor()}
+    if(s.name)liveUpdate();
+  }catch(e){}
+}
+
+/* ════════════════════════════════
+   PFP UPLOAD
+════════════════════════════════ */
+function handlePfp(e){
+  const file=e.target.files[0];if(!file)return;
+  if(file.size>5*1024*1024){showNotif('⚠ Max 5MB!');return}
+  const reader=new FileReader();
+  reader.onload=ev=>applyPfp(ev.target.result);
+  reader.readAsDataURL(file);
+}
+function applyPfp(src){
+  CFG.pfpSrc=src;
+  // avatar in hero
+  const avImg=document.getElementById('av-img'),avPh=document.getElementById('av-ph');
+  avImg.src=src;avImg.style.display='block';avPh.style.display='none';
+  // nav logo pfp
+  const np=document.getElementById('nav-pfp');np.src=src;np.classList.add('loaded');
+  // admin preview
+  const prev=document.getElementById('pfp-preview');prev.innerHTML=`<img src="${src}" alt="pfp">`;
+  showNotif('✅ Profile picture updated!');
+}
+function removePfp(){
+  CFG.pfpSrc='';
+  document.getElementById('av-img').style.display='none';
+  document.getElementById('av-ph').style.display='block';
+  document.getElementById('nav-pfp').classList.remove('loaded');
+  document.getElementById('pfp-preview').innerHTML='<span>👤</span>';
+  const s=JSON.parse(localStorage.getItem('sc_state')||'{}');s.pfp='';localStorage.setItem('sc_state',JSON.stringify(s));
+  showNotif('✓ PFP removed');
+}
+
+/* ════════════════════════════════
+   MINECRAFT UPDATE
+════════════════════════════════ */
+function updateMC(u){
+  if(!u)return;
+  document.getElementById('mc-skin').src=`https://visage.surgeplay.com/full/512/${u}`;
+  document.getElementById('mc-uname').textContent=u;
+  document.getElementById('mc-disp-name').textContent=u;
+}
+
+/* ════════════════════════════════
+   DESIGN
+════════════════════════════════ */
+function setVar(k,v){document.documentElement.style.setProperty(k,v)}
+const THEMES={
+  cyber:{nb:'#00d4ff',np:'#bf00ff',nc:'#00ffff',npi:'#ff006e',ng:'#00ff88'},
+  purple:{nb:'#bf00ff',np:'#7700ff',nc:'#ff00ff',npi:'#ff006e',ng:'#aa00ff'},
+  green:{nb:'#00ff88',np:'#00cc44',nc:'#00ffcc',npi:'#00ff00',ng:'#88ff00'},
+  gold:{nb:'#ffd700',np:'#ff8c00',nc:'#ffec00',npi:'#ff4500',ng:'#ffa500'}
+};
+function applyTheme(t){
+  const th=THEMES[t];if(!th)return;
+  Object.entries(th).forEach(([k,v])=>setVar('--'+k,v));
+  // update color pickers
+  document.querySelectorAll('.color-item input[type=color]').forEach((inp,i)=>{
+    const keys=['nb','np','nc','npi','ng'];if(keys[i])inp.value=th[keys[i]]||inp.value;
+  });
+  showNotif('🎨 Theme applied!');
+}
+
+/* ════════════════════════════════
+   LINKS UPDATE
+════════════════════════════════ */
+function applyLinks(){
+  const ytUrl=document.getElementById('al-yt').value;
+  const igUrl=document.getElementById('al-ig').value;
+  const dcUrl=document.getElementById('al-dc').value;
+  document.querySelectorAll('a[href*="youtube.com/@sempaicraft"]').forEach(a=>a.href=ytUrl);
+  document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=igUrl);
+  document.querySelectorAll('a[href*="discord.gg"]').forEach(a=>a.href=dcUrl);
+  showNotif('✅ Links updated!');
+}
+
+/* ════════════════════════════════
+   RELOAD APIs
+════════════════════════════════ */
+function reloadYT(){
+  CFG.ytKey=document.getElementById('api-ytkey').value;
+  CFG.ytChannel=document.getElementById('api-ytch').value;
+  CFG.contactEmail=document.getElementById('api-email').value;
+  document.getElementById('yt-subs').textContent='Loading...';
+  document.getElementById('yt-views').textContent='Loading...';
+  document.getElementById('yt-vcnt').textContent='Loading...';
+  document.getElementById('yt-grid').innerHTML=`<div style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,50,50,.1)"><div class="yt-skel" style="padding-top:56.25%"></div></div>`.repeat(4);
+  loadYT(); showNotif('🔄 Reloading YouTube...');
+}
+function reloadDiscord(){
+  const id=document.getElementById('api-dcid').value;
+  const iframes=document.querySelectorAll('iframe[src*="discord.com"]');
+  iframes.forEach(f=>f.src=`https://discord.com/widget?id=${id}&theme=dark`);
+  showNotif('🔄 Discord widget reloaded!');
+}
+
+/* ════════════════════════════════
+   FX TOGGLES
+════════════════════════════════ */
+function toggleFX(type,on){
+  if(type==='particles'){particlesOn=on;document.getElementById('particles').style.opacity=on?'.55':'0'}
+  if(type==='cursor'){['cursor','cursor-ring'].forEach(id=>document.getElementById(id).style.display=on?'block':'none')}
+  if(type==='mglow'){document.getElementById('mglow').style.display=on?'block':'none'}
+}
+
+/* ════════════════════════════════
+   NOTIFICATION
+════════════════════════════════ */
+function showNotif(msg){
+  const n=document.getElementById('notif');n.textContent=msg;n.classList.add('show');
+  setTimeout(()=>n.classList.remove('show'),2600);
+}
 </script>
 </body>
 </html>
